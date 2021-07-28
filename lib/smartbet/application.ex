@@ -8,7 +8,7 @@ defmodule Smartbet.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      # Smartbet.Repo,
+      Smartbet.Repo,
       # Start the Telemetry supervisor
       SmartbetWeb.Telemetry,
       # Start the PubSub system
