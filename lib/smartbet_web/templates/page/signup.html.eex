@@ -1,4 +1,5 @@
-<!--Full pageloader-->
+
+        <!--Full pageloader-->
         <!-- Pageloader -->
         <div class="pageloader is-full"></div>
         <div class="infraloader is-full is-active"></div>
@@ -30,9 +31,8 @@
                     <div class="inner-wrap">
                         <!--Form Title-->
                         <div class="auth-head">
-                            <h2>Smart Bet</h2>
-                            <p>Please sign in to your account</p>
-                            
+                            <h2>Join Smart Bet.</h2>
+                            <p>Start by creating your account</p>
                         </div>
 
                         <!--Form-->
@@ -52,7 +52,25 @@
                                     <!-- Input -->
                                     <div class="field">
                                         <div class="control has-icon">
+                                            <input class="input" type="text" placeholder="Email Address">
+                                            <span class="form-icon">
+                                                    <i data-feather="mail"></i>
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <!-- Input -->
+                                    <div class="field">
+                                        <div class="control has-icon">
                                             <input class="input" type="password" placeholder="Password">
+                                            <span class="form-icon">
+                                                    <i data-feather="lock"></i>
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <!-- Input -->
+                                    <div class="field">
+                                        <div class="control has-icon">
+                                            <input class="input" type="password" placeholder="Repeat Password">
                                             <span class="form-icon">
                                                     <i data-feather="lock"></i>
                                                 </span>
@@ -65,29 +83,24 @@
                                             <i></i>
                                         </label>
                                         <div class="setting-meta">
-                                            <span>Remember Me</span>
+                                            <span>Receive promotional offers</span>
                                         </div>
                                     </div>
 
                                     <!-- Submit -->
                                     <div class="control login">
-                                        <button class="button h-button is-primary is-bold is-fullwidth is-raised">Sign In</button>
+                                        <button class="button h-button is-primary is-bold is-fullwidth is-raised">Sign Up</button>
                                     </div>
-
 
                                 </div>
                             </form>
                         </div>
-
-                        <div class="auth-head has-text-centered has-text-centered">
-                            <a>Forgot Password?</a><br>
-                            <a href="signup">I do not have an account yet </a>
+                        <div class="auth-head has-text-centered">
+                            <a href="login">I do not have an account yet </a>
                         </div>
 
                     </div>
-
                 </div>
-
             </div>
         </div>
 
@@ -98,3 +111,4 @@
         <!-- Huro js -->
         <script src="assets/js/functions.js" async></script>
         <script src="assets/js/auth.js" async></script>
+    </div>

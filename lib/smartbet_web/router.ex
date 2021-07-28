@@ -18,6 +18,7 @@ defmodule SmartbetWeb.Router do
 
     get "/", PageController, :index
     get "/login", PageController, :login
+    get "/signup", PageController, :signup
 
     scope "/dashboard" do
       get "/", DashboardController, :index
