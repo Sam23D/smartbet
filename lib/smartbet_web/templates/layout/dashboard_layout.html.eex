@@ -15,12 +15,14 @@
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
     <div id="huro-app" class="app-wrapper">
-       <%= render(SmartbetWeb.PageView, "navbar.html", inner_content: @inner_content) %>
+      <%= render(SmartbetWeb.DashboardView, "navbar.html", conn: @conn) %>
+      <%= @inner_content %>
+       
 
 
 
     </div>
-   <script src="assets/js/app.js"></script>
+   <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
 
 
     <script src="<%= Routes.static_path(@conn, "/js/functions.js") %>"></script>
@@ -30,6 +32,8 @@
     <script src="<%= Routes.static_path(@conn, "/js/widgets.js") %>" async></script>
     <script src="<%= Routes.static_path(@conn, "/js/touch.js") %>" async></script>
     <script src="<%= Routes.static_path(@conn, "/js/syntax.js") %>" async></script>
+
+    
 
   </body>
 </html>

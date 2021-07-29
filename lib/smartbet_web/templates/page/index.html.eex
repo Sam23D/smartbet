@@ -14,8 +14,8 @@
                         <div class="navbar-brand">
                             <a class="navbar-item" href="/">
                                 <div class="brand-icon">
-                                    <img class="light-image-l" src="images/logos/logo/logo.svg" alt="" />
-                                    <img class="dark-image-l" src="images/logos/logo/logo-light.svg" alt="" />
+                                    <img class="light-image-l" src="<%= Routes.static_path(@conn, "/images/logos/logo/logo.svg") %>"" alt="" />
+                                    <img class="dark-image-l" src="<%= Routes.static_path(@conn, "/images/logos/logo/logo-light.svg") %>" alt="" />
                                 </div>
                             </a>
 
@@ -90,98 +90,6 @@
                     </div>
 
                     <canvas id="demo-canvas"></canvas>
-                </div>
-
-                <!--Stacks Section-->
-                <div id="stacks-section" class="section">
-                    <div class="container">
-
-                        <!--Stacks-->
-                        <div class="stacks">
-                            <div class="stack">
-                                <img src="images/icons/stacks/html5.svg" alt="">
-                            </div>
-                            <div class="stack">
-                                <img src="images/icons/stacks/js.svg" alt="">
-                            </div>
-                            <div class="stack">
-                                <img src="images/icons/stacks/bulma.svg" alt="">
-                            </div>
-                            <div class="stack">
-                                <img src="images/icons/stacks/sass.svg" alt="">
-                            </div>
-                            <div class="stack">
-                                <img src="images/icons/stacks/gulp.svg" alt="">
-                            </div>
-                        </div>
-
-                        <!--Title-->
-                        <div class="section-title has-text-centered">
-                            <h2 class="title is-2">Amazing Features</h2>
-                            <h4>All you need to build your project is there.</h4>
-                        </div>
-
-                        <!--Boxed Features-->
-                        <div class="boxed-features">
-                            <div class="flex-card light-bordered hover-inset">
-                                <div class="flex-cell is-bordered">
-                                    <i class="lnil lnil-toolbox"></i>
-                                    <h3>1000+ Components</h3>
-                                    <p>An incredible set of building blocks with dark mode support.</p>
-                                </div>
-                                <div class="flex-cell is-bordered">
-                                    <i class="lnil lnil-display-alt"></i>
-                                    <h3>220+ Demos</h3>
-                                    <p>Huro ships with a huge number of demos to kickstart your project.</p>
-                                </div>
-                                <div class="flex-cell is-bordered">
-                                    <i class="lnil lnil-moon"></i>
-                                    <h3>Native Dark Mode</h3>
-                                    <p>Every single piece of UI is natively dark mode ready.</p>
-                                </div>
-                                <div class="flex-cell is-bordered no-border-edge">
-                                    <i class="lnil lnil-rocket"></i>
-                                    <h3>Active Support</h3>
-                                    <p>Our support helps you solve any issues you have</p>
-                                </div>
-                                <div class="flex-cell">
-                                    <i class="lnil lnil-code"></i>
-                                    <h3>Clean Code</h3>
-                                    <p>Huro's codebase is huge, but structured and easy to understand</p>
-                                </div>
-                                <div class="flex-cell">
-                                    <i class="lnil lnil-plug"></i>
-                                    <h3>Premium Icons</h3>
-                                    <p>Huro ships with the premium Line Icons set ($30 value).</p>
-                                </div>
-                                <div class="flex-cell">
-                                    <i class="lnil lnil-mobile-alt-2"></i>
-                                    <h3>Fully Responsive</h3>
-                                    <p>Huro is built with Bulma 0.9, a mobile first framework</p>
-                                </div>
-                                <div class="flex-cell no-border-edge">
-                                    <i class="lnil lnil-file-name"></i>
-                                    <h3>Extensive Docs</h3>
-                                    <p>A nice documentation to help you get started fast</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--CTA-->
-                        <div class="cta-block">
-                            <div class="head-text">
-                                <h3>Buy Huro</h3>
-                                <p>Available on Envato Market</p>
-                            </div>
-                            <div class="head-action">
-                                <div class="buttons">
-                                    <a href="https://themeforest.net/item/huro-multipurpose-admin-and-webapp-ui-kit/28933249" class="button h-button is-primary is-rounded is-elevated action-button">Buy Now</a>
-                                    <a href="https://cssninja.io" class="button chat-button">Chat with us</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
                 <!--Side Features Section-->
