@@ -1,0 +1,397 @@
+<div id="app-widgets" class="view-wrapper is-webapp" data-page-title="Dashboard" data-naver-offset="150" data-menu-item="#dashboards-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
+
+            <div class="page-content-wrapper">
+                <div class="page-content is-relative">
+
+                    <div class="page-content-inner">
+
+                        <!--Personal Dashboard V2-->
+                        <div class="personal-dashboard personal-dashboard-v2 finance-dashboard analytics-dashboard ecommerce-dashboard ecommerce-dashboard-v1 stock-dashboard apex-dashboard">
+
+                            <div class="columns is-multiline">
+                                <div class="column is-12">
+                                    <div class="dashboard-header">
+                                        <div class="h-avatar is-xl">
+                                            <img class="avatar" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-12.svg")%>">
+                                            <img class="badge" src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>">
+                                        </div>
+                                        <div class="user-meta is-dark-bordered-12">
+                                            <h3 class="title is-4 is-narrow is-bold">Welcome back, Erik K.</h3>
+                                            <p class="light-text">It's really nice to see you again</p>
+                                        </div>
+                                        <div class="user-action">
+                                            <h3 class="title is-2 is-narrow">$2500.00</h3>
+                                            <p class="light-text">Balance</p>
+                                        </div>
+                                        <div class="cta h-hidden-tablet-p">
+                                            <div class="media-flex inverted-text">
+                                                <i class="lnil lnil-crown-alt-1"></i>
+                                                <p class="white-text">Start reading our bet articles and improve your picks</p>
+                                            </div>
+                                            <a class="link inverted-text">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-12">
+                                    <div class="columns is-multiline">
+                                        <!--Dashboard Tile-->
+                                        <div class="column is-3">
+                                            <div class="dashboard-tile">
+                                                <div class="tile-head">
+                                                    <h3 class="dark-inverted">Balance</h3>
+                                                    <div class="h-icon is-primary is-rounded is-small">
+                                                        <i aria-hidden="true" class="fas fa-dollar-sign"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="tile-body">
+                                                    <span class="dark-inverted">$2500.00</span>
+                                                </div>
+                                                <div class="tile-foot">
+                                                    <span class="text-h-green">+6.4% <i data-feather="trending-up"></i></span>
+                                                    <span>since last month</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Dashboard Tile-->
+                                        <div class="column is-3">
+                                            <div class="dashboard-tile">
+                                                <div class="tile-head">
+                                                    <h3 class="dark-inverted">ROI</h3>
+                                                    <div class="h-icon is-blue is-rounded is-small">
+                                                        <i aria-hidden="true" class="fas fa-chart-pie"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="tile-body">
+                                                    <span class="dark-inverted">14%</span>
+                                                </div>
+                                                <div class="tile-foot">
+                                                    <span class="text-h-red">-2.1% <i data-feather="trending-down"></i></span>
+                                                    <span>since last month</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Dashboard Tile-->
+                                        <div class="column is-3">
+                                            <div class="dashboard-tile">
+                                                <div class="tile-head">
+                                                    <h3 class="dark-inverted">Balance last 7 days</h3>
+                                                    <div class="h-icon is-green is-rounded is-small">
+                                                        <i aria-hidden="true" class="fas fa-coins"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="tile-body">
+                                                    <span class="dark-inverted">$500</span>
+                                                </div>
+                                                <div class="tile-foot">
+                                                    <span class="text-h-green">+4.2% <i data-feather="trending-up"></i></span>
+                                                    <span>going up</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Dashboard Tile-->
+                                        <div class="column is-3">
+                                            <div class="dashboard-tile">
+                                                <div class="tile-head">
+                                                    <h3 class="dark-inverted">More efficient sport</h3>
+                                                    <div class="h-icon is-yellow is-rounded is-small">
+                                                        <i aria-hidden="true" class="fas fa-funnel-dollar"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="tile-body">
+                                                    <span class="dark-inverted">NBA</span>
+                                                </div>
+                                                <div class="tile-foot">
+                                                    <span class="text-h-green">+65.2% <i data-feather="trending-up"></i></span>
+                                                    <span>going up</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-12">
+
+                                    <!--Header-->
+                                    <div class="table-header">
+                                        <h3 class="dark-inverted">Bets tracked for today</h3>
+                                        <div class="field">
+                                            <div class="control">
+                                                <div class="h-select">
+                                                    <div class="">
+                                                        <a class="action-link is-pushed-mobile">View All</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-table">
+
+                                        <!--Table header-->
+                                        <div class="flex-table-header">
+                                            <span class="is-grow">Detail</span>
+                                            <span>Date</span>
+                                            <span>Amount</span>
+                                            <span>Status</span>
+                                            <span>Type</span>
+                                            <span class="cell-end">Actions</span>
+                                        </div>
+
+                                        <!--Table item-->
+                                        <div class="flex-table-item">
+                                            <div class="flex-table-cell is-media is-grow" data-th="">
+                                                <div class="h-avatar is-medium">
+                                                    <img class="avatar is-squared" src="<%= Routes.static_path(@conn, "/images/nba/suns.png")%>">
+                                                </div>
+                                                <div>
+                                                    <span class="item-name dark-inverted is-font-alt is-weight-600">Suns -5</span>
+                                                    <span class="item-meta">
+                                                      <span>-110</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Date">
+                                                <span class="light-text">Oct 31, 2020</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Amount">
+                                                <span class="dark-inverted is-weight-600">$863.42</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Status">
+                                                <span class="tag is-orange is-rounded">Pending</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Tracking">
+                                                <a class="light-text is-pushed-mobile">Spread</a>
+                                            </div>
+                                            <div class="flex-table-cell cell-end" data-th="Actions">
+                                                <button class="button h-button is-dark-outlined is-pushed-mobile">View</button>
+                                            </div>
+                                        </div>
+
+                                        <!--Table item-->
+                                        <div class="flex-table-item">
+                                            <div class="flex-table-cell is-media is-grow" data-th="">
+                                                <div class="h-avatar is-medium">
+                                                    <img class="avatar is-squared" src="<%= Routes.static_path(@conn, "/images/nba/nets.png")%>">
+                                                </div>
+                                                <div>
+                                                    <span class="item-name dark-inverted is-font-alt is-weight-600">Brooklyn</span>
+                                                    <span class="item-meta">
+                                                      <span>-210</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Date">
+                                                <span class="light-text">Oct 31, 2020</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Amount">
+                                                <span class="dark-inverted is-weight-600">$128.00</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Status">
+                                                <span class="tag is-green is-rounded">Paid</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Tracking">
+                                                <a class="light-text is-pushed-mobile">Money Line</a>
+                                            </div>
+                                            <div class="flex-table-cell cell-end" data-th="Actions">
+                                                <button class="button h-button is-dark-outlined is-pushed-mobile">View</button>
+                                            </div>
+                                        </div>
+
+                                        <!--Table item-->
+                                        <div class="flex-table-item">
+                                            <div class="flex-table-cell is-media is-grow" data-th="">
+                                                <div class="h-avatar is-medium">
+                                                    <img class="avatar is-squared" src="<%= Routes.static_path(@conn, "/images/nhl/sabres.png")%>">
+                                                </div>
+                                                <div>
+                                                    <span class="item-name dark-inverted is-font-alt is-weight-600">Over 225</span>
+                                                    <span class="item-meta">
+                                                      <span>+125</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Date">
+                                                <span class="light-text">Oct 31, 2020</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Amount">
+                                                <span class="dark-inverted is-weight-600">$236.79</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Status">
+                                                <span class="tag is-orange is-rounded">Pending</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Tracking">
+                                                <span class="light-text is-pushed-mobile">Total</span>
+                                            </div>
+                                            <div class="flex-table-cell cell-end" data-th="Actions">
+                                                <button class="button h-button is-dark-outlined is-pushed-mobile">View</button>
+                                            </div>
+                                        </div>
+
+                                        <!--Table item-->
+                                        <div class="flex-table-item">
+                                            <div class="flex-table-cell is-media is-grow" data-th="">
+                                                <div class="h-avatar is-medium">
+                                                    <img class="avatar is-squared" src="<%= Routes.static_path(@conn, "/images/nhl/stars.png")%>">
+                                                </div>
+                                                <div>
+                                                    <span class="item-name dark-inverted is-font-alt is-weight-600">Stars +3</span>
+                                                    <span class="item-meta">
+                                                      <span>+250</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Date">
+                                                <span class="light-text">Oct 30, 2020</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Amount">
+                                                <span class="dark-inverted is-weight-600">$98.31</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Status">
+                                                <span class="tag is-green is-rounded">Paid</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Tracking">
+                                                <a class="light-text is-pushed-mobile">Spread</a>
+                                            </div>
+                                            <div class="flex-table-cell cell-end" data-th="Actions">
+                                                <button class="button h-button is-dark-outlined is-pushed-mobile">View</button>
+                                            </div>
+                                        </div>
+
+                                        <!--Table item-->
+                                        <div class="flex-table-item">
+                                            <div class="flex-table-cell is-media is-grow" data-th="">
+                                                <div class="h-avatar is-medium">
+                                                    <img class="avatar is-squared" src="<%= Routes.static_path(@conn, "/images/nba/raptors.png")%>">
+                                                </div>
+                                                <div>
+                                                    <span class="item-name dark-inverted is-font-alt is-weight-600">Raptors</span>
+                                                    <span class="item-meta">
+                                                      <span>-110</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Date">
+                                                <span class="light-text">Oct 30, 2020</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Amount">
+                                                <span class="dark-inverted is-weight-500">$112.00</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Status">
+                                                <span class="tag is-green is-rounded">Paid</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Tracking">
+                                                <a class="light-text is-pushed-mobile">Money Line</a>
+                                            </div>
+                                            <div class="flex-table-cell cell-end" data-th="Actions">
+                                                <button class="button h-button is-dark-outlined is-pushed-mobile">View</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="column is-6">
+                                    <div class="stock-card">
+
+                                        <div class="action-bar">
+                                            <h3>More efficient teams</h3>
+                                            <!--Dropdown-->
+                                            <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
+                                                <div class="is-trigger" aria-haspopup="true">
+                                                    <i data-feather="more-vertical"></i>
+                                                </div>
+                                                <div class="dropdown-menu" role="menu">
+                                                    <div class="dropdown-content">
+                                                        <a href="#" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-coins"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Invest</span>
+                                                                <span>Buy more stocks</span>
+                                                            </div>
+                                                        </a>
+                                                        <a href="#" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-bank"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Trade</span>
+                                                                <span>View opportunities</span>
+                                                            </div>
+                                                        </a>
+                                                        <hr class="dropdown-divider">
+                                                        <a href="#" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-reload"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Refresh</span>
+                                                                <span>Refresh data</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stock">
+                                            <div class="stock-logo">
+                                                <img class="avatar is-squared" src="<%= Routes.static_path(@conn, "/images/nba/jazz.png")%>">
+                                            </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Utah Jazz</div>
+                                                <div class="stock-fullname">NBA</div>
+                                            </div>
+                                            <div class="stock-value">84.5%</div>
+                                        </div>
+                                        <div class="stock">
+                                            <div class="stock-logo">
+                                                <img class="avatar is-squared" src="<%= Routes.static_path(@conn, "/images/nhl/oilers.png")%>">
+                                            </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Wahington Wizards</div>
+                                                <div class="stock-fullname">NBA</div>
+                                            </div>
+                                            <div class="stock-value">76.0%</div>
+                                        </div>
+                                        <div class="stock">
+                                            <div class="stock-logo">
+                                                <img class="avatar is-squared" src="<%= Routes.static_path(@conn, "/images/nba/bucks.png")%>">
+                                            </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Milwaukee Bucks</div>
+                                                <div class="stock-fullname">NBA</div>
+                                            </div>
+                                            <div class="stock-value">72.3%</div>
+                                        </div>
+                                        <div class="stock">
+                                            <div class="stock-logo snapchat">
+                                               <img class="avatar is-squared" src="<%= Routes.static_path(@conn, "/images/nhl/canadiens.png")%>">
+                                            </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Dallas Mavericks</div>
+                                                <div class="stock-fullname">NBA</div>
+                                            </div>
+                                            <div class="stock-value">68.0%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-6">
+                                    <div class="s-card">
+                                        <div id="bet-type-chart"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>

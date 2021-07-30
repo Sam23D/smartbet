@@ -98,6 +98,9 @@
                             <div class="dropdown-menu" role="menu">
                                 <div class="dropdown-content">
                                     <div class="dropdown-head">
+                                        <div class="h-avatar is-large">
+                                            <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
+                                        </div>
                                         <div class="meta">
                                             <span>Erik Kovalsky</span>
                                             <span>Product Manager</span>
@@ -172,27 +175,27 @@
             <div class="inner">
                 <ul class="icon-side-menu">
                     <li>
-                        <a href="/admin-dashboards-personal-1.html">
+                        <a href="/admin-dashboards-personal-1.html" id="home-sidebar-menu-mobile">
                             <i data-feather="home"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="/admin-grid-users-1.html">
+                        <a href="/admin-grid-users-1.html" id="layouts-sidebar-menu-mobile">
                             <i data-feather="calendar"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="/elements-hub.html">
+                        <a href="/elements-hub.html" id="elements-sidebar-menu-mobile">
                             <i data-feather="bar-chart-2"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="/components-hub.html">
+                        <a href="/components-hub.html" id="components-sidebar-menu-mobile">
                             <i data-feather="star"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="/messaging-chat.html">
+                        <a href="/messaging-chat.html" id="open-messages-mobile">
                             <i data-feather="file-text"></i>
                         </a>
                     </li>
@@ -200,7 +203,7 @@
 
                 <ul class="bottom-icon-side-menu">
                     <li>
-                        <a href="javascript:" class="right-panel-trigger">
+                        <a class="right-panel-trigger">
                             <i data-feather="book-open"></i>
                         </a>
                     </li>
@@ -225,27 +228,27 @@
                 </div>
                 <div class="center">
                     <div id="webapp-navbar-menu" class="centered-links">
-                        <a class="centered-link centered-link-toggle is-active">
+                        <a class="centered-link is-active">
                             <i data-feather="home"></i>
-                            <span>Home</span>
+                            <span>Dashboard</span>
                         </a>
-                        <a class="centered-link centered-link-toggle">
+                        <a class="centered-link">
                             <i data-feather="calendar"></i>
                             <span>Scores</span>
                         </a>
-                        <a class="centered-link centered-link-toggle">
+                        <a class="centered-link">
                             <i data-feather="bar-chart-2"></i>
                             <span>Statistics</span>
                         </a>
-                        <a class="centered-link centered-link-toggle">
+                        <a class="centered-link">
                             <i data-feather="star"></i>
                             <span>Pro report</span>
                         </a>
-                        <a href="/webapp-messaging-chat.html" class="centered-link">
+                        <a class="centered-link">
                             <i data-feather="file-text"></i>
                             <span>Picks</span>
                         </a>
-                        <a class="centered-link centered-link-search">
+                        <a class="centered-link">
                             <i data-feather="book-open"></i>
                             <span>News</span>
                         </a>
@@ -262,7 +265,7 @@
                         </div>
 
                         <a class="toolbar-link right-panel-trigger" data-panel="languages-panel">
-                            <img src=" <%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
+                            <img src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
                         </a>
 
                         <div class="toolbar-notifications is-hidden-mobile">
@@ -285,7 +288,7 @@
                                             <li>
                                                 <a class="notification-item">
                                                     <div class="img-left">
-                                                        <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" />
+                                                        <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-2.svg")%>"/>
                                                     </div>
                                                     <div class="user-content">
                                                         <p class="user-info"><span class="name">Alice C.</span> left a comment.</p>
@@ -296,7 +299,7 @@
                                             <li>
                                                 <a class="notification-item">
                                                     <div class="img-left">
-                                                        <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" />
+                                                        <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-1.svg")%>"/>
                                                     </div>
                                                     <div class="user-content">
                                                         <p class="user-info"><span class="name">Joshua S.</span> uploaded a file.</p>
@@ -307,7 +310,7 @@
                                             <li>
                                                 <a class="notification-item">
                                                     <div class="img-left">
-                                                        <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" />
+                                                        <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-3.svg")%>"/>
                                                     </div>
                                                     <div class="user-content">
                                                         <p class="user-info"><span class="name">Tara S.</span> sent you a message.</p>
@@ -318,7 +321,7 @@
                                             <li>
                                                 <a class="notification-item">
                                                     <div class="img-left">
-                                                        <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" />
+                                                        <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-4.svg")%>"/>
                                                     </div>
                                                     <div class="user-content">
                                                         <p class="user-info"><span class="name">Melany W.</span> left a comment.</p>
@@ -338,14 +341,14 @@
                         </a>
                     </div>
                     <div class="dropdown profile-dropdown dropdown-trigger is-spaced is-right">
-                        <img src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-2.svg")%>">
+                       <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-5.svg")%>"/>
                         <span class="status-indicator"></span>
 
                         <div class="dropdown-menu" role="menu">
                             <div class="dropdown-content">
                                 <div class="dropdown-head">
                                     <div class="h-avatar is-large">
-                                        <img src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-2.svg")%>">
+                                       <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-5.svg")%>"/>
                                     </div>
                                     <div class="meta">
                                         <span>Erik Kovalsky</span>
@@ -414,6 +417,7 @@
                 </div>
             </div>
         </div>
+
         <!--Languages panel-->
         <div id="languages-panel" class="right-panel-wrapper is-languages">
             <div class="panel-overlay"></div>
@@ -479,7 +483,7 @@
                             <div class="language-option">
                                 <input type="radio" name="language_selection">
                                 <div class="language-option-inner">
-                                    <img src="<%= Routes.static_path(@conn, "/images/icons/flags/mexico.svg") %>" alt="">
+                                    <img src="<%= Routes.static_path(@conn, "/images/icons/flags/mexico.svg")%>" alt="">
                                     <div class="indicator">
                                         <i data-feather="check"></i>
                                     </div>
@@ -491,7 +495,7 @@
                             <div class="language-option">
                                 <input type="radio" name="language_selection">
                                 <div class="language-option-inner">
-                                    <img src="<%= Routes.static_path(@conn, "/images/icons/flags/china.svg") %>" alt="">
+                                    <img src="<%= Routes.static_path(@conn, "/images/icons/flags/china.svg")%>" alt="">
                                     <div class="indicator">
                                         <i data-feather="check"></i>
                                     </div>
@@ -535,8 +539,8 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-2.svg")%>"/>
+                                    <img class="badge" src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Joshua S.</span>
@@ -553,8 +557,8 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-7.svg")%>"/>
+                                    <img class="badge" src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Melany W.</span>
@@ -571,8 +575,8 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-9.svg")%>"/>
+                                    <img class="badge" src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Esteban C.</span>
@@ -589,8 +593,8 @@
                             <!--Team Member-->
                             <div class="team-card">
                                 <div class="h-avatar">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                    <img class="avatar" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-10.svg")%>"/>
+                                    <img class="badge" src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
                                 </div>
                                 <div class="meta">
                                     <span>Tara S.</span>
@@ -781,5 +785,3 @@
 
         </div>
         <!--Page body-->
-
-        
