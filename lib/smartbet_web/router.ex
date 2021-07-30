@@ -20,8 +20,7 @@ defmodule SmartbetWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/login", PageController, :login
-    get "/signup", PageController, :signup
+
 
     scope "/dashboard" do
       get "/", DashboardController, :index
