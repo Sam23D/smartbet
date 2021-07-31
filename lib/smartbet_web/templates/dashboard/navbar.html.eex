@@ -155,12 +155,12 @@
                                     </a>
                                     <hr class="dropdown-divider">
                                     <div class="dropdown-item is-button">
-                                        <button class="button h-button is-primary is-raised is-fullwidth logout-button">
+                                        <a href="<%= Routes.user_session_path(@conn, :delete) %>" class="button h-button is-primary is-raised is-fullwidth logout-button">
                                             <span class="icon is-small">
                                               <i data-feather="log-out"></i>
                                           </span>
                                             <span>Logout</span>
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -404,12 +404,12 @@
                                 </a>
                                 <hr class="dropdown-divider">
                                 <div class="dropdown-item is-button">
-                                    <button class="button h-button is-primary is-raised is-fullwidth logout-button">
+                                    <a href="<%= Routes.user_session_path(@conn, :delete) %>"class="button h-button is-primary is-raised is-fullwidth logout-button">
                                         <span class="icon is-small">
                                           <i data-feather="log-out"></i>
                                       </span>
                                         <span>Logout</span>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
