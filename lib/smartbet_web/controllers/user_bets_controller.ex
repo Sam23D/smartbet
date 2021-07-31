@@ -4,6 +4,9 @@ defmodule SmartbetWeb.UserBetsController do
   alias Smartbet.Bets
   alias Smartbet.Bets.UserBets
 
+  plug :put_layout, "dashboard_layout.html"
+
+
   def index(conn, _params) do
     user_bets = Bets.list_user_bets()
     render(conn, "index.html", user_bets: user_bets)

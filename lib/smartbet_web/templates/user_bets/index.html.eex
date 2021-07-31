@@ -1,40 +1,164 @@
-<h1>Listing User bets</h1>
+        <div id="app-projects" class="view-wrapper is-webapp" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
 
-<table>
-  <thead>
-    <tr>
-      <th>Sport</th>
-      <th>Platform</th>
-      <th>Event headline</th>
-      <th>Details</th>
-      <th>Amount</th>
-      <th>Line</th>
-      <th>Bet result</th>
-      <th>Profit</th>
+            <div class="page-content-wrapper">
+                <div class="page-content is-relative">
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for user_bets <- @user_bets do %>
-    <tr>
-      <td><%= user_bets.sport %></td>
-      <td><%= user_bets.platform %></td>
-      <td><%= user_bets.event_headline %></td>
-      <td><%= user_bets.details %></td>
-      <td><%= user_bets.amount %></td>
-      <td><%= user_bets.line %></td>
-      <td><%= user_bets.bet_result %></td>
-      <td><%= user_bets.profit %></td>
+                    <div class="list-flex-toolbar">
+                        <div class="control has-icon">
+                            <input class="input custom-text-filter" placeholder="Search..." data-filter-target=".flex-table-item">
+                            <div class="form-icon">
+                                <i data-feather="search"></i>
+                            </div>
+                        </div>
 
-      <td>
-        <span><%= link "Show", to: Routes.user_bets_path(@conn, :show, user_bets) %></span>
-        <span><%= link "Edit", to: Routes.user_bets_path(@conn, :edit, user_bets) %></span>
-        <span><%= link "Delete", to: Routes.user_bets_path(@conn, :delete, user_bets), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+                        <div class="buttons">
+                            <button class="button h-button is-primary is-elevated">
+                                <span class="icon">
+                                  <i aria-hidden="true" class="fas fa-plus"></i>
+                              </span>
+                                <span><%= link "New User bet", to: Routes.user_bets_path(@conn, :new), class: "has-text-white" %></span>
+                            </button>
+                        </div>
+                    </div>
 
-<span><%= link "New User bets", to: Routes.user_bets_path(@conn, :new) %></span>
+                    <div class="page-content-inner">
+
+                        <div class="flex-list-wrapper flex-list-v1">
+
+                            <!--List Empty Search Placeholder -->
+                            <div class="page-placeholder custom-text-filter-placeholder is-hidden">
+                                <div class="placeholder-content">
+                                    <img class="light-image" src="assets/img/illustrations/placeholders/search-4.svg" alt="" />
+                                    <img class="dark-image" src="assets/img/illustrations/placeholders/search-4-dark.svg" alt="" />
+                                    <h3>We couldn't find any matching results.</h3>
+                                    <p class="is-larger">Too bad. Looks like we couldn't find any matching results for the
+                                        search terms you've entered. Please try different search terms or criteria.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex-table">
+
+                                <!--Table header-->
+                                <div class="flex-table-header" data-filter-hide>
+
+                                    <span class="is-grow">Sport</span>
+                                    <span>Platform</span>
+                                    <span class="is-grow">Event headline</span>
+                                    <span class="is-grow">Details</span>
+                                    <span>Amount</span>
+                                    <span>Line</span>
+                                    <span>Bet result</span>
+                                    <span>Profit</span>
+                                    <span>Actions</span>
+                                </div>
+
+                                <div class="flex-list-inner">
+                                    <!--Table item-->
+                                    <%= for user_bets <- @user_bets do %>
+                                    <div class="flex-table-item">
+                                        <div class="flex-table-cell is-media is-grow">
+                                            <div class="h-avatar is-medium">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="" data-user-popover="3">
+                                                <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                            </div>
+                                            <div>
+                                                <span class="item-name dark-inverted" data-filter-match><%= user_bets.sport %></span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-table-cell" data-th="Location">
+                                            <span class="light-text" data-filter-match><%= user_bets.platform %></span>
+                                        </div>
+                                        <div class="flex-table-cell is-grow" data-th="Industry">
+                                            <span class="dark-inverted" data-filter-match><%= user_bets.event_headline %></span>
+                                        </div>
+                                        <div class="flex-table-cell is-grow" data-th="Status">
+                                            <span class="light-text" data-filter-match><%= user_bets.details %></td>
+                                        </div>
+                                        <div class="flex-table-cell" data-th="Relations">
+                                            <span class="light-text" data-filter-match><%= user_bets.amount %></td>
+                                        </div>
+
+                                        <div class="flex-table-cell" data-th="Relations">
+                                            <span class="light-text" data-filter-match><%= user_bets.line %></span>
+                                        </div>
+
+                                        <div class="flex-table-cell" data-th="Relations">
+                                            <span class="tag is-success is-rounded" data-filter-match><%= user_bets.bet_result %></span>
+
+                                        </div>
+
+                                        <div class="flex-table-cell" data-th="Relations">
+                                            <span class="light-text" data-filter-match><%= user_bets.profit %></span>
+                                        </div>
+
+
+
+
+                                        <div class="flex-table-cell cell-end" data-th="Actions">
+                                            <div class="dropdown is-spaced is-dots is-right dropdown-trigger is-pushed-mobile">
+                                                <div class="is-trigger" aria-haspopup="true">
+                                                    <i data-feather="more-vertical"></i>
+                                                </div>
+                                                <div class="dropdown-menu" role="menu">
+                                                    <div class="dropdown-content">
+                                                        <a href="<%= Routes.user_bets_path(@conn, :show, user_bets) %>" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-eye"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>View</span>
+                                                                <span>View Bet details</span>
+                                                            </div>
+                                                        </a>
+                                                        <a href="<%= Routes.user_bets_path(@conn, :edit, user_bets) %>" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-pencil"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Edit</span>
+                                                                <span>Schedule a meeting</span>
+                                                            </div>
+                                                        </a>
+                                                        <hr class="dropdown-divider">
+                                                        <a href="<%= Routes.user_bets_path(@conn, :delete, user_bets) %>" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-trash-can-alt"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Remove</span>
+                                                                <span>Remove from list</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <% end %>
+                                </div>
+
+                            </div>
+
+                            <!--Table Pagination-->
+                            <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
+                                <a class="pagination-previous has-chevron"><i data-feather="chevron-left"></i></a>
+                                <a class="pagination-next has-chevron"><i data-feather="chevron-right"></i></a>
+                                <ul class="pagination-list">
+                                    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                                    <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
+                                    <li><a class="pagination-link is-current" aria-label="Page 3" aria-current="page">3</a>
+                                    </li>
+                                    <li><a class="pagination-link" aria-label="Goto page 4">4</a></li>
+                                    <li><a class="pagination-link" aria-label="Goto page 5">5</a></li>
+                                    <li><span class="pagination-ellipsis">…</span></li>
+                                    <li><a class="pagination-link" aria-label="Goto page 100">100</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
