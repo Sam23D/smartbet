@@ -70,6 +70,13 @@ defmodule SmartbetWeb.Router do
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+
+    scope "/admin" do
+      # TODO make all endpoints in this scope have the same layout
+      resources "/user_bets", UserBetsController
+    end
+
+
   end
 
   scope "/", SmartbetWeb do

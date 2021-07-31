@@ -1,0 +1,48 @@
+<h1>Show User bets</h1>
+
+<ul>
+
+  <li>
+    <strong>Sport:</strong>
+    <%= @user_bets.sport %>
+  </li>
+
+  <li>
+    <strong>Platform:</strong>
+    <%= @user_bets.platform %>
+  </li>
+
+  <li>
+    <strong>Event headline:</strong>
+    <%= @user_bets.event_headline %>
+  </li>
+
+  <li>
+    <strong>Details:</strong>
+    <%= @user_bets.details %>
+  </li>
+
+  <li>
+    <strong>Amount:</strong>
+    <%= @user_bets.amount %>
+  </li>
+
+  <li>
+    <strong>Line:</strong>
+    <%= @user_bets.line %>
+  </li>
+
+  <li>
+    <strong>Bet result:</strong>
+    <%= @user_bets.bet_result %>
+  </li>
+
+  <li>
+    <strong>Profit:</strong>
+    <%= @user_bets.profit %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.user_bets_path(@conn, :edit, @user_bets) %></span>
+<span><%= link "Back", to: Routes.user_bets_path(@conn, :index) %></span>

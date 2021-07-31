@@ -1,0 +1,40 @@
+<h1>Listing User bets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sport</th>
+      <th>Platform</th>
+      <th>Event headline</th>
+      <th>Details</th>
+      <th>Amount</th>
+      <th>Line</th>
+      <th>Bet result</th>
+      <th>Profit</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user_bets <- @user_bets do %>
+    <tr>
+      <td><%= user_bets.sport %></td>
+      <td><%= user_bets.platform %></td>
+      <td><%= user_bets.event_headline %></td>
+      <td><%= user_bets.details %></td>
+      <td><%= user_bets.amount %></td>
+      <td><%= user_bets.line %></td>
+      <td><%= user_bets.bet_result %></td>
+      <td><%= user_bets.profit %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.user_bets_path(@conn, :show, user_bets) %></span>
+        <span><%= link "Edit", to: Routes.user_bets_path(@conn, :edit, user_bets) %></span>
+        <span><%= link "Delete", to: Routes.user_bets_path(@conn, :delete, user_bets), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New User bets", to: Routes.user_bets_path(@conn, :new) %></span>
