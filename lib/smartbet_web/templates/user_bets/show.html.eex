@@ -1,48 +1,227 @@
-<h1>Show User bets</h1>
+  <div id="user-profile" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
+            <div class="page-content-wrapper">
+                <div class="page-content is-relative">
 
-<ul>
+                    <div class="page-title has-text-centered">
+                        <!-- Sidebar Trigger -->
+                        <div class="huro-hamburger nav-trigger push-resize" data-sidebar="layouts-sidebar">
+                            <span class="menu-toggle has-chevron">
+                              <span class="icon-box-toggle">
+                                  <span class="rotate">
+                                      <i class="icon-line-top"></i>
+                                      <i class="icon-line-center"></i>
+                                      <i class="icon-line-bottom"></i>
+                                  </span>
+                            </span>
+                            </span>
+                        </div>
 
-  <li>
-    <strong>Sport:</strong>
-    <%= @user_bets.sport %>
-  </li>
+                        <div class="title-wrap">
+                            <h1 class="title is-4">User Profile</h1>
+                        </div>
 
-  <li>
-    <strong>Platform:</strong>
-    <%= @user_bets.platform %>
-  </li>
+                        <div class="toolbar ml-auto">
 
-  <li>
-    <strong>Event headline:</strong>
-    <%= @user_bets.event_headline %>
-  </li>
+                        </div>
+                    </div>
 
-  <li>
-    <strong>Details:</strong>
-    <%= @user_bets.details %>
-  </li>
-
-  <li>
-    <strong>Amount:</strong>
-    <%= @user_bets.amount %>
-  </li>
-
-  <li>
-    <strong>Line:</strong>
-    <%= @user_bets.line %>
-  </li>
-
-  <li>
-    <strong>Bet result:</strong>
-    <%= @user_bets.bet_result %>
-  </li>
-
-  <li>
-    <strong>Profit:</strong>
-    <%= @user_bets.profit %>
-  </li>
-
-</ul>
-
+                    <div class="page-content-inner">
 <span><%= link "Edit", to: Routes.user_bets_path(@conn, :edit, @user_bets) %></span>
 <span><%= link "Back", to: Routes.user_bets_path(@conn, :index) %></span>
+
+                        <!--User profile-->
+                        <div class="profile-wrapper">
+                            <div class="profile-header has-text-centered">
+                                <div class="h-avatar is-xl">
+                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="" data-user-popover="3">
+                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
+                                </div>
+                                <h3 class="title is-4 is-narrow is-thin"><%= @user_bets.event_headline %></h3>
+                                <p class="light-text"><%= @user_bets.details %></p>
+                                <div class="profile-stats">
+                                    <div class="profile-stat">
+                                        <i class="lnil lnil-dollar"></i>
+                                        <span><%= @user_bets.amount %></span>
+                                    </div>
+                                    <div class="separator"></div>
+                                    <div class="profile-stat">
+                                        <i class="lnil lnil-checkmark-circle"></i>
+                                        <span>78 Projects</span>
+                                    </div>
+                                    <div class="separator"></div>
+                                    <div class="socials">
+                                        <a><i aria-hidden="true" class="fab fa-facebook-f"></i></a>
+                                        <a><i aria-hidden="true" class="fab fa-twitter"></i></a>
+                                        <a><i aria-hidden="true" class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-body">
+                                <div class="columns">
+                                    <div class="column is-8">
+                                        <div class="profile-card">
+
+                                            <div class="profile-card-section">
+                                                <div class="section-title">
+                                                    <h4>Bet details</h4>
+                                                    <a><i class="lnil lnil-pencil"></i></a>
+                                                </div>
+                                                <div class="section-content">
+                                                    <div class="experience-wrapper">
+                                                        <div class="experience-item">
+                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/airbnb.svg" alt="">
+                                                            <div class="meta">
+                                                                <span class="dark-inverted">Sport</span>
+                                                                <span><%= @user_bets.sport %></span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="experience-item">
+                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/facebook.svg" alt="">
+                                                            <div class="meta">
+                                                                <span class="dark-inverted">Platform</span>
+                                                                <span><%= @user_bets.platform %></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="experience-item">
+                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/atlassian.svg" alt="">
+                                                            <div class="meta">
+                                                                <span class="dark-inverted">Amount</span>
+                                                                <span><%= @user_bets.amount %></span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="experience-item">
+                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/github.svg" alt="">
+                                                            <div class="meta">
+                                                                <span class="dark-inverted">line</span>
+                                                                <span><%= @user_bets.line %></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><div class="profile-card-section">
+                                                <div class="section-title">
+                                                    <h4>Results</h4>
+                                                    <a href="/admin-profile-edit-1.html"><i class="lnil lnil-pencil"></i></a>
+                                                </div>
+                                                <div class="section-content">
+                                                    <div class="experience-wrapper">
+                                                        <div class="experience-item">
+                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/airbnb.svg" alt="">
+                                                            <div class="meta">
+                                                                <span class="dark-inverted">Bet result</span>
+                                                                <span><%= @user_bets.bet_result %></span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="experience-item">
+                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/facebook.svg" alt="">
+                                                            <div class="meta">
+                                                                <span class="dark-inverted">Profit</span>
+                                                                <span><%= @user_bets.profit %></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="section-content">
+                                                    <p class="description"><%= @user_bets.details %></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-4">
+
+                                        <!--Notifications-->
+                                        <div class="profile-card">
+                                            <div class="profile-card-section no-padding">
+                                                <div class="section-title">
+                                                    <h4>Notifications</h4>
+                                                      <div class="control">
+                                                        <label class="form-switch is-success">
+                                                            <input type="checkbox" class="is-switch" checked>
+                                                            <i></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="section-content">
+                                                    <div class="network-notifications">
+                                                        <h3 class="dark-inverted">Notify game result?</h3>
+                                                        <p>Enable or disable notifications about this bet </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--Tools-->
+                                        <div class="profile-card">
+
+                                            <div class="profile-card-section no-padding">
+                                                <div class="section-title">
+                                                    <h4>Suggestions</h4>
+                                                    <a href="/admin-profile-edit-2.html"><i class="lnil lnil-pencil"></i></a>
+                                                    <a class="action-link">View All</a>
+                                                </div>
+                                                <div class="section-content">
+                                                    <div class="network-notifications">
+                                                        <h3 class="dark-inverted">Similar bets?</h3>
+                                                        <p>People who placed a bet like this one, also betted on:</p>
+                                                    </div>
+                                                </div>
+                                                <div class="section-content">
+
+                                                    <div class="tools-wrapper">
+                                                        <!--Tool-->
+                                                        <div class="tools-item">
+                                                            <div class="icon-wrap">
+                                                                <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/stacks/illustrator.svg" alt="">
+                                                                <span class="languages-donut">80/100</span>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span class="dark-inverted">other bet</span>
+                                                                <span>+140 / -230</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <!--Tool-->
+                                                        <div class="tools-item">
+                                                            <div class="icon-wrap">
+                                                                <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/jira.svg" alt="">
+                                                                <span class="languages-donut">+140 / -230</span>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span class="dark-inverted">Jira Software</span>
+                                                                <span>+140 / -230</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <!--Tool-->
+                                                        <div class="tools-item">
+                                                            <div class="icon-wrap">
+                                                                <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/office.svg" alt="">
+                                                                <span class="languages-donut">95/100</span>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span class="dark-inverted">MS Office</span>
+                                                                <span>Expert level</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
