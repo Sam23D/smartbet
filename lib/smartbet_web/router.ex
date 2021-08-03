@@ -24,6 +24,7 @@ defmodule SmartbetWeb.Router do
 
     scope "/dashboard" do
       get "/", DashboardController, :index
+      get "/scores", DashboardController, :scores
     end
 
   end
