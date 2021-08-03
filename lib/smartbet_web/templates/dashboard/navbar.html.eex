@@ -264,9 +264,9 @@
                             </label>
                         </div>
 
-                        <a class="toolbar-link right-panel-trigger" data-panel="languages-panel">
+                        <!--a class="toolbar-link right-panel-trigger" data-panel="languages-panel">
                             <img src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
-                        </a>
+                        </a-->
 
                         <div class="toolbar-notifications is-hidden-mobile">
                             <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
@@ -419,7 +419,7 @@
         </div>
 
         <!--Languages panel-->
-        <div id="languages-panel" class="right-panel-wrapper is-languages">
+        <!--div id="languages-panel" class="right-panel-wrapper is-languages">
             <div class="panel-overlay"></div>
 
             <div class="right-panel">
@@ -510,7 +510,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div-->
         <!--Activity panel-->
         <div id="activity-panel" class="right-panel-wrapper is-activity">
             <div class="panel-overlay"></div>
