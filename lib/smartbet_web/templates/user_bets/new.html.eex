@@ -122,7 +122,7 @@
                                                     <%= text_input f, :bet_result, class: "input" %>
                                                     <%= error_tag f, :bet_result %>
                                                     <div class="form-icon">
-                                                        <i data-feather="mail"></i>
+                                                        <i data-feather="tag"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -134,7 +134,7 @@
                                                     <%= number_input f, :profit, step: "any", class: "input" %>
                                                     <%= error_tag f, :profit %>
                                                     <div class="form-icon">
-                                                        <i data-feather="mail"></i>
+                                                        <i data-feather="octagon"></i>
                                                     </div>
                                                 </div>
                                             </div>

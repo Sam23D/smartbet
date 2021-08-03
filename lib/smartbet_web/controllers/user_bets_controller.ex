@@ -45,9 +45,10 @@ defmodule SmartbetWeb.UserBetsController do
 
     case Bets.update_user_bets(user_bets, user_bets_params) do
       {:ok, user_bets} ->
+        user_bets = Bets.list_user_bets()
         conn
         |> put_flash(:info, "User bets updated successfully.")
-        |> redirect(to: Routes.user_bets_path(conn, :show, user_bets))
+        |> redirect(to: Routes.user_bets_path(conn, :index, user_bets))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user_bets: user_bets, changeset: changeset)
