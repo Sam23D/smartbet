@@ -237,11 +237,11 @@
         </div>
         <div class="center">
             <div id="webapp-navbar-menu" class="centered-links">
-                <a class="centered-link is-active">
+                <a class="centered-link <%= class_is_active_for_view?(@conn, "dashboard")%>" href="<%= Routes.dashboard_path(@conn, :index) %>">
                     <i data-feather="home"></i>
                     <span>Dashboard</span>
                 </a>
-                <a class="centered-link">
+                <a class="centered-link <%= class_is_active_for_view?(@conn, "scores")%>">
                     <i data-feather="calendar"></i>
                     <span>Scores</span>
                 </a>
@@ -253,7 +253,7 @@
                     <i data-feather="star"></i>
                     <span>Pro report</span>
                 </a>
-                <a class="centered-link" href="<%= Routes.user_bets_path(@conn, :index) %>">
+                <a class="centered-link <%= class_is_active_for_view?(@conn, "user_bets")%>" href="<%= Routes.user_bets_path(@conn, :index) %>">
                     <i data-feather="file-text"></i>
                     <span>Picks</span>
                 </a>
