@@ -232,7 +232,7 @@
 
                     <div class="page-content-inner is-webapp">
 
-                        <div class="tile-grid tile-grid-v1 card-grid card-grid-v1">
+                        <div class="tile-grid tile-grid-v1 card-grid card-grid-v1 finance-dashboard stock-dashboard">
 
                             <!--List Empty Search Placeholder -->
                             <div class="page-placeholder custom-text-filter-placeholder is-hidden">
@@ -248,318 +248,199 @@
                             <!--Tile Grid v1-->
 
                             <div class="columns is-multiline">
-                                <!-- Game Not Started-->
+                                <!-- NOT STARTED GAME-->
                                 <div class="column is-6">
-                                    <div class="card-grid-item">
+                                    <div class="stock-card">
 
-                                        <div class="card-grid-item-body">
-                                            <div class="left">
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
+                                        <div class="action-bar">
+                                            <h3>5:05 PM MT</h3>
+                                            <!--Dropdown-->
+                                            <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
+                                                <div class="is-trigger" aria-haspopup="true">
+                                                    <i data-feather="more-vertical"></i>
                                                 </div>
-                                                <div class="meta">
-                                                    <span class="dark-inverted" data-filter-match>Team A</span>
-                                                    <span data-filter-match>Record</span>
+                                                <div class="dropdown-menu" role="menu">
+                                                    <div class="dropdown-content">
+                                                        <a href="#" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-coins"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>More bets</span>
+                                                            </div>
+                                                        </a>
+                                                        <a href="#" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-bank"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Pro Report</span>
+                                                            </div>
+                                                        </a>
+                                                        <hr class="dropdown-divider">
+                                                        <a href="#" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-reload"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Refresh</span>
+                                                                <span>Refresh data</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="left">
-                                                <div class="meta2">
-                                                    <span class="dark-inverted" data-filter-match>Team B</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
-                                                </div>
-                                            </div>
-                                            
                                         </div>
 
-                                        <div class="card-grid-item-footer">
-                                            <div class="left">
-                                                <div class="progress-stats">
-                                                    <span class="dark-inverted">5:05 PM MT</span>
-                                                </div>
+                                        <div class="stock">
+                                            <div class="stock-logo invision">
+                                                <img  src="<%= Routes.static_path(@conn, "/images/nba/nets.png") %>" alt="" />
                                             </div>
-                                            <div class="right">
-                                                <div class="buttons">
-                                                    <button class="button h-button is-rounded is-dark-outlined">PRO REPORT</button>
-                                                    <button class="button h-button is-rounded is-dark-outlined">GAMECAST</button>
-                                                </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Brookly Nets</div>
+                                                <div class="stock-fullname">Record</div>
+                                            </div>
+                                            <div class="stock-value">
+                                                <a class="button h-button is-primary is-outlined">-174</a>
+                                                <a class="button h-button is-primary is-outlined">o220</a>
+                                                <a class="button h-button is-primary is-outlined">-7</a>
+                                            </div>
+                                        </div>
+                                        <div class="stock">
+                                            <div class="stock-logo facebook">
+                                                <img  src="<%= Routes.static_path(@conn, "/images/nba/mavericks.png") %>" alt="" />
+                                            </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Dallas Mavericks</div>
+                                                <div class="stock-fullname">Record</div>
+                                            </div>
+                                            <div class="stock-value">
+                                                <a class="button h-button is-primary is-outlined">+150</a>
+                                                <a class="button h-button is-primary is-outlined">u220</a>
+                                                <a class="button h-button is-primary is-outlined">+7</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Game /Not Started-->
+                                <!-- /NOT STARTED GAME-->
 
-                                <!-- Game Finished-->
+                                <!--  STARTED GAME-->
                                 <div class="column is-6">
-                                    <div class="card-grid-item">
+                                    <div class="stock-card">
 
-                                        <div class="card-grid-item-body">
-                                            <div class="left">
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
+                                        <div class="action-bar">
+                                            <h3>8:45 Q3</h3>
+                                            <!--Dropdown-->
+                                            <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
+                                                <div class="is-trigger" aria-haspopup="true">
+                                                    <i data-feather="more-vertical"></i>
                                                 </div>
-                                                <div class="meta">
-                                                    <span class="dark-inverted" data-filter-match>Team A</span>
-                                                    <span data-filter-match>Record</span>
+                                                <div class="dropdown-menu" role="menu">
+                                                    <div class="dropdown-content">
+                                                        <a href="#" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-coins"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Track bet</span>
+                                                            </div>
+                                                        </a>
+                                                        <hr class="dropdown-divider">
+                                                        <a href="#" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-reload"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Refresh</span>
+                                                                <span>Refresh data</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="left">
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                                <div class="meta meta2">
-                                                    <span class="dark-inverted" data-filter-match> - </span>
-                                                </div>
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                            </div>
-                                            <div class="left">
-                                                <div class="meta2">
-                                                    <span class="dark-inverted" data-filter-match>Team B</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
-                                                </div>
-                                            </div>
-                                            
                                         </div>
 
-                                        <div class="card-grid-item-footer">
-                                            <div class="left">
-                                                <div class="progress-stats">
-                                                    <span class="dark-inverted">FINAL</span>
-                                                </div>
+                                        <div class="stock">
+                                            <div class="stock-logo invision">
+                                                <img  src="<%= Routes.static_path(@conn, "/images/nba/nets.png") %>" alt="" />
                                             </div>
-                                            <div class="right">
-                                                <div class="buttons">
-                                                    <button class="button h-button is-rounded is-dark-outlined">GAMECAST</button>
-                                                    <button class="button h-button is-rounded is-dark-outlined">BOX SCORE</button>
-                                                </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Brookly Nets</div>
+                                                <div class="stock-fullname">Record</div>
+                                            </div>
+                                            <div class="stock-value">
+                                                <div class="">98</div>
+                                            </div>
+                                        </div>
+                                        <div class="stock">
+                                            <div class="stock-logo facebook">
+                                                <img  src="<%= Routes.static_path(@conn, "/images/nba/mavericks.png") %>" alt="" />
+                                            </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Dallas Mavericks</div>
+                                                <div class="stock-fullname">Record</div>
+                                            </div>
+                                            <div class="stock-value">
+                                                <div class="">90</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /Game Finished-->
+                                <!-- /STARTED GAME-->
 
-                                <!-- NBA GAME-->
+                                <!--  FINISHED GAME-->
                                 <div class="column is-6">
-                                    <div class="card-grid-item">
+                                    <div class="stock-card">
 
-                                        <div class="card-grid-item-body">
-                                            <div class="left">
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
+                                        <div class="action-bar">
+                                            <h3>FINAL</h3>
+                                            <!--Dropdown-->
+                                            <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
+                                                <div class="is-trigger" aria-haspopup="true">
+                                                    <i data-feather="more-vertical"></i>
                                                 </div>
-                                                <div class="meta">
-                                                    <span class="dark-inverted" data-filter-match>Team A</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                            </div>
-                                            <div class="left">
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                                <div class="meta meta2">
-                                                    <span class="dark-inverted" data-filter-match> - </span>
-                                                </div>
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                            </div>
-                                            <div class="left">
-                                                <div class="meta2">
-                                                    <span class="dark-inverted" data-filter-match>Team B</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
+                                                <div class="dropdown-menu" role="menu">
+                                                    <div class="dropdown-content">
+                                                        <a href="#" class="dropdown-item is-media">
+                                                            <div class="icon">
+                                                                <i class="lnil lnil-coins"></i>
+                                                            </div>
+                                                            <div class="meta">
+                                                                <span>Box Score</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            
                                         </div>
 
-                                        <div class="card-grid-item-footer">
-                                            <div class="left">
-                                                <div class="progress-stats">
-                                                    <span class="dark-inverted">8:12 1Q</span>
-                                                </div>
+                                        <div class="stock">
+                                            <div class="stock-logo invision">
+                                                <img  src="<%= Routes.static_path(@conn, "/images/nba/nets.png") %>" alt="" />
                                             </div>
-                                            <div class="right">
-                                                <div class="buttons">
-                                                    <button class="button h-button is-rounded is-dark-outlined">GAMECAST</button>
-                                                    <button class="button h-button is-rounded is-dark-outlined">BOX SCORE</button>
-                                                </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Brookly Nets</div>
+                                                <div class="stock-fullname">Record</div>
+                                            </div>
+                                            <div class="stock-value">
+                                                <div class="">98</div>
+                                            </div>
+                                        </div>
+                                        <div class="stock">
+                                            <div class="stock-logo facebook">
+                                                <img  src="<%= Routes.static_path(@conn, "/images/nba/mavericks.png") %>" alt="" />
+                                            </div>
+                                            <div class="stock-info">
+                                                <div class="stock-name">Dallas Mavericks</div>
+                                                <div class="stock-fullname">Record</div>
+                                            </div>
+                                            <div class="stock-value">
+                                                <div class="stock-value">90</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /NBA GAME-->
-
-                                <!-- MLB GAME-->
-                                <div class="column is-6">
-                                    <div class="card-grid-item">
-
-                                        <div class="card-grid-item-body">
-                                            <div class="left">
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
-                                                </div>
-                                                <div class="meta">
-                                                    <span class="dark-inverted" data-filter-match>Team A</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                            </div>
-                                            <div class="left">
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                                <div class="meta meta2">
-                                                    <span class="dark-inverted" data-filter-match> - </span>
-                                                </div>
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                            </div>
-                                            <div class="left">
-                                                <div class="meta2">
-                                                    <span class="dark-inverted" data-filter-match>Team B</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-
-                                        <div class="card-grid-item-footer">
-                                            <div class="left">
-                                                <div class="progress-stats">
-                                                    <span class="dark-inverted"> 7 TOP </span>
-                                                </div>
-                                            </div>
-                                            <div class="right">
-                                                <div class="buttons">
-                                                    <button class="button h-button is-rounded is-dark-outlined">GAMECAST</button>
-                                                    <button class="button h-button is-rounded is-dark-outlined">BOX SCORE</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /MLB GAME-->
-
-                                <!-- NFL GAME-->
-                                <div class="column is-6">
-                                    <div class="card-grid-item">
-
-                                        <div class="card-grid-item-body">
-                                            <div class="left">
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
-                                                </div>
-                                                <div class="meta">
-                                                    <span class="dark-inverted" data-filter-match>Team A</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                            </div>
-                                            <div class="left">
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                                <div class="meta meta2">
-                                                    <span class="dark-inverted" data-filter-match> - </span>
-                                                </div>
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                            </div>
-                                            <div class="left">
-                                                <div class="meta2">
-                                                    <span class="dark-inverted" data-filter-match>Team B</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-
-                                        <div class="card-grid-item-footer">
-                                            <div class="left">
-                                                <div class="progress-stats">
-                                                    <span class="dark-inverted">8:12 3Q</span>
-                                                </div>
-                                            </div>
-                                            <div class="right">
-                                                <div class="buttons">
-                                                    <button class="button h-button is-rounded is-dark-outlined">GAMECAST</button>
-                                                    <button class="button h-button is-rounded is-dark-outlined">BOX SCORE</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /NFL GAME-->
-
-                                <!-- NHL GAME-->
-                                <div class="column is-6">
-                                    <div class="card-grid-item">
-
-                                        <div class="card-grid-item-body">
-                                            <div class="left">
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
-                                                </div>
-                                                <div class="meta">
-                                                    <span class="dark-inverted" data-filter-match>Team A</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                            </div>
-                                            <div class="left">
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                                <div class="meta meta2">
-                                                    <span class="dark-inverted" data-filter-match> - </span>
-                                                </div>
-                                                <div class="">
-                                                    <span class="title is-5" data-filter-match>110</span>
-                                                </div>
-                                            </div>
-                                            <div class="left">
-                                                <div class="meta2">
-                                                    <span class="dark-inverted" data-filter-match>Team B</span>
-                                                    <span data-filter-match>Record</span>
-                                                </div>
-                                                <div class="h-avatar is-medium">
-                                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" data-user-popover="6">
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-
-                                        <div class="card-grid-item-footer">
-                                            <div class="left">
-                                                <div class="progress-stats">
-                                                    <span class="dark-inverted">8:12 1Q</span>
-                                                </div>
-                                            </div>
-                                            <div class="right">
-                                                <div class="buttons">
-                                                    <button class="button h-button is-rounded is-dark-outlined">GAMECAST</button>
-                                                    <button class="button h-button is-rounded is-dark-outlined">BOX SCORE</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /NHL GAME-->
+                                <!-- /FINISHED GAME-->
                             </div>
 
                         </div>

@@ -26,9 +26,9 @@
                                         <div class="cta h-hidden-tablet-p">
                                             <div class="media-flex inverted-text">
                                                 <i class="lnil lnil-crown-alt-1"></i>
-                                                <p class="white-text">Start reading our bet articles and improve your picks</p>
+                                                <p class="white-text">Start tracking your bets for today</p>
                                             </div>
-                                            <a class="link inverted-text">Learn More</a>
+                                            <a class="button h-button is-primary is-light">Track New Bet</a>
                                         </div>
                                     </div>
                                 </div>
