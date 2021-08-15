@@ -75,6 +75,8 @@ defmodule SmartbetWeb.Router do
     scope "/admin" do
       # TODO make all endpoints in this scope have the same layout
       resources "/user_bets", UserBetsController
+
+      resources "/basketball_teams", BasketballTeamController
     end
 
 
