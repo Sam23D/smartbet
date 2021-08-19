@@ -77,6 +77,7 @@ defmodule SmartbetWeb.Router do
       resources "/user_bets", UserBetsController
 
       resources "/basketball_teams", BasketballTeamController
+      resources "/basketball_leagues", BasketballLeageController
     end
 
 
