@@ -47,6 +47,8 @@ defmodule Smartbet.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false},
+      {:tesla, "~> 1.4"},
+      {:hackney, "~> 1.17"},
     ]
   end
 
