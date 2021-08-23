@@ -1,0 +1,28 @@
+<h1>Show Country</h1>
+
+<ul>
+
+  <li>
+    <strong>Flag imgurl:</strong>
+    <%= @country.flag_imgurl %>
+  </li>
+
+  <li>
+    <strong>Id:</strong>
+    <%= @country.id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @country.name %>
+  </li>
+
+  <li>
+    <strong>Code:</strong>
+    <%= @country.code %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.country_path(@conn, :edit, @country) %></span>
+<span><%= link "Back", to: Routes.country_path(@conn, :index) %></span>
