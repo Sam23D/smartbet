@@ -2,7 +2,7 @@ defmodule SmartbetWeb.BasketballLeageController do
   use SmartbetWeb, :controller
 
   alias Smartbet.Sports
-  alias Smartbet.Sports.BasketballLeage
+  alias Smartbet.Sports.BasketballLeague
 
   def index(conn, _params) do
     basketball_leagues = Sports.list_basketball_leagues()
@@ -10,7 +10,7 @@ defmodule SmartbetWeb.BasketballLeageController do
   end
 
   def new(conn, _params) do
-    changeset = Sports.change_basketball_leage(%BasketballLeage{})
+    changeset = Sports.change_basketball_leage(%BasketballLeague{})
     render(conn, "new.html", changeset: changeset)
   end
 

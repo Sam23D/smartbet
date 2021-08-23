@@ -102,7 +102,7 @@ defmodule Smartbet.Sports do
     BasketballTeam.changeset(basketball_team, attrs)
   end
 
-  alias Smartbet.Sports.BasketballLeage
+  alias Smartbet.Sports.BasketballLeague
 
   @doc """
   Returns the list of basketball_leagues.
@@ -110,11 +110,11 @@ defmodule Smartbet.Sports do
   ## Examples
 
       iex> list_basketball_leagues()
-      [%BasketballLeage{}, ...]
+      [%BasketballLeague{}, ...]
 
   """
   def list_basketball_leagues do
-    Repo.all(BasketballLeage)
+    Repo.all(BasketballLeague)
   end
 
   @doc """
@@ -125,13 +125,13 @@ defmodule Smartbet.Sports do
   ## Examples
 
       iex> get_basketball_leage!(123)
-      %BasketballLeage{}
+      %BasketballLeague{}
 
       iex> get_basketball_leage!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_basketball_leage!(id), do: Repo.get!(BasketballLeage, id)
+  def get_basketball_leage!(id), do: Repo.get!(BasketballLeague, id)
 
   @doc """
   Creates a basketball_leage.
@@ -139,15 +139,15 @@ defmodule Smartbet.Sports do
   ## Examples
 
       iex> create_basketball_leage(%{field: value})
-      {:ok, %BasketballLeage{}}
+      {:ok, %BasketballLeague{}}
 
       iex> create_basketball_leage(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
   def create_basketball_leage(attrs \\ %{}) do
-    %BasketballLeage{}
-    |> BasketballLeage.changeset(attrs)
+    %BasketballLeague{}
+    |> BasketballLeague.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -157,15 +157,15 @@ defmodule Smartbet.Sports do
   ## Examples
 
       iex> update_basketball_leage(basketball_leage, %{field: new_value})
-      {:ok, %BasketballLeage{}}
+      {:ok, %BasketballLeague{}}
 
       iex> update_basketball_leage(basketball_leage, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_basketball_leage(%BasketballLeage{} = basketball_leage, attrs) do
+  def update_basketball_leage(%BasketballLeague{} = basketball_leage, attrs) do
     basketball_leage
-    |> BasketballLeage.changeset(attrs)
+    |> BasketballLeague.changeset(attrs)
     |> Repo.update()
   end
 
@@ -175,13 +175,13 @@ defmodule Smartbet.Sports do
   ## Examples
 
       iex> delete_basketball_leage(basketball_leage)
-      {:ok, %BasketballLeage{}}
+      {:ok, %BasketballLeague{}}
 
       iex> delete_basketball_leage(basketball_leage)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_basketball_leage(%BasketballLeage{} = basketball_leage) do
+  def delete_basketball_leage(%BasketballLeague{} = basketball_leage) do
     Repo.delete(basketball_leage)
   end
 
@@ -191,10 +191,106 @@ defmodule Smartbet.Sports do
   ## Examples
 
       iex> change_basketball_leage(basketball_leage)
-      %Ecto.Changeset{data: %BasketballLeage{}}
+      %Ecto.Changeset{data: %BasketballLeague{}}
 
   """
-  def change_basketball_leage(%BasketballLeage{} = basketball_leage, attrs \\ %{}) do
-    BasketballLeage.changeset(basketball_leage, attrs)
+  def change_basketball_leage(%BasketballLeague{} = basketball_leage, attrs \\ %{}) do
+    BasketballLeague.changeset(basketball_leage, attrs)
+  end
+
+  alias Smartbet.Sports.Country
+
+  @doc """
+  Returns the list of countries.
+
+  ## Examples
+
+      iex> list_countries()
+      [%Country{}, ...]
+
+  """
+  def list_countries do
+    Repo.all(Country)
+  end
+
+  @doc """
+  Gets a single country.
+
+  Raises `Ecto.NoResultsError` if the Country does not exist.
+
+  ## Examples
+
+      iex> get_country!(123)
+      %Country{}
+
+      iex> get_country!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_country!(id), do: Repo.get!(Country, id)
+
+  @doc """
+  Creates a country.
+
+  ## Examples
+
+      iex> create_country(%{field: value})
+      {:ok, %Country{}}
+
+      iex> create_country(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_country(attrs \\ %{}) do
+    %Country{}
+    |> Country.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a country.
+
+  ## Examples
+
+      iex> update_country(country, %{field: new_value})
+      {:ok, %Country{}}
+
+      iex> update_country(country, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_country(%Country{} = country, attrs) do
+    country
+    |> Country.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a country.
+
+  ## Examples
+
+      iex> delete_country(country)
+      {:ok, %Country{}}
+
+      iex> delete_country(country)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_country(%Country{} = country) do
+    Repo.delete(country)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking country changes.
+
+  ## Examples
+
+      iex> change_country(country)
+      %Ecto.Changeset{data: %Country{}}
+
+  """
+  def change_country(%Country{} = country, attrs \\ %{}) do
+    Country.changeset(country, attrs)
   end
 end

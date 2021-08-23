@@ -1,0 +1,1 @@
+All files in this folder should follos the (Tesla)[https://github.com/teamon/tesla] aproach for defining api modules

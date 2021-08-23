@@ -134,4 +134,69 @@ defmodule Smartbet.SportsTest do
       assert %Ecto.Changeset{} = Sports.change_basketball_leage(basketball_leage)
     end
   end
+
+  describe "countries" do
+    alias Smartbet.Sports.Country
+
+    @valid_attrs %{code: "some code", flag_imgurl: "some flag_imgurl", id: 42, name: "some name"}
+    @update_attrs %{code: "some updated code", flag_imgurl: "some updated flag_imgurl", id: 43, name: "some updated name"}
+    @invalid_attrs %{code: nil, flag_imgurl: nil, id: nil, name: nil}
+
+    def country_fixture(attrs \\ %{}) do
+      {:ok, country} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Sports.create_country()
+
+      country
+    end
+
+    test "list_countries/0 returns all countries" do
+      country = country_fixture()
+      assert Sports.list_countries() == [country]
+    end
+
+    test "get_country!/1 returns the country with given id" do
+      country = country_fixture()
+      assert Sports.get_country!(country.id) == country
+    end
+
+    test "create_country/1 with valid data creates a country" do
+      assert {:ok, %Country{} = country} = Sports.create_country(@valid_attrs)
+      assert country.code == "some code"
+      assert country.flag_imgurl == "some flag_imgurl"
+      assert country.id == 42
+      assert country.name == "some name"
+    end
+
+    test "create_country/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Sports.create_country(@invalid_attrs)
+    end
+
+    test "update_country/2 with valid data updates the country" do
+      country = country_fixture()
+      assert {:ok, %Country{} = country} = Sports.update_country(country, @update_attrs)
+      assert country.code == "some updated code"
+      assert country.flag_imgurl == "some updated flag_imgurl"
+      assert country.id == 43
+      assert country.name == "some updated name"
+    end
+
+    test "update_country/2 with invalid data returns error changeset" do
+      country = country_fixture()
+      assert {:error, %Ecto.Changeset{}} = Sports.update_country(country, @invalid_attrs)
+      assert country == Sports.get_country!(country.id)
+    end
+
+    test "delete_country/1 deletes the country" do
+      country = country_fixture()
+      assert {:ok, %Country{}} = Sports.delete_country(country)
+      assert_raise Ecto.NoResultsError, fn -> Sports.get_country!(country.id) end
+    end
+
+    test "change_country/1 returns a country changeset" do
+      country = country_fixture()
+      assert %Ecto.Changeset{} = Sports.change_country(country)
+    end
+  end
 end
