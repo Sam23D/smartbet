@@ -1,227 +1,201 @@
-  <div id="user-profile" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
-            <div class="page-content-wrapper">
-                <div class="page-content is-relative">
-
-                    <div class="page-title has-text-centered">
-                        <!-- Sidebar Trigger -->
-                        <div class="huro-hamburger nav-trigger push-resize" data-sidebar="layouts-sidebar">
-                            <span class="menu-toggle has-chevron">
-                              <span class="icon-box-toggle">
-                                  <span class="rotate">
-                                      <i class="icon-line-top"></i>
-                                      <i class="icon-line-center"></i>
-                                      <i class="icon-line-bottom"></i>
-                                  </span>
-                            </span>
-                            </span>
+<div id="app-widgets" class="view-wrapper is-webapp" data-page-title="Picks" data-naver-offset="150" data-menu-item="#dashboards-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
+<div class="page-content-wrapper">
+   <div class="page-content is-relative">
+      <div class="page-content-inner project-details">
+         <div class="profile-wrapper personal-dashboard personal-dashboard-v1 tile-grid tile-grid-v1 card-grid card-grid-v1 finance-dashboard stock-dashboard personal-dashboard personal-dashboard-v1 business-dashboard hr-dashboard ">
+            <div class="profile-body dashboard-body">
+               <div class="columns is-multiline">
+                  <div id="project-tab" class="tab-content is-active">
+                     <div class="columns project-details-inner is-multiline">
+                        <div class="column is-7">
+                           <div class="dashboard-card stock-card">
+                              <div class="action-bar">
+                                 <h3>Bets detail will be here</h3>
+                                 <!--Dropdown-->
+                                 <button class="button is-primary is-circle is-elevated toolbar-link right-panel-trigger " data-panel="edit-bet-panel">
+                                 <span class="icon is-small">
+                                 <i data-feather="edit-2"></i>
+                                 </span>
+                                 </button>
+                              </div>
+                              <div class="quick-stats">
+                                 <div class="quick-stats-inner">
+                                    <!--Stat-->
+                                    <div class="quick-stat">
+                                       <div class="media-flex-center">
+                                          <div class="h-icon is-green is-rounded">
+                                             <i class="lnil lnil-coin"></i>
+                                          </div>
+                                          <div class="flex-meta">
+                                             <span>$280</span>
+                                             <span>Risk Units</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--Stat-->
+                                    <div class="quick-stat">
+                                       <div class="media-flex-center">
+                                          <div class="h-icon is-blue is-rounded">
+                                             <i class="lnil lnil-sort"></i>
+                                          </div>
+                                          <div class="flex-meta">
+                                             <span>-6</span>
+                                             <span>Spread / Total</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--Stat-->
+                                    <div class="quick-stat">
+                                       <div class="media-flex-center">
+                                          <div class="h-icon is-orange is-rounded">
+                                             <i class="lnil lnil-handshake"></i>
+                                          </div>
+                                          <div class="flex-meta">
+                                             <span>-221</span>
+                                             <span>Odd</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--Stat-->
+                                    <div class="quick-stat">
+                                       <div class="media-flex-center">
+                                          <div class="h-icon is-primary is-rounded">
+                                             <i class="lnil lnil-link"></i>
+                                          </div>
+                                          <div class="flex-meta">
+                                             <span>Spread</span>
+                                             <span>Type of bet</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
-
-                        <div class="title-wrap">
-                            <h1 class="title is-4">User Profile</h1>
-                        </div>
-
-                        <div class="toolbar ml-auto">
-
-                        </div>
-                    </div>
-
-                    <div class="page-content-inner">
-<span><%= link "Edit", to: Routes.user_bets_path(@conn, :edit, @user_bets) %></span>
-<span><%= link "Back", to: Routes.user_bets_path(@conn, :index) %></span>
-
-                        <!--User profile-->
-                        <div class="profile-wrapper">
-                            <div class="profile-header has-text-centered">
-                                <div class="h-avatar is-xl">
-                                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="" data-user-popover="3">
-                                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="">
-                                </div>
-                                <h3 class="title is-4 is-narrow is-thin"><%= @user_bets.event_headline %></h3>
-                                <p class="light-text"><%= @user_bets.details %></p>
-                                <div class="profile-stats">
-                                    <div class="profile-stat">
-                                        <i class="lnil lnil-dollar"></i>
-                                        <span><%= @user_bets.amount %></span>
+                        <div class="column is-5 user-grid user-grid-v4 ">
+                           <div class="stats-wrapper widget">
+                              <div class="columns is-multiline is-flex-tablet-p">
+                                 <div class="column is-6">
+                                    <div class="dashboard-card">
+                                       <div class="media-flex-center">
+                                          <div class="h-icon is-yellow is-rounded">
+                                             <i data-feather="info"></i>
+                                          </div>
+                                          <div class="flex-meta">
+                                             <span>Pending</span>
+                                             <span>Status</span>
+                                          </div>
+                                       </div>
                                     </div>
-                                    <div class="separator"></div>
-                                    <div class="profile-stat">
-                                        <i class="lnil lnil-checkmark-circle"></i>
-                                        <span>78 Projects</span>
+                                 </div>
+                                 <div class="column is-6">
+                                    <div class="dashboard-card">
+                                       <div class="media-flex-center">
+                                          <div class="h-icon is-purple is-rounded">
+                                             <i data-feather="radio"></i>
+                                          </div>
+                                          <div class="flex-meta">
+                                             <span>Caliente</span>
+                                             <span>Platform</span>
+                                          </div>
+                                       </div>
                                     </div>
-                                    <div class="separator"></div>
-                                    <div class="socials">
-                                        <a><i aria-hidden="true" class="fab fa-facebook-f"></i></a>
-                                        <a><i aria-hidden="true" class="fab fa-twitter"></i></a>
-                                        <a><i aria-hidden="true" class="fab fa-linkedin-in"></i></a>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="stock-card widget">
+                              <div class="action-bar">
+                                 <h3>8:45 Q3</h3>
+                                 <!--Dropdown-->
+                                 <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
+                                    <div class="is-trigger" aria-haspopup="true">
+                                       <i data-feather="more-vertical"></i>
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="dropdown-menu" role="menu">
+                                       <div class="dropdown-content">
+                                          <a href="#" class="dropdown-item is-media">
+                                             <div class="icon">
+                                                <i class="lnil lnil-coins"></i>
+                                             </div>
+                                             <div class="meta">
+                                                <span>Track bet</span>
+                                             </div>
+                                          </a>
+                                          <hr class="dropdown-divider">
+                                          <a href="#" class="dropdown-item is-media">
+                                             <div class="icon">
+                                                <i class="lnil lnil-reload"></i>
+                                             </div>
+                                             <div class="meta">
+                                                <span>Refresh</span>
+                                                <span>Refresh data</span>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="stock">
+                                 <div class="stock-logo invision">
+                                    <img  src="<%= Routes.static_path(@conn, "/images/nba/nets.png") %>" alt="" />
+                                 </div>
+                                 <div class="stock-info">
+                                    <div class="stock-name">Brookly Nets</div>
+                                    <div class="stock-fullname">Record</div>
+                                 </div>
+                                 <div class="stock-value">
+                                    <div class="">98</div>
+                                 </div>
+                              </div>
+                              <div class="stock">
+                                 <div class="stock-logo facebook">
+                                    <img  src="<%= Routes.static_path(@conn, "/images/nba/mavericks.png") %>" alt="" />
+                                 </div>
+                                 <div class="stock-info">
+                                    <div class="stock-name">Dallas Mavericks</div>
+                                    <div class="stock-fullname">Record</div>
+                                 </div>
+                                 <div class="stock-value">
+                                    <div class="">90</div>
+                                 </div>
+                              </div>
+                           </div>
 
-                            <div class="profile-body">
-                                <div class="columns">
-                                    <div class="column is-8">
-                                        <div class="profile-card">
-
-                                            <div class="profile-card-section">
-                                                <div class="section-title">
-                                                    <h4>Bet details</h4>
-                                                    <a><i class="lnil lnil-pencil"></i></a>
-                                                </div>
-                                                <div class="section-content">
-                                                    <div class="experience-wrapper">
-                                                        <div class="experience-item">
-                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/airbnb.svg" alt="">
-                                                            <div class="meta">
-                                                                <span class="dark-inverted">Sport</span>
-                                                                <span><%= @user_bets.sport %></span>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="experience-item">
-                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/facebook.svg" alt="">
-                                                            <div class="meta">
-                                                                <span class="dark-inverted">Platform</span>
-                                                                <span><%= @user_bets.platform %></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="experience-item">
-                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/atlassian.svg" alt="">
-                                                            <div class="meta">
-                                                                <span class="dark-inverted">Amount</span>
-                                                                <span><%= @user_bets.amount %></span>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="experience-item">
-                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/github.svg" alt="">
-                                                            <div class="meta">
-                                                                <span class="dark-inverted">line</span>
-                                                                <span><%= @user_bets.line %></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><div class="profile-card-section">
-                                                <div class="section-title">
-                                                    <h4>Results</h4>
-                                                    <a href="/admin-profile-edit-1.html"><i class="lnil lnil-pencil"></i></a>
-                                                </div>
-                                                <div class="section-content">
-                                                    <div class="experience-wrapper">
-                                                        <div class="experience-item">
-                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/airbnb.svg" alt="">
-                                                            <div class="meta">
-                                                                <span class="dark-inverted">Bet result</span>
-                                                                <span><%= @user_bets.bet_result %></span>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="experience-item">
-                                                            <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/facebook.svg" alt="">
-                                                            <div class="meta">
-                                                                <span class="dark-inverted">Profit</span>
-                                                                <span><%= @user_bets.profit %></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="section-content">
-                                                    <p class="description"><%= @user_bets.details %></p>
-                                                </div>
-                                            </div>
+                           <div class="widget followers-widget">
+                                    <div class="widget-toolbar">
+                                        <div class="left">
+                                            <h3>Share your bet</h3>
                                         </div>
-
+                                        
                                     </div>
-                                    <div class="column is-4">
-
-                                        <!--Notifications-->
-                                        <div class="profile-card">
-                                            <div class="profile-card-section no-padding">
-                                                <div class="section-title">
-                                                    <h4>Notifications</h4>
-                                                      <div class="control">
-                                                        <label class="form-switch is-success">
-                                                            <input type="checkbox" class="is-switch" checked>
-                                                            <i></i>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="section-content">
-                                                    <div class="network-notifications">
-                                                        <h3 class="dark-inverted">Notify game result?</h3>
-                                                        <p>Enable or disable notifications about this bet </p>
-                                                    </div>
-                                                </div>
+                                    <div class="channels">
+                                        <div class="channel">
+                                            <div class="channel-icon">
+                                                <i aria-hidden="true" class="fab fa-facebook-f"></i>
                                             </div>
+                                            
                                         </div>
-
-                                        <!--Tools-->
-                                        <div class="profile-card">
-
-                                            <div class="profile-card-section no-padding">
-                                                <div class="section-title">
-                                                    <h4>Suggestions</h4>
-                                                    <a href="/admin-profile-edit-2.html"><i class="lnil lnil-pencil"></i></a>
-                                                    <a class="action-link">View All</a>
-                                                </div>
-                                                <div class="section-content">
-                                                    <div class="network-notifications">
-                                                        <h3 class="dark-inverted">Similar bets?</h3>
-                                                        <p>People who placed a bet like this one, also betted on:</p>
-                                                    </div>
-                                                </div>
-                                                <div class="section-content">
-
-                                                    <div class="tools-wrapper">
-                                                        <!--Tool-->
-                                                        <div class="tools-item">
-                                                            <div class="icon-wrap">
-                                                                <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/stacks/illustrator.svg" alt="">
-                                                                <span class="languages-donut">80/100</span>
-                                                            </div>
-                                                            <div class="meta">
-                                                                <span class="dark-inverted">other bet</span>
-                                                                <span>+140 / -230</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <!--Tool-->
-                                                        <div class="tools-item">
-                                                            <div class="icon-wrap">
-                                                                <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/jira.svg" alt="">
-                                                                <span class="languages-donut">+140 / -230</span>
-                                                            </div>
-                                                            <div class="meta">
-                                                                <span class="dark-inverted">Jira Software</span>
-                                                                <span>+140 / -230</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <!--Tool-->
-                                                        <div class="tools-item">
-                                                            <div class="icon-wrap">
-                                                                <img src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/office.svg" alt="">
-                                                                <span class="languages-donut">95/100</span>
-                                                            </div>
-                                                            <div class="meta">
-                                                                <span class="dark-inverted">MS Office</span>
-                                                                <span>Expert level</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
+                                        <div class="channel">
+                                            <div class="channel-icon">
+                                                <i aria-hidden="true" class="fab fa-twitter"></i>
                                             </div>
+                                            
                                         </div>
-
+                                        <div class="channel">
+                                            <div class="channel-icon">
+                                                <i aria-hidden="true" class="fab fa-instagram"></i>
+                                            </div>
+                                            
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                           
                         </div>
-
-                    </div>
-
-                </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-
-        </div>
+         </div>
+      </div>
+   </div>
+</div>
