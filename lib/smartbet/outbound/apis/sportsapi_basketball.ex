@@ -6,7 +6,7 @@ defmodule Smartbet.Outbound.APIs.SportsAPIBasketball do
   plug Tesla.Middleware.JSON
 
   def get_leagues( params \\ %{name: "NBA"}) do
-    case get("/leagues/", query: Map.to_list(params)) do
+    case get("/leagues", query: Map.to_list(params)) do
       {:ok, resp } ->
         resp.body["response"]
         # parse all responses into a
@@ -17,7 +17,7 @@ defmodule Smartbet.Outbound.APIs.SportsAPIBasketball do
   end
 
   def get_teams(params)do
-    case get("/teams/", query: Map.to_list(params)) do
+    case get("/teams", query: Map.to_list(params)) do
       {:ok, resp } -> resp.body["response"]
       error ->
         IO.inspect(error)
@@ -26,7 +26,7 @@ defmodule Smartbet.Outbound.APIs.SportsAPIBasketball do
   end
 
   def get_countries(params)do
-    case get("/countries/", query: Map.to_list(params)) do
+    case get("/countries", query: Map.to_list(params)) do
       {:ok, resp } -> resp.body["response"]
       error ->
         IO.inspect(error)

@@ -9,6 +9,7 @@ defmodule Smartbet.Sports.BasketballLeague do
     field :type, :string
     field :source_id, :integer
     field :api_source, :string
+    field :fetched_at, :utc_datetime
 
     timestamps()
   end

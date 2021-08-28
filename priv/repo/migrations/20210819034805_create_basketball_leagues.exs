@@ -9,6 +9,7 @@ defmodule Smartbet.Repo.Migrations.CreateBasketballLeagues do
       add :type, :string
       add :seasons, {:array, :map}
       add :api_source, :string
+      add :fetched_at, :utc_datetime
 
       # add belongs_to :country, CountrySchema
       # TODO add api_source (:sports_api) # TODO make Enum for APISources
@@ -18,6 +19,7 @@ defmodule Smartbet.Repo.Migrations.CreateBasketballLeagues do
     end
 
     create index(:basketball_leagues, [:name, :type], unique: true)
+    create index(:basketball_leagues, [:source_id])
 
 
   end

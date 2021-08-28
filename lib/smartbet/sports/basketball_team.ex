@@ -7,7 +7,7 @@ defmodule Smartbet.Sports.BasketballTeam do
     field :name, :string
     field :national, :boolean, default: false
     field :source_id, :integer
-    field :api_source, :string
+    field :source, :string
 
     timestamps()
   end
