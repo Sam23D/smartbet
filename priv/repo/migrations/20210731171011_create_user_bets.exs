@@ -9,6 +9,7 @@ defmodule Smartbet.Repo.Migrations.CreateUserBets do
       add :details, :string
       add :amount, :decimal
       add :line, :decimal
+      add :odds, :integer
       add :bet_result, :string
       add :profit, :decimal
 
