@@ -1,0 +1,32 @@
+<h1>Listing Basketball teams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Logo imgurl</th>
+      <th>Source</th>
+      <th>Name</th>
+      <th>National</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for basketball_team <- @basketball_teams do %>
+    <tr>
+      <td><%= basketball_team.logo_imgurl %></td>
+      <td><%= basketball_team.source_id %></td>
+      <td><%= basketball_team.name %></td>
+      <td><%= basketball_team.national %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.basketball_team_path(@conn, :show, basketball_team) %></span>
+        <span><%= link "Edit", to: Routes.basketball_team_path(@conn, :edit, basketball_team) %></span>
+        <span><%= link "Delete", to: Routes.basketball_team_path(@conn, :delete, basketball_team), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Basketball team", to: Routes.basketball_team_path(@conn, :new) %></span>

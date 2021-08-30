@@ -1,0 +1,34 @@
+<h1>Listing Basketball leagues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Logo imgurl</th>
+      <th>Source</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Seasons</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for basketball_leage <- @basketball_leagues do %>
+    <tr>
+      <td><%= basketball_leage.logo_imgurl %></td>
+      <td><%= basketball_leage.source_id %></td>
+      <td><%= basketball_leage.name %></td>
+      <td><%= basketball_leage.type %></td>
+      <td><%= basketball_leage.seasons %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.basketball_leage_path(@conn, :show, basketball_leage) %></span>
+        <span><%= link "Edit", to: Routes.basketball_leage_path(@conn, :edit, basketball_leage) %></span>
+        <span><%= link "Delete", to: Routes.basketball_leage_path(@conn, :delete, basketball_leage), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Basketball leage", to: Routes.basketball_leage_path(@conn, :new) %></span>
