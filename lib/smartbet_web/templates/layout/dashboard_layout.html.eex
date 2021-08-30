@@ -16,9 +16,9 @@
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
     <div id="huro-app" class="app-wrapper">
-      <%= render(SmartbetWeb.DashboardView, "navbar.html", conn: @conn) %>
+      <%= render(SmartbetWeb.DashboardView, "navbar.html", conn: @conn, changeset: @changeset) %>
       <%= @inner_content %>
-       
+
 
 
 
@@ -34,7 +34,7 @@
     <script src="<%= Routes.static_path(@conn, "/js/touch.js") %>" async></script>
     <script src="<%= Routes.static_path(@conn, "/js/syntax.js") %>" async></script>
 
-    
+
 
   </body>
 </html>

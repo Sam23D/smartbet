@@ -9,7 +9,8 @@ defmodule SmartbetWeb.UserBetsController do
 
   def index(conn, _params) do
     user_bets = Bets.list_user_bets()
-    render(conn, "index.html", user_bets: user_bets)
+    changeset = Bets.change_user_bets(%UserBets{})
+    render(conn, "index.html", user_bets: user_bets, changeset: changeset)
   end
 
   def new(conn, _params) do
@@ -19,10 +20,10 @@ defmodule SmartbetWeb.UserBetsController do
 
   def create(conn, %{"user_bets" => user_bets_params}) do
     case Bets.create_user_bets(user_bets_params) do
-      {:ok, user_bets} ->
+      {:ok, _user_bets} ->
         conn
         |> put_flash(:info, "User bets created successfully.")
-        |> redirect(to: Routes.user_bets_path(conn, :show, user_bets))
+        |> redirect(to: Routes.user_bets_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -32,6 +33,17 @@ defmodule SmartbetWeb.UserBetsController do
   def show(conn, %{"id" => id}) do
     user_bets = Bets.get_user_bets!(id)
     render(conn, "show.html", user_bets: user_bets)
+  end
+
+  def close_bet(conn, %{"id" => id, "bet_result" => result}) do
+    user_bets = Bets.get_user_bets!(id)
+    case Bets.update_user_bets(user_bets, %{ bet_result: result }) do
+      {:ok, _} ->
+        conn
+        |> redirect(to: Routes.user_bets_path(conn, :index))
+
+    end
+
   end
 
   def edit(conn, %{"id" => id}) do
