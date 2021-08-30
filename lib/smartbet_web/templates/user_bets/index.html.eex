@@ -148,13 +148,13 @@
                                     </div>
                                  </div>
                                  <div class="flex-table-cell" data-th="Location">
-                                    <span class="light-text" data-filter-match>NBA</span>
+                                    <span class="light-text" data-filter-match><%= user_bets.sport %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Location">
                                     <span class="light-text" data-filter-match>Oct 31, 2021</span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Location">
-                                    <span class="light-text" data-filter-match>Event</span>
+                                    <span class="light-text" data-filter-match><%= user_bets.event_headline %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Relations">
                                     <span class="light-text is-pushed-mobile">Spread</span>
@@ -166,13 +166,13 @@
                                     <span class="light-text is-weight-600">-110</span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Industry">
-                                    <span class="dark-inverted is-weight-600">$863.42</span>
+                                    <span class="dark-inverted is-weight-600"><%= user_bets.amount %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Industry">
-                                    <span class="dark-inverted is-weight-600">+ $200</span>
+                                    <span class="dark-inverted is-weight-600"><%= user_bets.profit %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Status">
-                                    <span class="tag is-success is-rounded" data-filter-match>Paid</span>
+                                    <span class="tag is-success is-rounded" data-filter-match><%= user_bets.bet_result %></span>
                                  </div>
                                  <div class="flex-table-cell cell-end" data-th="Actions">
                                     <div class="dropdown is-spaced is-dots is-right dropdown-trigger is-pushed-mobile">
@@ -190,7 +190,7 @@
                                                    <span>View Bet details</span>
                                                 </div>
                                              </a>
-                                             <a  class="dropdown-item is-media toolbar-link right-panel-trigger" data-panel="edit-bet-panel">
+                                             <a href="<%= Routes.user_bets_path(@conn, :edit, user_bets) %>" class="dropdown-item is-media toolbar-link" >
                                                 <div class="icon">
                                                    <i class="lnil lnil-pencil"></i>
                                                 </div>
