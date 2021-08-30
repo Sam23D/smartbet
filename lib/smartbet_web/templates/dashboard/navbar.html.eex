@@ -872,13 +872,9 @@
                         <div class="control has-icons-left">
                            <div class="select is-full-width">
                               <select name="user_bets[platform]" >
-                                 <option selected="">Country</option>
-                                 <option>United States</option>
-                                 <option>Canada</option>
-                                 <option>France</option>
-                                 <option>Germany</option>
-                                 <option>Spain</option>
-                                 <option>United Kingdom</option>
+                                 <option selected="">Caliente</option>
+                                 <option>Bet 365</option>
+                                 <option>Upick</option>
                               </select>
                            </div>
                            <div class="icon is-small is-left">

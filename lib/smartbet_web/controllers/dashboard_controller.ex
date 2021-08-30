@@ -11,7 +11,8 @@ defmodule SmartbetWeb.DashboardController do
     end
 
     def scores(conn, _params) do
-      render(conn, "scores.html")
+      changeset = UserBets.changeset(%UserBets{}, %{})
+      render(conn, "scores.html", changeset: changeset)
     end
 
 
