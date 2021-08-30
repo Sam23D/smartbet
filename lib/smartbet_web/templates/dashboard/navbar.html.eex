@@ -423,7 +423,7 @@
 <!--Languages panel-->
 <!--div id="languages-panel" class="right-panel-wrapper is-languages">
    <div class="panel-overlay"></div>
-   
+
    <div class="right-panel">
        <div class="right-panel-head">
            <h3>Select Language</h3>
@@ -444,7 +444,7 @@
                        </div>
                    </div>
                </div>
-   
+
                <div class="language-box">
                    <div class="language-option">
                        <input type="radio" name="language_selection">
@@ -456,7 +456,7 @@
                        </div>
                    </div>
                </div>
-   
+
                <div class="language-box">
                    <div class="language-option">
                        <input type="radio" name="language_selection">
@@ -468,7 +468,7 @@
                        </div>
                    </div>
                </div>
-   
+
                <div class="language-box">
                    <div class="language-option">
                        <input type="radio" name="language_selection">
@@ -480,7 +480,7 @@
                        </div>
                    </div>
                </div>
-   
+
                <div class="language-box">
                    <div class="language-option">
                        <input type="radio" name="language_selection">
@@ -492,7 +492,7 @@
                        </div>
                    </div>
                </div>
-   
+
                <div class="language-box">
                    <div class="language-option">
                        <input type="radio" name="language_selection">
@@ -505,7 +505,7 @@
                    </div>
                </div>
            </div>
-   
+
            <div class="img-wrap has-text-centered">
                <img class="light-image" src="<%= Routes.static_path(@conn, "/images/illustrations/right-panel/languages.svg")%>" alt="">
                <img class="dark-image" src="<%= Routes.static_path(@conn, "/images/illustrations/right-panel/languages-dark.svg")%>" alt="">
@@ -792,13 +792,15 @@
       </div>
       <div class="tabs-wrapper is-triple-slider is-squared">
          <div class="right-panel-body">
+            <%= form_for @changeset, Routes.user_bets_path(@conn, :create), fn f -> %>
             <div id="team-side-tab" class="tab-content is-active">
                <div class="columns is-multiline">
                   <div class="column is-12">
                      <div class="field">
                         <label>Bet detail</label>
                         <div class="control has-icon">
-                           <input type="text" class="input" placeholder="">
+                           <%= text_input f, :details, class: "input" %>
+                           <%= error_tag f, :details %>
                            <div class="form-icon">
                               <i data-feather="info"></i>
                            </div>
@@ -809,7 +811,8 @@
                      <div class="field">
                         <label>Event</label>
                         <div class="control has-icon">
-                           <input type="text" class="input" placeholder="">
+                           <%= text_input f, :event_headline, class: "input" %>
+                           <%= error_tag f, :event_headline %>
                            <div class="form-icon">
                               <i data-feather="help-circle"></i>
                            </div>
@@ -820,7 +823,8 @@
                      <div class="field">
                         <label>Sport</label>
                         <div class="control has-icon">
-                           <input type="text" class="input" placeholder="">
+                           <%= text_input f, :sport, class: "input" %>
+                           <%= error_tag f, :sport %>
                            <div class="form-icon">
                               <i data-feather="loader"></i>
                            </div>
@@ -831,7 +835,8 @@
                      <div class="field">
                         <label>Line</label>
                         <div class="control has-icon">
-                           <input type="text" class="input" placeholder="">
+                           <%= number_input f, :line, step: "any", class: "input" %>
+                           <%= error_tag f, :line %>
                            <div class="form-icon">
                               <i data-feather="minus"></i>
                            </div>
@@ -842,7 +847,8 @@
                      <div class="field">
                         <label>Risk Units</label>
                         <div class="control has-icon">
-                           <input type="text" class="input" placeholder="">
+                           <%= number_input f, :amount, step: "any" , class: "input" %>
+                           <%= error_tag f, :amount %>
                            <div class="form-icon">
                               <i data-feather="dollar-sign"></i>
                            </div>
@@ -862,64 +868,25 @@
                   </div>
                   <div class="column is-12">
                      <div class="field">
-                        <div class="control is-combo">
-                           <div class="combo-label">Select Platform</div>
-                           <div class="stacked-combo-box has-rounded-images">
-                              <div class="box-inner">
-                                 <div class="combo-item">
-                                    <img id="skill-placeholder"  src="https://via.placeholder.com/150x150" alt="">
-                                    <span class="selected-item">Smartbet</span>
-                                 </div>
-                              </div>
-                              <div class="box-chevron">
-                                 <i data-feather="chevron-down"></i>
-                              </div>
-                              <div class="box-dropdown">
-                                 <div class="dropdown-inner has-slimscroll">
-                                    <ul>
-                                       <li data-skill="javascript-skill">
-                                          <span class="item-icon">
-                                          <img src="https://via.placeholder.com/150x15" alt="">
-                                          </span>
-                                          <span class="item-name">Caliente</span>
-                                          <span class="checkmark">
-                                          <i data-feather="check"></i>
-                                          </span>
-                                       </li>
-                                       <li data-skill="angular-skill">
-                                          <span class="item-icon">
-                                          <img src="https://via.placeholder.com/150x15" alt="">
-                                          </span>
-                                          <span class="item-name">Upick</span>
-                                          <span class="checkmark">
-                                          <i data-feather="check"></i>
-                                          </span>
-                                       </li>
-                                       <li data-skill="reactjs-skill">
-                                          <span class="item-icon">
-                                          <img src="https://via.placeholder.com/150x15" alt="">
-                                          </span>
-                                          <span class="item-name">Betcris 365</span>
-                                          <span class="checkmark">
-                                          <i data-feather="check"></i>
-                                          </span>
-                                       </li>
-                                       <li data-skill="vuejs-skill">
-                                          <span class="item-icon">
-                                          <img src="https://via.placeholder.com/150x15" alt="">
-                                          </span>
-                                          <span class="item-name">Action Network</span>
-                                          <span class="checkmark">
-                                          <i data-feather="check"></i>
-                                          </span>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
+                        <label>Platform</label>
+                        <div class="control has-icons-left">
+                           <div class="select is-full-width">
+                              <select name="user_bets[platform]" >
+                                 <option selected="">Country</option>
+                                 <option>United States</option>
+                                 <option>Canada</option>
+                                 <option>France</option>
+                                 <option>Germany</option>
+                                 <option>Spain</option>
+                                 <option>United Kingdom</option>
+                              </select>
+                           </div>
+                           <div class="icon is-small is-left">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                            </div>
                         </div>
                      </div>
-                     
+
                   </div>
                   <div class="column is-6">
                      <button class="button h-button is-light is-fullwidth">
@@ -939,177 +906,7 @@
                   </div>
                </div>
             </div>
-            <div id="projects-side-tab" class="tab-content">
-               <!--Project-->
-               <div class="project-card">
-                  <div class="project-inner">
-                     <img class="project-avatar" src="https://via.placeholder.com/150x150"
-                        data-demo-src="assets/img/icons/logos/slicer.svg" alt="">
-                     <div class="meta">
-                        <span>The slicer project</span>
-                        <span>getslicer.io</span>
-                     </div>
-                     <a class="link">
-                     <i data-feather="arrow-right"></i>
-                     </a>
-                  </div>
-                  <div class="project-foot">
-                     <progress class="progress is-primary is-tiny" value="31" max="100">31%</progress>
-                     <div class="foot-stats">
-                        <span>5 / 24</span>
-                        <div class="avatar-stack">
-                           <div class="h-avatar is-small">
-                              <img class="avatar" src="https://via.placeholder.com/150x150"
-                                 data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
-                           </div>
-                           <div class="h-avatar is-small">
-                              <img class="avatar" src="https://via.placeholder.com/150x150"
-                                 data-demo-src="assets/img/avatars/photos/5.jpg" alt="">
-                           </div>
-                           <div class="h-avatar is-small">
-                              <img class="avatar" src="https://via.placeholder.com/150x150"
-                                 data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!--Project-->
-               <div class="project-card">
-                  <div class="project-inner">
-                     <img class="project-avatar" src="https://via.placeholder.com/150x150"
-                        data-demo-src="assets/img/icons/logos/metamovies.svg" alt="">
-                     <div class="meta">
-                        <span>Metamovies reworked</span>
-                        <span>metamovies.co</span>
-                     </div>
-                     <a class="link">
-                     <i data-feather="arrow-right"></i>
-                     </a>
-                  </div>
-                  <div class="project-foot">
-                     <progress class="progress is-primary is-tiny" value="84" max="100">84%</progress>
-                     <div class="foot-stats">
-                        <span>28 / 31</span>
-                        <div class="avatar-stack">
-                           <div class="h-avatar is-small">
-                              <img class="avatar" src="https://via.placeholder.com/150x150"
-                                 data-demo-src="assets/img/avatars/photos/13.jpg" alt="">
-                           </div>
-                           <div class="h-avatar is-small">
-                              <img class="avatar" src="https://via.placeholder.com/150x150"
-                                 data-demo-src="assets/img/avatars/photos/18.jpg" alt="">
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!--Project-->
-               <div class="project-card">
-                  <div class="project-inner">
-                     <img class="project-avatar" src="https://via.placeholder.com/150x150"
-                        data-demo-src="assets/img/icons/logos/fastpizza.svg" alt="">
-                     <div class="meta">
-                        <span>Fast Pizza redesign</span>
-                        <span>fastpizza.com</span>
-                     </div>
-                     <a class="link">
-                     <i data-feather="arrow-right"></i>
-                     </a>
-                  </div>
-                  <div class="project-foot">
-                     <progress class="progress is-primary is-tiny" value="60" max="100">60%</progress>
-                     <div class="foot-stats">
-                        <span>25 / 39</span>
-                        <div class="avatar-stack">
-                           <div class="h-avatar is-small">
-                              <img class="avatar" src="https://via.placeholder.com/150x150"
-                                 data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
-                           </div>
-                           <div class="h-avatar is-small">
-                              <img class="avatar" src="https://via.placeholder.com/150x150"
-                                 data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div id="schedule-side-tab" class="tab-content">
-               <!--Timeline-->
-               <div class="icon-timeline">
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="phone-call"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Call Danny at Colby's</p>
-                        <span>Today - 11:30am</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <img class="avatar" src="https://via.placeholder.com/150x150"
-                           data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
-                     </div>
-                     <div class="timeline-content">
-                        <p>Meeting with Alice</p>
-                        <span>Today - 01:00pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="message-circle"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Answer Annie's message</p>
-                        <span>Today - 01:45pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="mail"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Send new campaign</p>
-                        <span>Today - 02:30pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="smile"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Project review</p>
-                        <span>Today - 03:30pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="phone-call"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Call Trisha Jackson</p>
-                        <span>Today - 05:00pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="feather"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Write proposal for Don</p>
-                        <span>Today - 06:00pm</span>
-                     </div>
-                  </div>
-               </div>
+            <%= end %>
             </div>
          </div>
       </div>
