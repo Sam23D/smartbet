@@ -199,13 +199,13 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>   
+                        </div>
 
-        
+
                         <div class="buttons">
                             <button class="button h-button is-primary is-raised">
                                 <span class="icon">
-                                  <i aria-hidden="true" class="fas fa-basketball-ball"></i>
+                                  <i aria-hidden="true" class="fas fa-basketballl-ball"></i>
                               </span>
                                 <span>NBA</span>
                             </button>

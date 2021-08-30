@@ -1,0 +1,5 @@
+<h1>Edit Basketball leage</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.basketball_leage_path(@conn, :update, @basketball_leage)) %>
+
+<span><%= link "Back", to: Routes.basketball_leage_path(@conn, :index) %></span>

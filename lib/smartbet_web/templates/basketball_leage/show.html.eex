@@ -1,0 +1,33 @@
+<h1>Show Basketball leage</h1>
+
+<ul>
+
+  <li>
+    <strong>Logo imgurl:</strong>
+    <%= @basketball_leage.logo_imgurl %>
+  </li>
+
+  <li>
+    <strong>Source:</strong>
+    <%= @basketball_leage.source_id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @basketball_leage.name %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @basketball_leage.type %>
+  </li>
+
+  <li>
+    <strong>Seasons:</strong>
+    <%= @basketball_leage.seasons %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.basketball_leage_path(@conn, :edit, @basketball_leage) %></span>
+<span><%= link "Back", to: Routes.basketball_leage_path(@conn, :index) %></span>

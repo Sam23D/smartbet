@@ -1,0 +1,28 @@
+<h1>Show Basketball team</h1>
+
+<ul>
+
+  <li>
+    <strong>Logo imgurl:</strong>
+    <%= @basketball_team.logo_imgurl %>
+  </li>
+
+  <li>
+    <strong>Source:</strong>
+    <%= @basketball_team.source_id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @basketball_team.name %>
+  </li>
+
+  <li>
+    <strong>National:</strong>
+    <%= @basketball_team.national %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.basketball_team_path(@conn, :edit, @basketball_team) %></span>
+<span><%= link "Back", to: Routes.basketball_team_path(@conn, :index) %></span>
