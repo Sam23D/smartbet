@@ -10,8 +10,8 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   This module will query the SportsAPI api and then insert all the entries in the DB to later use them as cached entitites.
 
   to populate the whole DB execute:
-  iex> SportsAPIBasketballFetcher.fetch_all_leagues %{}, :fetch_api
   iex> SportsAPIBasketballFetcher.fetch_all_countries :fetch_api
+  iex> SportsAPIBasketballFetcher.fetch_all_leagues %{}, :fetch_api
   iex> SportsAPIBasketballFetcher.fetch_teams 12, :fetch_api
   """
 
@@ -36,7 +36,7 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
         case Repo.insert_all(BasketballLeague, parsed_entries, placeholders: placeholders, on_conflict: :nothing) do
           {inserted, _updated}=result ->
             Logger.info("#{Enum.count(league_entries)} where fetched, #{inserted} basketball leagues were inserted from SportsAPI")
-            Repo.all(BasketballLeague)
+            Repo.all(BasketballLeague) # filter only the ones that where just inserted
         end
     end
     # option to skip DB storage should be added

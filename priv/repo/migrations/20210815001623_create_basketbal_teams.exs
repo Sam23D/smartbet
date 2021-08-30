@@ -13,4 +13,6 @@ defmodule Smartbet.Repo.Migrations.CreateBasketballTeams do
     end
 
   end
+
+  # TODO add unique index to not repeat same teams across diferent leagues
 end
