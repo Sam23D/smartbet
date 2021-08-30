@@ -889,7 +889,7 @@
 
                   </div>
                   <div class="column is-6">
-                     <button class="button h-button is-light is-fullwidth">
+                     <button type="button" class="button h-button is-light is-fullwidth close-panel">
                      <span class="icon">
                      <i data-feather="edit-2"></i>
                      </span>
@@ -1052,7 +1052,7 @@
                      </div>
                   </div>
                   <div class="column is-6">
-                     <button class="button h-button is-light is-fullwidth">
+                     <button class="button h-button is-light is-fullwidth close-panel">
                      <span class="icon">
                      <i data-feather="edit-2"></i>
                      </span>
