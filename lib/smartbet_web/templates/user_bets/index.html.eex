@@ -200,6 +200,25 @@
                                                 </div>
                                              </a>
                                              <hr class="dropdown-divider">
+                                             <a href="<%= Routes.user_bets_path(@conn, :close_bet, user_bets,  "Win") %>" class="dropdown-item is-media toolbar-link" >
+                                                <div class="icon">
+                                                   <i class="fas fa-trophy has-text-grey"></i>
+                                                </div>
+                                                <div class="meta">
+                                                   <span>Close as a win</span>
+                                                   <span>Schedule a meeting</span>
+                                                </div>
+                                             </a>
+                                             <a href="<%= Routes.user_bets_path(@conn, :close_bet, user_bets, "Loss") %>" class="dropdown-item is-media toolbar-link" >
+                                                <div class="icon">
+                                                   <i class="fas fa-flag has-text-grey"></i>
+                                                </div>
+                                                <div class="meta">
+                                                   <span>Close as a loss</span>
+                                                   <span>Schedule a meeting</span>
+                                                </div>
+                                             </a>
+                                             <hr class="dropdown-divider">
                                              <a href="<%= Routes.user_bets_path(@conn, :delete, user_bets) %>" class="dropdown-item is-media">
                                                 <div class="icon">
                                                    <i class="lnil lnil-trash-can-alt"></i>

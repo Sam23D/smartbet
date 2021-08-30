@@ -35,6 +35,17 @@ defmodule SmartbetWeb.UserBetsController do
     render(conn, "show.html", user_bets: user_bets)
   end
 
+  def close_bet(conn, %{"id" => id, "bet_result" => result}) do
+    user_bets = Bets.get_user_bets!(id)
+    case Bets.update_user_bets(user_bets, %{ bet_result: result }) do
+      {:ok, _} ->
+        conn
+        |> redirect(to: Routes.user_bets_path(conn, :index))
+
+    end
+
+  end
+
   def edit(conn, %{"id" => id}) do
     user_bets = Bets.get_user_bets!(id)
     changeset = Bets.change_user_bets(user_bets)
