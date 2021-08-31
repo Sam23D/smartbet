@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="right">
                                     <div class="buttons">
-                                        <a href="<%= Routes.user_bets_path(@conn,:index) %>"
+                                        <a href={ Routes.user_bets_path(@conn,:index) }
                                             class="button h-button is-light is-dark-outlined">
                                             <span class="icon">
                                                 <i class="lnir lnir-arrow-left rem-100"></i>
@@ -42,51 +42,51 @@
                                         <div class="column is-6">
                                             <div class="field">
                                                 <%= label f, :sport %>
-                                                <div class="control has-icon">
-                                                <%= text_input f, :sport, class: "input" %>
-                                                <%= error_tag f, :sport %>
+                                                    <div class="control has-icon">
+                                                        <%= text_input f, :sport, class: "input" %>
+                                                            <%= error_tag f, :sport %>
 
-                                                <div class="form-icon">
-                                                    <i data-feather="list"></i>
-                                                </div>
-                                                </div>
+                                                                <div class="form-icon">
+                                                                    <i data-feather="list"></i>
+                                                                </div>
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="column is-6">
                                             <div class="field">
 
                                                 <%= label f, :platform %>
-                                                <div class="control has-icon">
-                                                    <%= text_input f, :platform, class: "input" %>
-                                                    <%= error_tag f, :platform %>
-                                                    <div class="form-icon">
-                                                        <i data-feather="link"></i>
+                                                    <div class="control has-icon">
+                                                        <%= text_input f, :platform, class: "input" %>
+                                                            <%= error_tag f, :platform %>
+                                                                <div class="form-icon">
+                                                                    <i data-feather="link"></i>
+                                                                </div>
                                                     </div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="column is-12">
                                             <div class="field">
                                                 <%= label f, :event_headline %>
-                                                <div class="control has-icon">
-                                                    <%= text_input f, :event_headline, class: "input" %>
-                                                    <%= error_tag f, :event_headline %>
-                                                    <div class="form-icon">
-                                                        <i data-feather="flag"></i>
+                                                    <div class="control has-icon">
+                                                        <%= text_input f, :event_headline, class: "input" %>
+                                                            <%= error_tag f, :event_headline %>
+                                                                <div class="form-icon">
+                                                                    <i data-feather="flag"></i>
+                                                                </div>
                                                     </div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="column is-12">
                                             <div class="field">
                                                 <%= label f, :details %>
-                                                <div class="control has-icon">
-                                                    <%= text_input f, :details, class: "input" %>
-                                                    <%= error_tag f, :details %>
-                                                    <div class="form-icon">
-                                                        <i data-feather="info"></i>
+                                                    <div class="control has-icon">
+                                                        <%= text_input f, :details, class: "input" %>
+                                                            <%= error_tag f, :details %>
+                                                                <div class="form-icon">
+                                                                    <i data-feather="info"></i>
+                                                                </div>
                                                     </div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="column is-6">
@@ -94,10 +94,10 @@
                                                 <%= label f, :amount %>
                                                     <div class="control has-icon">
                                                         <%= number_input f, :amount, step: "any" , class: "input" %>
-                                                        <%= error_tag f, :amount %>
-                                                        <div class="form-icon">
-                                                            <i data-feather="dollar-sign"></i>
-                                                        </div>
+                                                            <%= error_tag f, :amount %>
+                                                                <div class="form-icon">
+                                                                    <i data-feather="dollar-sign"></i>
+                                                                </div>
                                                     </div>
                                             </div>
                                         </div>
@@ -105,12 +105,12 @@
                                             <div class="field">
                                                 <%= label f, :line %>
                                                     <div class="control has-icon">
-                                                    <%= number_input f, :line, step: "any", class: "input" %>
-                                                    <%= error_tag f, :line %>
-                                                    <div class="form-icon">
-                                                        <i data-feather="minus"></i>
+                                                        <%= number_input f, :line, step: "any" , class: "input" %>
+                                                            <%= error_tag f, :line %>
+                                                                <div class="form-icon">
+                                                                    <i data-feather="minus"></i>
+                                                                </div>
                                                     </div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="column is-6">
@@ -118,39 +118,41 @@
 
                                                 <%= label f, :bet_result %>
 
-                                                <div class="control has-icon">
-                                                    <%= text_input f, :bet_result, class: "input" %>
-                                                    <%= error_tag f, :bet_result %>
-                                                    <div class="form-icon">
-                                                        <i data-feather="tag"></i>
+                                                    <div class="control has-icon">
+                                                        <%= text_input f, :bet_result, class: "input" %>
+                                                            <%= error_tag f, :bet_result %>
+                                                                <div class="form-icon">
+                                                                    <i data-feather="tag"></i>
+                                                                </div>
                                                     </div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="column is-6">
                                             <div class="field">
                                                 <%= label f, :profit %>
-                                                <div class="control has-icon">
-                                                    <%= number_input f, :profit, step: "any", class: "input" %>
-                                                    <%= error_tag f, :profit %>
-                                                    <div class="form-icon">
-                                                        <i data-feather="octagon"></i>
+                                                    <div class="control has-icon">
+                                                        <%= number_input f, :profit, step: "any" , class: "input" %>
+                                                            <%= error_tag f, :profit %>
+                                                                <div class="form-icon">
+                                                                    <i data-feather="octagon"></i>
+                                                                </div>
                                                     </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
 
                                     <%= if @changeset.action do %>
-                                    <div >
-                                        <p class="has-text-danger">Oops, something went wrong! Please check the errors below.</p>
-                                    </div>
-                                    <% end %>
-                                    <div>
-                                        <%= submit "Track Bet", id: "save-button", class: "button h-button is-primary is-raised" %>
-                                    </div>
-                                    <% end %>
+                                        <div>
+                                            <p class="has-text-danger">Oops, something went wrong! Please check the
+                                                errors below.</p>
+                                        </div>
+                                        <% end %>
+                                            <div>
+                                                <%= submit "Track Bet" , id: "save-button" ,
+                                                    class: "button h-button is-primary is-raised" %>
+                                            </div>
+                                            <% end %>
                                 </div>
                         </div>
                     </div>
@@ -160,5 +162,3 @@
 
         </div>
     </div>
-
-</div>

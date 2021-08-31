@@ -17,14 +17,14 @@
             </div>
          </div>
          <a class="navbar-item is-brand" href="index.html">
-         <img class="light-image" src="<%= Routes.static_path(@conn, "/images/logos/logo/logo.svg") %>"" alt=""/>
-         <img class="dark-image" src="<%= Routes.static_path(@conn, "/images/logos/logo/logo-light.svg") %>" alt="" />
+            <img class="light-image" src={ Routes.static_path(@conn, "/images/logos/logo/logo.svg" )} alt="" />
+            <img class="dark-image" src={ Routes.static_path(@conn, "/images/logos/logo/logo-light.svg" )} alt="" />
          </a>
          <div class="brand-end">
             <div class="navbar-item has-dropdown is-notification is-hidden-tablet is-hidden-desktop">
                <a class="navbar-link is-arrowless" href="javascript:void(0);">
-               <i data-feather="bell"></i>
-               <span class="new-indicator pulsate"></span>
+                  <i data-feather="bell"></i>
+                  <span class="new-indicator pulsate"></span>
                </a>
                <div class="navbar-dropdown is-boxed is-right">
                   <div class="heading">
@@ -159,12 +159,12 @@
                      </a>
                      <hr class="dropdown-divider">
                      <div class="dropdown-item is-button">
-                        <a href="<%= Routes.user_session_path(@conn, :delete) %>"
+                        <a href={ Routes.user_session_path(@conn, :delete)}
                            class="button h-button is-primary is-raised is-fullwidth logout-button">
-                        <span class="icon is-small">
-                        <i data-feather="log-out"></i>
-                        </span>
-                        <span>Logout</span>
+                           <span class="icon is-small">
+                              <i data-feather="log-out"></i>
+                           </span>
+                           <span>Logout</span>
                         </a>
                      </div>
                   </div>
@@ -180,39 +180,39 @@
       <ul class="icon-side-menu">
          <li>
             <a href="/admin-dashboards-personal-1.html" id="home-sidebar-menu-mobile">
-            <i data-feather="home"></i>
+               <i data-feather="home"></i>
             </a>
          </li>
          <li>
             <a href="/admin-grid-users-1.html" id="layouts-sidebar-menu-mobile">
-            <i data-feather="calendar"></i>
+               <i data-feather="calendar"></i>
             </a>
          </li>
          <li>
             <a href="/elements-hub.html" id="elements-sidebar-menu-mobile">
-            <i data-feather="bar-chart-2"></i>
+               <i data-feather="bar-chart-2"></i>
             </a>
          </li>
          <li>
             <a href="/components-hub.html" id="components-sidebar-menu-mobile">
-            <i data-feather="star"></i>
+               <i data-feather="star"></i>
             </a>
          </li>
          <li>
             <a href="/messaging-chat.html" id="open-messages-mobile">
-            <i data-feather="file-text"></i>
+               <i data-feather="file-text"></i>
             </a>
          </li>
       </ul>
       <ul class="bottom-icon-side-menu">
          <li>
             <a class="right-panel-trigger">
-            <i data-feather="book-open"></i>
+               <i data-feather="book-open"></i>
             </a>
          </li>
          <li>
             <a href="#">
-            <i data-feather="settings"></i>
+               <i data-feather="settings"></i>
             </a>
          </li>
       </ul>
@@ -223,37 +223,37 @@
    <div class="webapp-navbar-inner">
       <div class="left">
          <a href="/" class="brand">
-         <img class="light-image" src="<%= Routes.static_path(@conn, "/images/logos/logo/logo.svg") %>"" alt="" />
-         <img class="dark-image" src="<%= Routes.static_path(@conn, "/images/logos/logo/logo-light.svg") %>" alt="" />
+            <img class="light-image" src={ Routes.static_path(@conn, "/images/logos/logo/logo.svg" ) } alt="" />
+            <img class="dark-image" src={ Routes.static_path(@conn, "/images/logos/logo/logo-light.svg" )} alt="" />
          </a>
          <div class="separator"></div>
          <h1 id="webapp-page-title" class="title is-5">Smartbet</h1>
       </div>
       <div class="center">
          <div id="webapp-navbar-menu" class="centered-links">
-            <a class="centered-link <%= class_is_active_for_view?(@conn, "dashboard")%>" href="<%= Routes.dashboard_path(@conn, :index) %>">
-            <i data-feather="home"></i>
-            <span>Dashboard</span>
+            <a class="centered-link" href={ Routes.dashboard_path(@conn, :index) }>
+               <i data-feather="home"></i>
+               <span>Dashboard</span>
             </a>
-            <a href="<%= Routes.dashboard_path(@conn, :scores) %>" class="centered-link <%= class_is_active_for_view?(@conn, "scores")%>">
-            <i data-feather="calendar"></i>
-            <span>Scores</span>
-            </a>
-            <a class="centered-link">
-            <i data-feather="bar-chart-2"></i>
-            <span>Statistics</span>
+            <a href={ Routes.dashboard_path(@conn, :scores) } class="centered-link">
+               <i data-feather="calendar"></i>
+               <span>Scores</span>
             </a>
             <a class="centered-link">
-            <i data-feather="star"></i>
-            <span>Pro report</span>
-            </a>
-            <a class="centered-link <%= class_is_active_for_view?(@conn, "user_bets")%>" href="<%= Routes.user_bets_path(@conn, :index) %>">
-            <i data-feather="file-text"></i>
-            <span>Picks</span>
+               <i data-feather="bar-chart-2"></i>
+               <span>Statistics</span>
             </a>
             <a class="centered-link">
-            <i data-feather="book-open"></i>
-            <span>News</span>
+               <i data-feather="star"></i>
+               <span>Pro report</span>
+            </a>
+            <a class="centered-link" href={ Routes.user_bets_path(@conn, :index) }>
+               <i data-feather="file-text"></i>
+               <span>Picks</span>
+            </a>
+            <a class="centered-link">
+               <i data-feather="book-open"></i>
+               <span>News</span>
             </a>
          </div>
       </div>
@@ -261,12 +261,12 @@
          <div class="toolbar ml-auto">
             <div class="toolbar-link">
                <label class="dark-mode ml-auto">
-               <input type="checkbox" checked>
-               <span></span>
+                  <input type="checkbox" checked>
+                  <span></span>
                </label>
             </div>
             <!--a class="toolbar-link right-panel-trigger" data-panel="languages-panel">
-               <img src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
+               <img src={ Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")} alt="">
                </a-->
             <div class="toolbar-notifications is-hidden-mobile">
                <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
@@ -282,14 +282,15 @@
                            </div>
                            <div class="heading-right">
                               <a class="notification-link" href="/admin-profile-notifications.html">See
-                              all</a>
+                                 all</a>
                            </div>
                         </div>
                         <ul class="notification-list">
                            <li>
                               <a class="notification-item">
                                  <div class="img-left">
-                                    <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-2.svg")%>"/>
+                                    <img class="user-photo" alt="" src={
+                                       Routes.static_path(@conn, "/images/avatars/svg/huro-2.svg" )} />
                                  </div>
                                  <div class="user-content">
                                     <p class="user-info"><span class="name">Alice C.</span> left a comment.
@@ -301,7 +302,8 @@
                            <li>
                               <a class="notification-item">
                                  <div class="img-left">
-                                    <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-1.svg")%>"/>
+                                    <img class="user-photo" alt="" src={
+                                       Routes.static_path(@conn, "/images/avatars/svg/huro-1.svg" )} />
                                  </div>
                                  <div class="user-content">
                                     <p class="user-info"><span class="name">Joshua S.</span> uploaded a file.</p>
@@ -312,7 +314,8 @@
                            <li>
                               <a class="notification-item">
                                  <div class="img-left">
-                                    <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-3.svg")%>"/>
+                                    <img class="user-photo" alt="" src={
+                                       Routes.static_path(@conn, "/images/avatars/svg/huro-3.svg" )} />
                                  </div>
                                  <div class="user-content">
                                     <p class="user-info"><span class="name">Tara S.</span> sent you a
@@ -325,7 +328,8 @@
                            <li>
                               <a class="notification-item">
                                  <div class="img-left">
-                                    <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-4.svg")%>"/>
+                                    <img class="user-photo" alt="" src={
+                                       Routes.static_path(@conn, "/images/avatars/svg/huro-4.svg" )} />
                                  </div>
                                  <div class="user-content">
                                     <p class="user-info"><span class="name">Melany W.</span> left a comment.
@@ -340,17 +344,18 @@
                </div>
             </div>
             <a class="toolbar-link right-panel-trigger" data-panel="activity-panel">
-            <i data-feather="grid"></i>
+               <i data-feather="grid"></i>
             </a>
          </div>
          <div class="dropdown profile-dropdown dropdown-trigger is-spaced is-right">
-            <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-5.svg")%>"/>
+            <img class="user-photo" alt="" src={ Routes.static_path(@conn, "/images/avatars/svg/huro-5.svg" )} />
             <span class="status-indicator"></span>
             <div class="dropdown-menu" role="menu">
                <div class="dropdown-content">
                   <div class="dropdown-head">
                      <div class="h-avatar is-large">
-                        <img class="user-photo" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-5.svg")%>"/>
+                        <img class="user-photo" alt="" src={ Routes.static_path(@conn, "/images/avatars/svg/huro-5.svg"
+                           )} />
                      </div>
                      <div class="meta">
                         <span>Erik Kovalsky</span>
@@ -406,12 +411,12 @@
                   </a>
                   <hr class="dropdown-divider">
                   <div class="dropdown-item is-button">
-                     <a href="<%= Routes.user_session_path(@conn, :delete) %>"
+                     <a href={ Routes.user_session_path(@conn, :delete)}
                         class="button h-button is-primary is-raised is-fullwidth logout-button">
-                     <span class="icon is-small">
-                     <i data-feather="log-out"></i>
-                     </span>
-                     <span>Logout</span>
+                        <span class="icon is-small">
+                           <i data-feather="log-out"></i>
+                        </span>
+                        <span>Logout</span>
                      </a>
                   </div>
                </div>
@@ -437,7 +442,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection" checked>
                        <div class="language-option-inner">
-                           <img src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
+                           <img src={ Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -449,7 +454,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src="<%= Routes.static_path(@conn, "/images/icons/flags/france.svg")%>" alt="">
+                           <img src={ Routes.static_path(@conn, "/images/icons/flags/france.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -461,7 +466,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src="<%= Routes.static_path(@conn, "/images/icons/flags/spain.svg")%>" alt="">
+                           <img src={ Routes.static_path(@conn, "/images/icons/flags/spain.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -473,7 +478,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src="<%= Routes.static_path(@conn, "/images/icons/flags/germany.svg")%>" alt="">
+                           <img src={ Routes.static_path(@conn, "/images/icons/flags/germany.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -485,7 +490,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src="<%= Routes.static_path(@conn, "/images/icons/flags/mexico.svg")%>" alt="">
+                           <img src={ Routes.static_path(@conn, "/images/icons/flags/mexico.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -497,7 +502,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src="<%= Routes.static_path(@conn, "/images/icons/flags/china.svg")%>" alt="">
+                           <img src={ Routes.static_path(@conn, "/images/icons/flags/china.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -507,8 +512,8 @@
            </div>
 
            <div class="img-wrap has-text-centered">
-               <img class="light-image" src="<%= Routes.static_path(@conn, "/images/illustrations/right-panel/languages.svg")%>" alt="">
-               <img class="dark-image" src="<%= Routes.static_path(@conn, "/images/illustrations/right-panel/languages-dark.svg")%>" alt="">
+               <img class="light-image" src={ Routes.static_path(@conn, "/images/illustrations/right-panel/languages.svg")} alt="">
+               <img class="dark-image"  src={ Routes.static_path(@conn, "/images/illustrations/right-panel/languages-dark.svg")} alt="">
            </div>
        </div>
    </div>
@@ -520,7 +525,7 @@
       <div class="right-panel-head">
          <h3>Activity</h3>
          <a class="close-panel">
-         <i data-feather="chevron-right"></i>
+            <i data-feather="chevron-right"></i>
          </a>
       </div>
       <div class="tabs-wrapper is-triple-slider is-squared">
@@ -539,69 +544,73 @@
                <!--Team Member-->
                <div class="team-card">
                   <div class="h-avatar">
-                     <img class="avatar" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-2.svg")%>"/>
-                     <img class="badge" src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
+                     <img class="avatar" alt="" src={ Routes.static_path(@conn, "/images/avatars/svg/huro-2.svg" )} />
+                     <img class="badge" src={
+                        Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg" )} alt="">
                   </div>
                   <div class="meta">
                      <span>Joshua S.</span>
                      <span>
-                     <i data-feather="map-pin"></i>
-                     Las Vegas, NV
+                        <i data-feather="map-pin"></i>
+                        Las Vegas, NV
                      </span>
                   </div>
                   <a class="link">
-                  <i data-feather="arrow-right"></i>
+                     <i data-feather="arrow-right"></i>
                   </a>
                </div>
                <!--Team Member-->
                <div class="team-card">
                   <div class="h-avatar">
-                     <img class="avatar" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-7.svg")%>"/>
-                     <img class="badge" src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
+                     <img class="avatar" alt="" src={ Routes.static_path(@conn, "/images/avatars/svg/huro-7.svg" )} />
+                     <img class="badge"
+                        src={Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg" )} alt="">
                   </div>
                   <div class="meta">
                      <span>Melany W.</span>
                      <span>
-                     <i data-feather="map-pin"></i>
-                     San Jose, CA
+                        <i data-feather="map-pin"></i>
+                        San Jose, CA
                      </span>
                   </div>
                   <a class="link">
-                  <i data-feather="arrow-right"></i>
+                     <i data-feather="arrow-right"></i>
                   </a>
                </div>
                <!--Team Member-->
                <div class="team-card">
                   <div class="h-avatar">
-                     <img class="avatar" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-9.svg")%>"/>
-                     <img class="badge" src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
+                     <img class="avatar" alt="" src={ Routes.static_path(@conn, "/images/avatars/svg/huro-9.svg" )} />
+                     <img class="badge" src={
+                        Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg" ) } alt="">
                   </div>
                   <div class="meta">
                      <span>Esteban C.</span>
                      <span>
-                     <i data-feather="map-pin"></i>
-                     Miami, FL
+                        <i data-feather="map-pin"></i>
+                        Miami, FL
                      </span>
                   </div>
                   <a class="link">
-                  <i data-feather="arrow-right"></i>
+                     <i data-feather="arrow-right"></i>
                   </a>
                </div>
                <!--Team Member-->
                <div class="team-card">
                   <div class="h-avatar">
-                     <img class="avatar" alt="" src="<%= Routes.static_path(@conn, "/images/avatars/svg/huro-10.svg")%>"/>
-                     <img class="badge" src="<%= Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")%>" alt="">
+                     <img class="avatar" alt="" src={ Routes.static_path(@conn, "/images/avatars/svg/huro-10.svg" )} />
+                     <img class="badge"
+                        src={Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg" )} alt="">
                   </div>
                   <div class="meta">
                      <span>Tara S.</span>
                      <span>
-                     <i data-feather="map-pin"></i>
-                     New York, NY
+                        <i data-feather="map-pin"></i>
+                        New York, NY
                      </span>
                   </div>
                   <a class="link">
-                  <i data-feather="arrow-right"></i>
+                     <i data-feather="arrow-right"></i>
                   </a>
                </div>
             </div>
@@ -616,7 +625,7 @@
                         <span>getslicer.io</span>
                      </div>
                      <a class="link">
-                     <i data-feather="arrow-right"></i>
+                        <i data-feather="arrow-right"></i>
                      </a>
                   </div>
                   <div class="project-foot">
@@ -650,7 +659,7 @@
                         <span>metamovies.co</span>
                      </div>
                      <a class="link">
-                     <i data-feather="arrow-right"></i>
+                        <i data-feather="arrow-right"></i>
                      </a>
                   </div>
                   <div class="project-foot">
@@ -680,7 +689,7 @@
                         <span>fastpizza.com</span>
                      </div>
                      <a class="link">
-                     <i data-feather="arrow-right"></i>
+                        <i data-feather="arrow-right"></i>
                      </a>
                   </div>
                   <div class="project-foot">
@@ -787,123 +796,130 @@
       <div class="right-panel-head">
          <h3>Add New Bet</h3>
          <a class="close-panel">
-         <i data-feather="chevron-right"></i>
+            <i data-feather="chevron-right"></i>
          </a>
       </div>
       <div class="tabs-wrapper is-triple-slider is-squared">
          <div class="right-panel-body">
             <%= form_for @changeset, Routes.user_bets_path(@conn, :create), fn f -> %>
-            <div id="team-side-tab" class="tab-content is-active">
-               <div class="columns is-multiline">
-                  <div class="column is-12">
-                     <div class="field">
-                        <label>Bet detail</label>
-                        <div class="control has-icon">
-                           <%= text_input f, :details, class: "input" %>
-                           <%= error_tag f, :details %>
-                           <div class="form-icon">
-                              <i data-feather="info"></i>
+               <div id="team-side-tab" class="tab-content is-active">
+                  <div class="columns is-multiline">
+                     <div class="column is-12">
+                        <div class="field">
+                           <label>Bet detail</label>
+                           <div class="control has-icon">
+                              <%= text_input f, :details, class: "input" %>
+                                 <%= error_tag f, :details %>
+                                    <div class="form-icon">
+                                       <i data-feather="info"></i>
+                                    </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="column is-12">
-                     <div class="field">
-                        <label>Event</label>
-                        <div class="control has-icon">
-                           <%= text_input f, :event_headline, class: "input" %>
-                           <%= error_tag f, :event_headline %>
-                           <div class="form-icon">
-                              <i data-feather="help-circle"></i>
+                     <div class="column is-12">
+                        <div class="field">
+                           <label>Event</label>
+                           <div class="control has-icon">
+                              <%= text_input f, :event_headline, class: "input" %>
+                                 <%= error_tag f, :event_headline %>
+                                    <div class="form-icon">
+                                       <i data-feather="help-circle"></i>
+                                    </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="column is-6">
-                     <div class="field">
-                        <label>Sport</label>
-                        <div class="control has-icon">
-                           <%= text_input f, :sport, class: "input" %>
-                           <%= error_tag f, :sport %>
-                           <div class="form-icon">
-                              <i data-feather="loader"></i>
+                     <div class="column is-6">
+                        <div class="field">
+                           <label>Sport</label>
+                           <div class="control has-icon">
+                              <%= text_input f, :sport, class: "input" %>
+                                 <%= error_tag f, :sport %>
+                                    <div class="form-icon">
+                                       <i data-feather="loader"></i>
+                                    </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="column is-6">
-                     <div class="field">
-                        <label>Line</label>
-                        <div class="control has-icon">
-                           <%= number_input f, :line, step: "any", class: "input" %>
-                           <%= error_tag f, :line %>
-                           <div class="form-icon">
-                              <i data-feather="minus"></i>
+                     <div class="column is-6">
+                        <div class="field">
+                           <label>Line</label>
+                           <div class="control has-icon">
+                              <%= number_input f, :line, step: "any" , class: "input" %>
+                                 <%= error_tag f, :line %>
+                                    <div class="form-icon">
+                                       <i data-feather="minus"></i>
+                                    </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="column is-6">
-                     <div class="field">
-                        <label>Risk Units</label>
-                        <div class="control has-icon">
-                           <%= number_input f, :amount, step: "any" , class: "input" %>
-                           <%= error_tag f, :amount %>
-                           <div class="form-icon">
-                              <i data-feather="dollar-sign"></i>
+                     <div class="column is-6">
+                        <div class="field">
+                           <label>Risk Units</label>
+                           <div class="control has-icon">
+                              <%= number_input f, :amount, step: "any" , class: "input" %>
+                                 <%= error_tag f, :amount %>
+                                    <div class="form-icon">
+                                       <i data-feather="dollar-sign"></i>
+                                    </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="column is-6">
-                     <div class="field">
-                        <label>Odds</label>
-                        <div class="control has-icon">
-                           <input type="text" class="input" placeholder="">
-                           <div class="form-icon">
-                              <i data-feather="flag"></i>
+                     <div class="column is-6">
+                        <div class="field">
+                           <label>Odds</label>
+                           <div class="control has-icon">
+                              <input type="text" class="input" placeholder="">
+                              <div class="form-icon">
+                                 <i data-feather="flag"></i>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="column is-12">
-                     <div class="field">
-                        <label>Platform</label>
-                        <div class="control has-icons-left">
-                           <div class="select is-full-width">
-                              <select name="user_bets[platform]" >
-                                 <option selected="">Caliente</option>
-                                 <option>Bet 365</option>
-                                 <option>Upick</option>
-                              </select>
-                           </div>
-                           <div class="icon is-small is-left">
-                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                     <div class="column is-12">
+                        <div class="field">
+                           <label>Platform</label>
+                           <div class="control has-icons-left">
+                              <div class="select is-full-width">
+                                 <select name="user_bets[platform]">
+                                    <option selected="">Caliente</option>
+                                    <option>Bet 365</option>
+                                    <option>Upick</option>
+                                 </select>
+                              </div>
+                              <div class="icon is-small is-left">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-globe">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path
+                                       d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                    </path>
+                                 </svg>
+                              </div>
                            </div>
                         </div>
-                     </div>
 
-                  </div>
-                  <div class="column is-6">
-                     <button type="button" class="button h-button is-light is-fullwidth close-panel">
-                     <span class="icon">
-                     <i data-feather="edit-2"></i>
-                     </span>
-                     <span>Cancel</span>
-                     </button>
-                  </div>
-                  <div class="column is-6">
-                     <button class="button h-button is-success is-elevated is-fullwidth is-medium">
-                     <span class="icon">
-                     <i class="fas fa-check"></i>
-                     </span>
-                     <span>Add bet</span>
-                     </button>
+                     </div>
+                     <div class="column is-6">
+                        <button type="button" class="button h-button is-light is-fullwidth close-panel">
+                           <span class="icon">
+                              <i data-feather="edit-2"></i>
+                           </span>
+                           <span>Cancel</span>
+                        </button>
+                     </div>
+                     <div class="column is-6">
+                        <button class="button h-button is-success is-elevated is-fullwidth is-medium">
+                           <span class="icon">
+                              <i class="fas fa-check"></i>
+                           </span>
+                           <span>Add bet</span>
+                        </button>
+                     </div>
                   </div>
                </div>
-            </div>
-            <%= end %>
-            </div>
+               <%= end %>
          </div>
       </div>
    </div>
@@ -915,7 +931,7 @@
          # TODO extraxt to a different render component
          <h3>Edit Bet</h3>
          <a class="close-panel">
-         <i data-feather="chevron-right"></i>
+            <i data-feather="chevron-right"></i>
          </a>
       </div>
       <div class="tabs-wrapper is-triple-slider is-squared">
@@ -995,7 +1011,7 @@
                            <div class="stacked-combo-box has-rounded-images">
                               <div class="box-inner">
                                  <div class="combo-item">
-                                    <img id="skill-placeholder"  src="https://via.placeholder.com/150x150" alt="">
+                                    <img id="skill-placeholder" src="https://via.placeholder.com/150x150" alt="">
                                     <span class="selected-item">Smartbet</span>
                                  </div>
                               </div>
@@ -1007,38 +1023,38 @@
                                     <ul>
                                        <li data-skill="javascript-skill">
                                           <span class="item-icon">
-                                          <img src="https://via.placeholder.com/150x15" alt="">
+                                             <img src="https://via.placeholder.com/150x15" alt="">
                                           </span>
                                           <span class="item-name">Caliente</span>
                                           <span class="checkmark">
-                                          <i data-feather="check"></i>
+                                             <i data-feather="check"></i>
                                           </span>
                                        </li>
                                        <li data-skill="angular-skill">
                                           <span class="item-icon">
-                                          <img src="https://via.placeholder.com/150x15" alt="">
+                                             <img src="https://via.placeholder.com/150x15" alt="">
                                           </span>
                                           <span class="item-name">Upick</span>
                                           <span class="checkmark">
-                                          <i data-feather="check"></i>
+                                             <i data-feather="check"></i>
                                           </span>
                                        </li>
                                        <li data-skill="reactjs-skill">
                                           <span class="item-icon">
-                                          <img src="https://via.placeholder.com/150x15" alt="">
+                                             <img src="https://via.placeholder.com/150x15" alt="">
                                           </span>
                                           <span class="item-name">Betcris 365</span>
                                           <span class="checkmark">
-                                          <i data-feather="check"></i>
+                                             <i data-feather="check"></i>
                                           </span>
                                        </li>
                                        <li data-skill="vuejs-skill">
                                           <span class="item-icon">
-                                          <img src="https://via.placeholder.com/150x15" alt="">
+                                             <img src="https://via.placeholder.com/150x15" alt="">
                                           </span>
                                           <span class="item-name">Action Network</span>
                                           <span class="checkmark">
-                                          <i data-feather="check"></i>
+                                             <i data-feather="check"></i>
                                           </span>
                                        </li>
                                     </ul>
@@ -1050,18 +1066,18 @@
                   </div>
                   <div class="column is-6">
                      <button class="button h-button is-light is-fullwidth close-panel">
-                     <span class="icon">
-                     <i data-feather="edit-2"></i>
-                     </span>
-                     <span>Cancel</span>
+                        <span class="icon">
+                           <i data-feather="edit-2"></i>
+                        </span>
+                        <span>Cancel</span>
                      </button>
                   </div>
                   <div class="column is-6">
                      <button class="button h-button is-success is-elevated is-fullwidth is-medium">
-                     <span class="icon">
-                     <i class="fas fa-check"></i>
-                     </span>
-                     <span>Edit bet</span>
+                        <span class="icon">
+                           <i class="fas fa-check"></i>
+                        </span>
+                        <span>Edit bet</span>
                      </button>
                   </div>
                </div>
@@ -1077,7 +1093,7 @@
                         <span>getslicer.io</span>
                      </div>
                      <a class="link">
-                     <i data-feather="arrow-right"></i>
+                        <i data-feather="arrow-right"></i>
                      </a>
                   </div>
                   <div class="project-foot">
@@ -1111,7 +1127,7 @@
                         <span>metamovies.co</span>
                      </div>
                      <a class="link">
-                     <i data-feather="arrow-right"></i>
+                        <i data-feather="arrow-right"></i>
                      </a>
                   </div>
                   <div class="project-foot">
@@ -1141,7 +1157,7 @@
                         <span>fastpizza.com</span>
                      </div>
                      <a class="link">
-                     <i data-feather="arrow-right"></i>
+                        <i data-feather="arrow-right"></i>
                      </a>
                   </div>
                   <div class="project-foot">
@@ -1242,4 +1258,3 @@
       </div>
    </div>
 </div>
-<!--Page body-->

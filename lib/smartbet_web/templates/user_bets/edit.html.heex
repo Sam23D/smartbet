@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="right">
                                     <div class="buttons">
-                                        <a href="<%= Routes.user_bets_path(@conn,:index) %>"
+                                        <a href={ Routes.user_bets_path(@conn,:index) }
                                             class="button h-button is-light is-dark-outlined">
                                             <span class="icon">
                                                 <i class="lnir lnir-arrow-left rem-100"></i>
@@ -150,8 +150,8 @@
                                     <div>
                                         <%= submit "Update Bet details", id: "save-button", class: "button h-button is-primary is-raised" %>
                                     </div>
-                                    <% end %>
                                 </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>

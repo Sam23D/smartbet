@@ -144,7 +144,7 @@
                                     </div>
                                     <div>
                                        <span class="item-name dark-inverted" data-filter-match>Suns -5</span>
-                                       </span>
+                                       
                                     </div>
                                  </div>
                                  <div class="flex-table-cell" data-th="Location">
@@ -181,7 +181,7 @@
                                        </div>
                                        <div class="dropdown-menu" role="menu">
                                           <div class="dropdown-content">
-                                             <a href="<%= Routes.user_bets_path(@conn, :show, user_bets) %>" class="dropdown-item is-media">
+                                             <a href={ Routes.user_bets_path(@conn, :show, user_bets) } class="dropdown-item is-media">
                                                 <div class="icon">
                                                    <i class="lnil lnil-eye"></i>
                                                 </div>
@@ -190,7 +190,7 @@
                                                    <span>View Bet details</span>
                                                 </div>
                                              </a>
-                                             <a href="<%= Routes.user_bets_path(@conn, :edit, user_bets) %>" class="dropdown-item is-media toolbar-link" >
+                                             <a href={ Routes.user_bets_path(@conn, :edit, user_bets) } class="dropdown-item is-media toolbar-link" >
                                                 <div class="icon">
                                                    <i class="lnil lnil-pencil"></i>
                                                 </div>
@@ -200,7 +200,7 @@
                                                 </div>
                                              </a>
                                              <hr class="dropdown-divider">
-                                             <a href="<%= Routes.user_bets_path(@conn, :close_bet, user_bets,  "Win") %>" class="dropdown-item is-media toolbar-link" >
+                                             <a href={ Routes.user_bets_path(@conn, :close_bet, user_bets,  "Win") } class="dropdown-item is-media toolbar-link" >
                                                 <div class="icon">
                                                    <i class="fas fa-trophy has-text-grey"></i>
                                                 </div>
@@ -209,7 +209,7 @@
                                                    <span>Schedule a meeting</span>
                                                 </div>
                                              </a>
-                                             <a href="<%= Routes.user_bets_path(@conn, :close_bet, user_bets, "Loss") %>" class="dropdown-item is-media toolbar-link" >
+                                             <a href={ Routes.user_bets_path(@conn, :close_bet, user_bets, "Loss") } class="dropdown-item is-media toolbar-link" >
                                                 <div class="icon">
                                                    <i class="fas fa-flag has-text-grey"></i>
                                                 </div>
@@ -219,7 +219,7 @@
                                                 </div>
                                              </a>
                                              <hr class="dropdown-divider">
-                                             <a href="<%= Routes.user_bets_path(@conn, :delete, user_bets) %>" class="dropdown-item is-media">
+                                             <a href={ Routes.user_bets_path(@conn, :delete, user_bets) } class="dropdown-item is-media">
                                                 <div class="icon">
                                                    <i class="lnil lnil-trash-can-alt"></i>
                                                 </div>
