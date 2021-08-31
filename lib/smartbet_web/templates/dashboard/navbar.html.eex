@@ -912,6 +912,7 @@
    <div class="panel-overlay"></div>
    <div class="right-panel">
       <div class="right-panel-head">
+         # TODO extraxt to a different render component
          <h3>Edit Bet</h3>
          <a class="close-panel">
          <i data-feather="chevron-right"></i>
