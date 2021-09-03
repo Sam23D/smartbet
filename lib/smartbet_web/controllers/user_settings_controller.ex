@@ -4,10 +4,22 @@ defmodule SmartbetWeb.UserSettingsController do
   alias Smartbet.Accounts
   alias SmartbetWeb.UserAuth
 
+# TODO FIX CHANGESET IN THIS MODULE
+
   plug :assign_email_and_password_changesets
+  plug :put_layout, "dashboard_layout.html"
+
 
   def edit(conn, _params) do
-    render(conn, "edit.html")
+    user =  conn.assigns.current_user
+    changeset = Accounts.change_user_email(user)
+    render(conn, "edit.html", changeset: changeset)
+  end
+
+  def edit_password(conn, _params) do
+    user =  conn.assigns.current_user
+    changeset = Accounts.change_user_email(user)
+    render(conn, "edit_password.html", changeset: changeset)
   end
 
   def update(conn, %{"action" => "update_email"} = params) do
