@@ -14,7 +14,8 @@
                 <div class="left"></div>
                 <div class="center">
                     <a href="/" class="header-item">
-                        <img class="light-image" src="<%= Routes.static_path(@conn, "/images/logos/logo/logo.svg") %>" alt="">
+                        <img class="light-image" src={ Routes.static_path(@conn, "/images/logos/logo/logo.svg" ) }
+                            alt="">
                         <img class="dark-image" src="assets/img/logos/logo/logo-light.svg" alt="">
                     </a>
                 </div>
@@ -95,7 +96,8 @@
                                         <!-- Submit -->
                                         <div class="control login">
 
-                                            <%= submit "Register", class: "button h-button is-primary is-bold is-fullwidth is-raised" %>
+                                            <%= submit "Register" ,
+                                                class: "button h-button is-primary is-bold is-fullwidth is-raised" %>
 
                                         </div>
 
@@ -103,12 +105,12 @@
                             <!--/form-->
                             <% end %>
                                 <div class="forgot-link has-text-centered">
-                                <%= link "Log in" , to: Routes.user_session_path(@conn, :new) %>
+                                    <%= link "Log in" , to: Routes.user_session_path(@conn, :new) %>
                                 </div>
                                 <div class="forgot-link has-text-centered">
-                                <%= link "Forgot your password?" , to: Routes.user_reset_password_path(@conn, :new) %>
+                                    <%= link "Forgot your password?" , to: Routes.user_reset_password_path(@conn, :new)
+                                        %>
                                 </div>
-                                </p>
 
                     </div>
 
