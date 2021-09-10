@@ -24,7 +24,7 @@ defmodule SmartbetWeb.Endpoint do
     at: "/",
     from: :smartbet,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts assets images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

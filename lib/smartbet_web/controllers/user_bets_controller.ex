@@ -32,7 +32,8 @@ defmodule SmartbetWeb.UserBetsController do
 
   def show(conn, %{"id" => id}) do
     user_bets = Bets.get_user_bets!(id)
-    render(conn, "show.html", user_bets: user_bets)
+    changeset = Bets.change_user_bets(user_bets)
+    render(conn, "show.html", user_bets: user_bets, changeset: changeset)
   end
 
   def close_bet(conn, %{"id" => id, "bet_result" => result}) do
