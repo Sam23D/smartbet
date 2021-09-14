@@ -1,0 +1,120 @@
+<%= form_for @changeset, Routes.user_bets_path(@conn, :create), fn f -> %>
+    <div id="team-side-tab" class="tab-content is-active">
+        <div class="columns is-multiline">
+            <div class="column is-12">
+            <div class="field">
+                <label>Bet detail</label>
+                <div class="control has-icon">
+                    <%= text_input f, :details, class: "input" %>
+                        <%= error_tag f, :details %>
+                        <div class="form-icon">
+                            <i data-feather="info"></i>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <div class="column is-12">
+            <div class="field">
+                <label>Event</label>
+                <div class="control has-icon">
+                    <%= text_input f, :event_headline, class: "input" %>
+                        <%= error_tag f, :event_headline %>
+                        <div class="form-icon">
+                            <i data-feather="help-circle"></i>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <div class="column is-6">
+            <div class="field">
+                <label>Sport</label>
+                <div class="control has-icon">
+                    <%= text_input f, :sport, class: "input" %>
+                        <%= error_tag f, :sport %>
+                        <div class="form-icon">
+                            <i data-feather="loader"></i>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <div class="column is-6">
+            <div class="field">
+                <label>Line</label>
+                <div class="control has-icon">
+                    <%= number_input f, :line, step: "any" , class: "input" %>
+                        <%= error_tag f, :line %>
+                        <div class="form-icon">
+                            <i data-feather="minus"></i>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <div class="column is-6">
+            <div class="field">
+                <label>Risk Units</label>
+                <div class="control has-icon">
+                    <%= number_input f, :amount, step: "any" , class: "input" %>
+                        <%= error_tag f, :amount %>
+                        <div class="form-icon">
+                            <i data-feather="dollar-sign"></i>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <div class="column is-6">
+            <div class="field">
+                <label>Odds</label>
+                <div class="control has-icon">
+                    <%= number_input f, :odds, step: "any" , class: "input" %>
+                    
+                    <div class="form-icon">
+                        <i data-feather="flag"></i>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="column is-12">
+            <div class="field">
+                <label>Platform</label>
+                <div class="control has-icons-left">
+                    <div class="select is-full-width">
+                        <select name="user_bets[platform]">
+                        <option selected="">Caliente</option>
+                        <option>Bet 365</option>
+                        <option>Upick</option>
+                        </select>
+                    </div>
+                    <div class="icon is-small is-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-globe">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <div class="column is-6">
+            <button type="button" class="button h-button is-light is-fullwidth close-panel">
+                <span class="icon">
+                    <i data-feather="edit-2"></i>
+                </span>
+                <span>Cancel</span>
+            </button>
+            </div>
+            <div class="column is-6">
+            <button class="button h-button is-success is-elevated is-fullwidth is-medium">
+                <span class="icon">
+                    <i class="fas fa-check"></i>
+                </span>
+                <span>Add bet</span>
+            </button>
+            </div>
+        </div>
+    </div>
+<%= end %>

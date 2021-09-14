@@ -129,13 +129,13 @@
                                         </div>
                                         <div class="column is-6">
                                             <div class="field">
-                                                <%= label f, :profit %>
+                                                <%= label f, :odds %>
                                                     <div class="control has-icon">
-                                                        <%= number_input f, :profit, step: "any" , class: "input" %>
-                                                            <%= error_tag f, :profit %>
-                                                                <div class="form-icon">
-                                                                    <i data-feather="octagon"></i>
-                                                                </div>
+                                                        <%= number_input f, :odds, step: "any" , class: "input" %>
+                                                        <%= error_tag f, :odds %>
+                                                        <div class="form-icon">
+                                                            <i data-feather="octagon"></i>
+                                                        </div>
                                                     </div>
                                             </div>
                                         </div>
@@ -148,11 +148,11 @@
                                                 errors below.</p>
                                         </div>
                                         <% end %>
-                                            <div>
-                                                <%= submit "Track Bet" , id: "save-button" ,
-                                                    class: "button h-button is-primary is-raised" %>
-                                            </div>
-                                            <% end %>
+                                        <div>
+                                            <%= submit "Track Bet" , id: "save-button" ,
+                                                class: "button h-button is-primary is-raised" %>
+                                        </div>
+                                    <% end %>
                                 </div>
                         </div>
                     </div>

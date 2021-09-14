@@ -17,12 +17,12 @@
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
     <div id="huro-app" class="app-wrapper">
-      <%= @inner_content %>
+    <%= @inner_content %>
 
 
 
     </div>
-   <script src="assets/js/app.js"></script>
+    <script src={ Routes.static_path(@conn, "/js/app.js") }></script>
 
 
     <script src={ Routes.static_path(@conn, "/js/functions.js") }></script>
