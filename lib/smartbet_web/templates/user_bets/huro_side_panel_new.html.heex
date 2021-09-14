@@ -65,7 +65,8 @@
             <div class="field">
                 <label>Odds</label>
                 <div class="control has-icon">
-                    <input type="text" class="input" placeholder="">
+                    <%= number_input f, :odds, step: "any" , class: "input" %>
+                    
                     <div class="form-icon">
                         <i data-feather="flag"></i>
                     </div>
