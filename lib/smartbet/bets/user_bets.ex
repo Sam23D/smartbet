@@ -14,8 +14,8 @@ defmodule Smartbet.Bets.UserBets do
     field :profit, :decimal
     field :sport, :string
     field :odds, :integer
-    # TODO add type of bet (spread, etc...)
-    # TODO
+    field :type, :string, default: "Money Line"
+
     # Add field :league, :reference to league
 
     timestamps()
@@ -24,7 +24,7 @@ defmodule Smartbet.Bets.UserBets do
   @doc false
   def changeset(user_bets, attrs) do
     user_bets
-    |> cast(attrs, [:sport, :platform, :event_headline, :details, :odds, :amount, :line, :bet_result, :profit])
+    |> cast(attrs, [:sport, :platform, :event_headline, :details, :odds, :amount, :line, :bet_result, :profit, :type])
     |> validate_required([:sport, :platform, :event_headline, :details, :odds, :amount, :line])
   end
 end
