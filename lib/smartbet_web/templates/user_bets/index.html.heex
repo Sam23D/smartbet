@@ -151,7 +151,8 @@
                                     <span class="light-text" data-filter-match><%= user_bets.sport %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Location">
-                                    <span class="light-text" data-filter-match>Oct 31, 2021</span>
+                                    
+                                    <span class="light-text" data-filter-match><%= pretty_print_date(user_bets.inserted_at) %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Location">
                                     <span class="light-text" data-filter-match><%= user_bets.event_headline %></span>
