@@ -69,6 +69,7 @@ defmodule SmartbetWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/users/settings", UserSettingsController, :edit
+    get "/users/settings/edit_password", UserSettingsController, :edit_password
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
 
@@ -76,7 +77,7 @@ defmodule SmartbetWeb.Router do
       # TODO make all endpoints in this scope have the same layout
       resources "/user_bets", UserBetsController
       get "/user_bets/:id/:bet_result", UserBetsController, :close_bet
-      
+
       resources "/countries", CountryController
       resources "/basketball_teams", BasketballTeamController
       resources "/basketball_leagues", BasketballLeageController
