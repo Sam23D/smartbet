@@ -2,6 +2,8 @@ defmodule Smartbet.Bets.UserBets do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Smartbet.Accounts.User
+
   schema "user_bets" do
     field :amount, :decimal
     field :details, :string
@@ -14,8 +16,11 @@ defmodule Smartbet.Bets.UserBets do
     field :profit, :decimal
     field :sport, :string
     field :odds, :integer
-    # TODO add type of bet (spread, etc...)
-    # TODO
+    field :type, :string, default: "Money Line"
+
+    belongs_to :user, User
+
+
     # Add field :league, :reference to league
 
     timestamps()
