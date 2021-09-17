@@ -74,9 +74,10 @@ defmodule SmartbetWeb.Router do
 
     scope "/admin" do
       # TODO make all endpoints in this scope have the same layout
-      resources "/user_bets", UserBetsController
+      get "/user_bets/delete/:id", UserBetsController, :delete
+      resources "/user_bets", UserBetsController, except: [:delete]
       get "/user_bets/:id/:bet_result", UserBetsController, :close_bet
-      
+
       resources "/countries", CountryController
       resources "/basketball_teams", BasketballTeamController
       resources "/basketball_leagues", BasketballLeageController
