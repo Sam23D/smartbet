@@ -207,8 +207,7 @@
                               <span class="is-grow">Play</span>
                               <span>League</span>
                               <span>Date</span>
-                              <span>Event</span>
-                              <span>Type</span>
+                              <span class="is-grow">Event</span>
                               <span>Spread / Total</span>
                               <span>Odds</span>
                               <span>Risk Units</span>
@@ -234,12 +233,10 @@
                                  <div class="flex-table-cell" data-th="Location">
                                     <span class="light-text" data-filter-match><%= pretty_print_date(user_bets.inserted_at) %></span>
                                  </div>
-                                 <div class="flex-table-cell" data-th="Location">
+                                 <div class="flex-table-cell is-grow" data-th="Location">
                                     <span class="light-text" data-filter-match><%= user_bets.event_headline %></span>
                                  </div>
-                                 <div class="flex-table-cell" data-th="Relations">
-                                    <span class="light-text is-pushed-mobile"><%= user_bets.type %></span>
-                                 </div>
+                                 
                                  <div class="flex-table-cell" data-th="Industry">
                                     <span class="light-text is-weight-600">-6.5</span>
                                  </div>
@@ -247,13 +244,13 @@
                                     <span class="light-text is-weight-600">-<%= user_bets.odds %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Industry">
-                                    <span class="dark-inverted is-weight-600"><%= user_bets.amount %></span>
+                                    <span class="dark-inverted is-weight-600">$<%= user_bets.amount %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Industry">
                                     <span class="dark-inverted is-weight-600"><%= user_bets.profit %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Status">
-                                    <span class="tag is-success is-rounded" data-filter-match><%= user_bets.bet_result %></span>
+                                    <span class= {result_class(user_bets.bet_result)} data-filter-match><%= user_bets.bet_result %></span>
                                  </div>
                                  <div class="flex-table-cell cell-end" data-th="Actions">
                                     <div class="dropdown is-spaced is-dots is-right dropdown-trigger is-pushed-mobile">
@@ -290,7 +287,7 @@
                                                 <span>Schedule a meeting</span>
                                              </div>
                                              </a>
-                                             <a href={ Routes.user_bets_path(@conn, :close_bet, user_bets, "Loss") } class="dropdown-item is-media toolbar-link" >
+                                             <a href={ Routes.user_bets_path(@conn, :close_bet, user_bets, "Lost") } class="dropdown-item is-media toolbar-link" >
                                              <div class="icon">
                                                 <i class="fas fa-flag has-text-grey"></i>
                                              </div>
