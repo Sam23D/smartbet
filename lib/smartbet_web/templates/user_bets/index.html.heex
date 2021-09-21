@@ -1,15 +1,15 @@
-<div id="app-widgets" class="view-wrapper is-webapp" data-page-title="Dashboard" data-naver-offset="150" data-menu-item="#dashboards-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
+<div id="app-widgets" class="view-wrapper is-webapp" data-page-title="Picks" data-naver-offset="150" data-menu-item="#dashboards-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
    <div class="page-content-wrapper">
       <div class="page-content is-relative">
          <div class="page-content-inner">
             <!--Personal Dashboard V2-->
-            <div class="personal-dashboard personal-dashboard-v2 finance-dashboard analytics-dashboard ecommerce-dashboard ecommerce-dashboard-v1 stock-dashboard apex-dashboard">
+            <div class="personal-dashboard personal-dashboard-v2 finance-dashboard analytics-dashboard ecommerce-dashboard ecommerce-dashboard-v1 stock-dashboard apex-dashboard ecommerce-dashboard ecommerce-dashboard-v1">
                <div class="columns is-multiline">
                   <div class="column is-12">
                      <div class="list-flex-toolbar">
                         <div class="dropdown  is-spaced dropdown-trigger">
                            <div class="is-trigger" aria-haspopup="true" aria-controls="dropdown-menu">
-                              <button class="button h-button is-primary is-outlined ">
+                              <button class="button h-button is-primary">
                               <span class="icon">
                               <i class="fas fa-calendar-alt"></i>
                               </span>
@@ -107,6 +107,88 @@
                      </div>
                   </div>
                   <div class="column is-12">
+                     <div class="stats-wrapper">
+                        <div class="columns is-multiline is-flex-tablet-p">
+                           <!--Dashboard tile-->
+                           <div class="column is-3">
+                              <div class="dashboard-tile">
+                                 <div class="tile-head">
+                                    <h3>Pending</h3>
+                                    <div class="h-icon is-orange is-rounded">
+                                       <i data-feather="clock"></i>
+                                    </div>
+                                 </div>
+                                 <div class="dashboard-tile-inner">
+                                    <div class="left">
+                                       <span class="dark-inverted">29</span>
+                                    </div>
+                                    <div class="right">
+                                       <div id="spark4"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Dashboard tile-->
+                           <div class="column is-3">
+                              <div class="dashboard-tile">
+                                 <div class="tile-head">
+                                    <h3>Won</h3>
+                                    <div class="h-icon is-green is-rounded">
+                                       <i data-feather="check-circle"></i>
+                                    </div>
+                                 </div>
+                                 <div class="dashboard-tile-inner">
+                                    <div class="left">
+                                       <span class="dark-inverted">371</span>
+                                    </div>
+                                    <div class="right">
+                                       <div id="spark3"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Dashboard tile-->
+                           <div class="column is-3">
+                              <div class="dashboard-tile">
+                                 <div class="tile-head">
+                                    <h3>Lost</h3>
+                                    <div class="h-icon is-red is-rounded">
+                                       <i data-feather="x-circle"></i>
+                                    </div>
+                                 </div>
+                                 <div class="dashboard-tile-inner">
+                                    <div class="left">
+                                       <span class="dark-inverted">50</span>
+                                    </div>
+                                    <div class="right">
+                                       <div id="spark2"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Dashboard tile-->
+                           <div class="column is-3">
+                              <div class="dashboard-tile">
+                                 <div class="tile-head">
+                                    <h3>Total revenue</h3>
+                                    <div class="h-icon is-info is-rounded">
+                                       <i data-feather="dollar-sign"></i>
+                                    </div>
+                                 </div>
+                                 <div class="dashboard-tile-inner">
+                                    <div class="left">
+                                       <span class="dark-inverted">641.4K</span>
+                                    </div>
+                                    <div class="right">
+                                       <div id="spark1"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="column is-12">
                      <div class="flex-list-wrapper">
                         <!--List Empty Search Placeholder -->
                         <div class="page-placeholder custom-text-filter-placeholder is-hidden">
@@ -144,14 +226,12 @@
                                     </div>
                                     <div>
                                        <span class="item-name dark-inverted" data-filter-match><%= user_bets.details %></span>
-                                       
                                     </div>
                                  </div>
                                  <div class="flex-table-cell" data-th="Location">
                                     <span class="light-text" data-filter-match><%= user_bets.sport %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Location">
-                                    
                                     <span class="light-text" data-filter-match><%= pretty_print_date(user_bets.inserted_at) %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Location">
@@ -183,51 +263,51 @@
                                        <div class="dropdown-menu" role="menu">
                                           <div class="dropdown-content">
                                              <a href={ Routes.user_bets_path(@conn, :show, user_bets) } class="dropdown-item is-media">
-                                                <div class="icon">
-                                                   <i class="lnil lnil-eye"></i>
-                                                </div>
-                                                <div class="meta">
-                                                   <span>View</span>
-                                                   <span>View Bet details</span>
-                                                </div>
+                                             <div class="icon">
+                                                <i class="lnil lnil-eye"></i>
+                                             </div>
+                                             <div class="meta">
+                                                <span>View</span>
+                                                <span>View Bet details</span>
+                                             </div>
                                              </a>
                                              <a href={ Routes.user_bets_path(@conn, :edit, user_bets) } class="dropdown-item is-media toolbar-link" >
-                                                <div class="icon">
-                                                   <i class="lnil lnil-pencil"></i>
-                                                </div>
-                                                <div class="meta">
-                                                   <span>Edit</span>
-                                                   <span>Schedule a meeting</span>
-                                                </div>
+                                             <div class="icon">
+                                                <i class="lnil lnil-pencil"></i>
+                                             </div>
+                                             <div class="meta">
+                                                <span>Edit</span>
+                                                <span>Schedule a meeting</span>
+                                             </div>
                                              </a>
                                              <hr class="dropdown-divider">
                                              <a href={ Routes.user_bets_path(@conn, :close_bet, user_bets,  "Win") } class="dropdown-item is-media toolbar-link" >
-                                                <div class="icon">
-                                                   <i class="fas fa-trophy has-text-grey"></i>
-                                                </div>
-                                                <div class="meta">
-                                                   <span>Close as a win</span>
-                                                   <span>Schedule a meeting</span>
-                                                </div>
+                                             <div class="icon">
+                                                <i class="fas fa-trophy has-text-grey"></i>
+                                             </div>
+                                             <div class="meta">
+                                                <span>Close as a win</span>
+                                                <span>Schedule a meeting</span>
+                                             </div>
                                              </a>
                                              <a href={ Routes.user_bets_path(@conn, :close_bet, user_bets, "Loss") } class="dropdown-item is-media toolbar-link" >
-                                                <div class="icon">
-                                                   <i class="fas fa-flag has-text-grey"></i>
-                                                </div>
-                                                <div class="meta">
-                                                   <span>Close as a loss</span>
-                                                   <span>Schedule a meeting</span>
-                                                </div>
+                                             <div class="icon">
+                                                <i class="fas fa-flag has-text-grey"></i>
+                                             </div>
+                                             <div class="meta">
+                                                <span>Close as a loss</span>
+                                                <span>Schedule a meeting</span>
+                                             </div>
                                              </a>
                                              <hr class="dropdown-divider">
                                              <a href={ Routes.user_bets_path(@conn, :delete, user_bets) } class="dropdown-item is-media">
-                                                <div class="icon">
-                                                   <i class="lnil lnil-trash-can-alt"></i>
-                                                </div>
-                                                <div class="meta">
-                                                   <span>Remove</span>
-                                                   <span>Remove from list</span>
-                                                </div>
+                                             <div class="icon">
+                                                <i class="lnil lnil-trash-can-alt"></i>
+                                             </div>
+                                             <div class="meta">
+                                                <span>Remove</span>
+                                                <span>Remove from list</span>
+                                             </div>
                                              </a>
                                           </div>
                                        </div>
@@ -260,3 +340,4 @@
       </div>
    </div>
 </div>
+<script src={ Routes.static_path(@conn, "/js/ecommerce-1.js") } async></script>

@@ -22,6 +22,18 @@ defmodule SmartbetWeb.UserSettingsController do
     render(conn, "edit_password.html", changeset: changeset)
   end
 
+  def edit_teams(conn, _params) do
+    user =  conn.assigns.current_user
+    changeset = Accounts.change_user_email(user)
+    render(conn, "edit_teams.html", changeset: changeset)
+  end
+
+  def edit_bet(conn, _params) do
+    user =  conn.assigns.current_user
+    changeset = Accounts.change_user_email(user)
+    render(conn, "edit_bet_settings.html", changeset: changeset)
+  end
+
   def update(conn, %{"action" => "update_email"} = params) do
     %{"current_password" => password, "user" => user_params} = params
     user = conn.assigns.current_user
