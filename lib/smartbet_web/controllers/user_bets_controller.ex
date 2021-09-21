@@ -19,6 +19,7 @@ defmodule SmartbetWeb.UserBetsController do
   end
 
   def create(conn, %{"user_bets" => user_bets_params}) do
+    # TODO get conn.user_id and add it to user_bet
     case Bets.create_user_bets(user_bets_params) do
       {:ok, _user_bets} ->
         conn
