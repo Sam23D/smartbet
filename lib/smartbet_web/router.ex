@@ -69,6 +69,9 @@ defmodule SmartbetWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/users/settings", UserSettingsController, :edit
+    get "/users/settings/edit_password", UserSettingsController, :edit_password
+    get "/users/settings/edit_teams", UserSettingsController, :edit_teams
+    get "/users/settings/edit_bet+settings", UserSettingsController, :edit_bet
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
 

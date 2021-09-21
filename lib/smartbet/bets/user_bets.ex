@@ -18,7 +18,9 @@ defmodule Smartbet.Bets.UserBets do
     field :odds, :integer
     field :type, :string, default: "Money Line"
 
+
     belongs_to :user, User
+
 
 
     # Add field :league, :reference to league
@@ -29,7 +31,7 @@ defmodule Smartbet.Bets.UserBets do
   @doc false
   def changeset(user_bets, attrs) do
     user_bets
-    |> cast(attrs, [:sport, :platform, :event_headline, :details, :odds, :amount, :line, :bet_result, :profit])
+    |> cast(attrs, [:sport, :platform, :event_headline, :details, :odds, :amount, :line, :bet_result, :profit, :type])
     |> validate_required([:sport, :platform, :event_headline, :details, :odds, :amount, :line])
   end
 end

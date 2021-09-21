@@ -51,6 +51,7 @@ defmodule Smartbet.MixProject do
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
       {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
+      {:timex, "~> 3.0"}
     ]
   end
 
