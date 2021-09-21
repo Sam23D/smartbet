@@ -73,7 +73,6 @@ defmodule SmartbetWeb.Router do
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
 
     scope "/admin" do
-      # TODO make all endpoints in this scope have the same layout
       get "/user_bets/delete/:id", UserBetsController, :delete
       resources "/user_bets", UserBetsController, except: [:delete]
       get "/user_bets/:id/:bet_result", UserBetsController, :close_bet
