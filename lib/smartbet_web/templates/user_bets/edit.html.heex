@@ -95,6 +95,18 @@
                            </div>
                            <div class="column is-6">
                               <div class="field">
+                                 <%= label f, :odds %>
+                                 <div class="control has-icon">
+                                    <%= number_input f, :odds, step: "any" , class: "input" %>
+                                    <%= error_tag f, :odds %>
+                                    <div class="form-icon">
+                                       <i data-feather="dollar-sign"></i>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="column is-6">
+                              <div class="field">
                                  <%= label f, :line %>
                                  <div class="control has-icon">
                                     <%= number_input f, :line, step: "any", class: "input" %>

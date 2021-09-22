@@ -39,7 +39,28 @@ defmodule SmartbetWeb.UserBetsController do
 
   def close_bet(conn, %{"id" => id, "bet_result" => result}) do
     user_bets = Bets.get_user_bets!(id)
-    case Bets.update_user_bets(user_bets, %{ bet_result: result }) do
+
+
+    bet_profit = case result do
+      "Lost" ->
+          Decimal.mult(user_bets.amount, Decimal.new(-1) )
+          |> IO.inspect( label: "LOST RESULT" )
+
+      "Win" ->
+        if user_bets.odds > 0 do
+          abs(user_bets.odds)
+          |> Decimal.mult(user_bets.amount)
+          |> Decimal.div( 100 )
+          |> IO.inspect( label: "POSITIVE ODDS WIN RESULT" )
+        else
+          Decimal.mult(user_bets.amount, 100)
+          |> Decimal.div(abs(user_bets.odds))
+          |> IO.inspect( label: "NEGATIVE ODDS WIN RESULT" )
+
+        end
+    end
+
+    case Bets.update_user_bets(user_bets, %{ bet_result: result, profit: bet_profit }) do
       {:ok, _} ->
         conn
         |> redirect(to: Routes.user_bets_path(conn, :index))

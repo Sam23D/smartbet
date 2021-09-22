@@ -241,13 +241,13 @@
                                     <span class="light-text is-weight-600">-6.5</span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Industry">
-                                    <span class="light-text is-weight-600">-<%= user_bets.odds %></span>
+                                    <span class="light-text is-weight-600"><%= user_bets.odds %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Industry">
                                     <span class="dark-inverted is-weight-600">$<%= user_bets.amount %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Industry">
-                                    <span class="dark-inverted is-weight-600"><%= user_bets.profit %></span>
+                                    <span class="dark-inverted is-weight-600">$<%= Decimal.round(user_bets.profit, 2) %></span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Status">
                                     <span class= {result_class(user_bets.bet_result)} data-filter-match><%= user_bets.bet_result %></span>
