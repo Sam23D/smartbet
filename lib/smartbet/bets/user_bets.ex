@@ -13,7 +13,7 @@ defmodule Smartbet.Bets.UserBets do
 
     field :line, :decimal
     field :platform, :string
-    field :profit, :decimal
+    field :profit, :decimal, default: 0
     field :sport, :string
     field :odds, :integer
     field :type, :string, default: "Money Line"
