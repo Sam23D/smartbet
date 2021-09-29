@@ -74,6 +74,15 @@ defmodule Smartbet.Bets do
   end
 
   @doc """
+  Updates the user bet and also recalculates profit
+  """
+  def update_user_bets_and_profit(%UserBets{} = user_bets, attrs)do
+    user_bets
+    |> UserBets.profit_changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
   Deletes a user_bets.
 
   ## Examples

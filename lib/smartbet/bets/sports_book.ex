@@ -10,16 +10,16 @@ defmodule Smartbet.Bets.SportsBook do
             abs(user_bet.odds)
             |> Decimal.mult(user_bet.amount)
             |> Decimal.div( 100 )
-            |> IO.inspect( label: "POSITIVE ODDS WIN RESULT" )
+
           else
             Decimal.mult(user_bet.amount, 100)
             |> Decimal.div(abs(user_bet.odds))
-            |> IO.inspect( label: "NEGATIVE ODDS WIN RESULT" )
+
           end
 
       %{ bet_result: "Lost" } ->
         Decimal.mult(user_bet.amount, Decimal.new(-1) )
-        |> IO.inspect( label: "LOST RESULT" )
+
 
     end
   end

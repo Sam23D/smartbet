@@ -40,9 +40,7 @@ defmodule SmartbetWeb.UserBetsController do
 
   def close_bet(conn, %{"id" => id, "bet_result" => result}) do
     user_bets = Bets.get_user_bets!(id)
-    bet_profit = SportsBook.get_bet_profit(user_bets)
-
-    case Bets.update_user_bets(user_bets, %{ bet_result: result, profit: bet_profit }) do
+    case Bets.update_user_bets_and_profit(user_bets, %{ bet_result: result }) do
       {:ok, _} ->
         conn
         |> redirect(to: Routes.user_bets_path(conn, :index))
@@ -58,8 +56,7 @@ defmodule SmartbetWeb.UserBetsController do
 
   def update(conn, %{"id" => id, "user_bets" => user_bets_params}) do
     user_bets = Bets.get_user_bets!(id)
-
-    case Bets.update_user_bets(user_bets, user_bets_params) do
+    case Bets.update_user_bets_and_profit(user_bets, user_bets_params) do
       {:ok, user_bets} ->
         user_bets = Bets.list_user_bets()
         conn
