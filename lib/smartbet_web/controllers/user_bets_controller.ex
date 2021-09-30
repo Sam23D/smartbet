@@ -3,6 +3,7 @@ defmodule SmartbetWeb.UserBetsController do
 
   alias Smartbet.Bets
   alias Smartbet.Bets.UserBets
+  alias Smartbet.Bets.SportsBook
 
   plug :put_layout, "dashboard_layout.html"
 
@@ -39,32 +40,10 @@ defmodule SmartbetWeb.UserBetsController do
 
   def close_bet(conn, %{"id" => id, "bet_result" => result}) do
     user_bets = Bets.get_user_bets!(id)
-
-
-    bet_profit = case result do
-      "Lost" ->
-          Decimal.mult(user_bets.amount, Decimal.new(-1) )
-          |> IO.inspect( label: "LOST RESULT" )
-
-      "Win" ->
-        if user_bets.odds > 0 do
-          abs(user_bets.odds)
-          |> Decimal.mult(user_bets.amount)
-          |> Decimal.div( 100 )
-          |> IO.inspect( label: "POSITIVE ODDS WIN RESULT" )
-        else
-          Decimal.mult(user_bets.amount, 100)
-          |> Decimal.div(abs(user_bets.odds))
-          |> IO.inspect( label: "NEGATIVE ODDS WIN RESULT" )
-
-        end
-    end
-
-    case Bets.update_user_bets(user_bets, %{ bet_result: result, profit: bet_profit }) do
+    case Bets.update_user_bets_and_profit(user_bets, %{ bet_result: result }) do
       {:ok, _} ->
         conn
         |> redirect(to: Routes.user_bets_path(conn, :index))
-
     end
 
   end
@@ -77,8 +56,7 @@ defmodule SmartbetWeb.UserBetsController do
 
   def update(conn, %{"id" => id, "user_bets" => user_bets_params}) do
     user_bets = Bets.get_user_bets!(id)
-
-    case Bets.update_user_bets(user_bets, user_bets_params) do
+    case Bets.update_user_bets_and_profit(user_bets, user_bets_params) do
       {:ok, user_bets} ->
         user_bets = Bets.list_user_bets()
         conn
