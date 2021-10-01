@@ -120,7 +120,7 @@
                                  </div>
                                  <div class="dashboard-tile-inner">
                                     <div class="left">
-                                       <span class="dark-inverted">29</span>
+                                       <span class="dark-inverted"> <%= @bet_count.pendings %> </span>
                                     </div>
                                     <div class="right">
                                        <div id="spark4"></div>
@@ -139,7 +139,7 @@
                                  </div>
                                  <div class="dashboard-tile-inner">
                                     <div class="left">
-                                       <span class="dark-inverted">371</span>
+                                       <span class="dark-inverted"><%= @bet_count.wins %></span>
                                     </div>
                                     <div class="right">
                                        <div id="spark3"></div>
@@ -158,7 +158,7 @@
                                  </div>
                                  <div class="dashboard-tile-inner">
                                     <div class="left">
-                                       <span class="dark-inverted">50</span>
+                                       <span class="dark-inverted"> <%= @bet_count.loses %> </span>
                                     </div>
                                     <div class="right">
                                        <div id="spark2"></div>
@@ -171,13 +171,13 @@
                               <div class="dashboard-tile">
                                  <div class="tile-head">
                                     <h3>Total revenue</h3>
-                                    <div class="h-icon is-info is-rounded">
+                                    <div class={profit_color(@net_profit)}>
                                        <i data-feather="dollar-sign"></i>
                                     </div>
                                  </div>
                                  <div class="dashboard-tile-inner">
                                     <div class="left">
-                                       <span class="dark-inverted">641.4K</span>
+                                       <span class="dark-inverted">$ <%= Decimal.round(@net_profit,2) %></span>
                                     </div>
                                     <div class="right">
                                        <div id="spark1"></div>

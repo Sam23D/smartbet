@@ -25,4 +25,12 @@ defmodule SmartbetWeb.UserBetsView do
 
   end
 
+  def profit_color(net_profit) do
+    case Decimal.compare(net_profit,0) do
+      :lt ->  "is-red h-icon  is-rounded"
+      :gt ->  "is-green h-icon  is-rounded"
+      :eq ->  "is-info h-icon  is-rounded"
+    end
+  end
+
 end
