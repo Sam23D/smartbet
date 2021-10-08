@@ -1,6 +1,7 @@
+
 defmodule SmartbetWeb.UserBetsView do
   use SmartbetWeb, :view
-
+  alias SmartbetWeb.Components.Huro
   def pretty_print_date(date) do
     date
     |> Timex.format!("{D}/{M}/{YYYY}")

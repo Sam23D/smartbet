@@ -17,8 +17,9 @@ defmodule Smartbet.Bets do
       [%UserBets{}, ...]
 
   """
-  def list_user_bets do
-    Repo.all(UserBets)
+  def list_user_bets(params) do
+    page = params["page"] || 1
+    Repo.paginate(UserBets, page: page)
   end
 
   @doc """

@@ -8,8 +8,8 @@ defmodule SmartbetWeb.UserBetsController do
   plug :put_layout, "dashboard_layout.html"
 
 
-  def index(conn, _params) do
-    user_bets = Bets.list_user_bets()
+  def index(conn, params) do
+    user_bets = Bets.list_user_bets(params)
     changeset = Bets.change_user_bets(%UserBets{})
     bet_count = Bets.count_bet_count(user_bets)
     net_profit = Bets.net_profit(user_bets)
