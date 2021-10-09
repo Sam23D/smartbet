@@ -8,10 +8,12 @@ defmodule SmartbetWeb.UserBetsController do
   plug :put_layout, "dashboard_layout.html"
 
 
-  def index(conn, _params) do
-    user_bets = Bets.list_user_bets()
+  def index(conn, params) do
+    user_bets = Bets.list_user_bets(params)
     changeset = Bets.change_user_bets(%UserBets{})
-    render(conn, "index.html", user_bets: user_bets, changeset: changeset)
+    bet_count = Bets.count_bet_count(user_bets)
+    net_profit = Bets.net_profit(user_bets)
+    render(conn, "index.html", user_bets: user_bets, changeset: changeset, bet_count: bet_count, net_profit: net_profit )
   end
 
   def new(conn, _params) do
@@ -58,7 +60,7 @@ defmodule SmartbetWeb.UserBetsController do
     user_bets = Bets.get_user_bets!(id)
     case Bets.update_user_bets_and_profit(user_bets, user_bets_params) do
       {:ok, user_bets} ->
-        user_bets = Bets.list_user_bets()
+        user_bets = Bets.list_user_bets(%{})
         conn
         |> put_flash(:info, "User bets updated successfully.")
         |> redirect(to: Routes.user_bets_path(conn, :index, user_bets))

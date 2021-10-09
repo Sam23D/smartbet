@@ -17,8 +17,9 @@ defmodule Smartbet.Bets do
       [%UserBets{}, ...]
 
   """
-  def list_user_bets do
-    Repo.all(UserBets)
+  def list_user_bets(params) do
+    page = params["page"] || 1
+    Repo.paginate(UserBets, page: max(page, 1)) # removes all pages 0 & below
   end
 
   @doc """
@@ -109,5 +110,28 @@ defmodule Smartbet.Bets do
   """
   def change_user_bets(%UserBets{} = user_bets, attrs \\ %{}) do
     UserBets.changeset(user_bets, attrs)
+  end
+
+  def get_all_bets_from_user(bet_result) do
+    query = from bet in UserBets,
+      where: bet.bet_result == ^bet_result,
+      select: bet
+    Repo.all(query)
+    |> Enum.count
+  end
+
+  def count_bet_count(user_bets_list) do
+    wins = Enum.filter(user_bets_list, fn bet -> bet.bet_result == "Win" end)
+    |> Enum.count
+    loses = Enum.filter(user_bets_list, fn bet -> bet.bet_result == "Lost" end)
+    |> Enum.count
+    pendings = Enum.filter(user_bets_list, fn bet -> bet.bet_result == "Pending" end)
+    |> Enum.count
+    %{wins: wins, loses: loses, pendings: pendings}
+  end
+
+  def net_profit(user_bets_list) do
+    Enum.map(user_bets_list, fn user_bet -> user_bet.profit end)
+    |> Enum.reduce(Decimal.new(0),fn x, acc -> Decimal.add(x,acc) end)
   end
 end

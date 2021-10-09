@@ -21,6 +21,7 @@ defmodule Smartbet.MixProject do
     [
       mod: {Smartbet.Application, []},
       extra_applications: [:logger, :runtime_tools]
+
     ]
   end
 
@@ -51,7 +52,8 @@ defmodule Smartbet.MixProject do
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
       {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
-      {:timex, "~> 3.0"}
+      {:timex, "~> 3.0"},
+      {:scrivener_ecto, "~> 2.0"}
     ]
   end
 
@@ -68,6 +70,7 @@ defmodule Smartbet.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"]
+
     ]
   end
 end
