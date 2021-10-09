@@ -16,6 +16,18 @@ defmodule SmartbetWeb.Components.Huro do
     %{ page_number: "?page=#{pn}", final_page: "?page=#{tp}", prev_page: "?page=#{pn - 1}", next_page: "?page=#{pn + 1}" }
   end
 
+  defp _pagination(%{page_number: pn, total_pages: tp}=page, assigns) when pn == tp and tp == 1  do
+    %{ }  = _pagination_hrefs(page)
+    ~H"""
+    <nav class="flex-pagination pagination is-rounded" aria-label="pagination" data-filter-hide>
+      <ul class="pagination-list">
+        <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page"><%= @page.page_number %></a>
+        </li>
+      </ul>
+    </nav>
+    """
+  end
+
   defp _pagination(%{page_number: pn, total_pages: tp}=page, assigns) when pn == tp  do
     %{prev_page: prev_href, final_page: final_href }  = _pagination_hrefs(page)
     ~H"""
