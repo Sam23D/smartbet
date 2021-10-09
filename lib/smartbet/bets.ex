@@ -19,7 +19,7 @@ defmodule Smartbet.Bets do
   """
   def list_user_bets(params) do
     page = params["page"] || 1
-    Repo.paginate(UserBets, page: page)
+    Repo.paginate(UserBets, page: max(page, 1)) # removes all pages 0 & below
   end
 
   @doc """

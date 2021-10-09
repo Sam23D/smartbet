@@ -34,6 +34,9 @@ defmodule Smartbet.Outbound.APIs.SportsAPIBasketball do
     end
   end
 
+  # TODO get_games() // by date, by league
+
+  # TODO get_game()
 
 
 end
