@@ -118,10 +118,10 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
 
 
   @doc """
-  Will fetch all teams from SportsAPI,given a league_id and a season ("2020-2021") is required
+  Will fetch all teams from SportsAPI, a league_id and a season is required
   iex> Smartbet.Outbound.APIs.SportsAPIBasketball.get_teams(%{ league: 12, season: "2020-2021" })
   """
-  def fetch_teams_from_league( league_id \\ 12, season \\ "2020-2021" )do # NBA league
+  def fetch_teams( league_id \\ 12, season \\ "2020-2021" )do # NBA league
     with %BasketballLeague{ name: name } <- Repo.get_by( BasketballLeague, source_id: league_id ),
     _ <- IO.inspect("Fetching teams from league #{name}"),
       teams <- SportsAPIBasketball.get_teams(%{ league: league_id, season: "2020-2021" }),
@@ -129,12 +129,11 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
       placeholders <- %{ inserted_at: now, updated_at: now }
     do
       parsed_entries = teams
-      # prepares the data for Repo.insert_all
       |> Enum.map(fn
         %{"id" => source_id,
           "name" => name,
           "logo" => logo,
-          "national" => national,
+          "nationnal" => national,
           } -> [source_id: source_id, name: name, logo_imgurl: logo, national: national,
                 inserted_at:  {:placeholder, :inserted_at}, updated_at:  {:placeholder, :updated_at}]
         end)
@@ -144,83 +143,5 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
       _ -> {:error, "No league found with id: #{league_id}"}
     end
   end
-
-  @doc """
-  Fetches all games from a given team id on a given date
-  fetch_games(%{ }=params\\%{ date: "2021-10-11", league: 12 })
-
-  Fetches all games from a given date, such as all games from today # all games for league's season
-  fetch_games(%{league_id: league_src_id, season: iso_date })
-  fetch_games(%{league: 12, season: "2021-2022", date: "2021-10-11", timezone: "america/chihuahua" }) # specific date games
-
-  [...,
-  %{
-     "country" => %{
-       "code" => "US",
-       "flag" => "https://media.api-sports.io/flags/us.svg",
-       "id" => 5,
-       "name" => "USA"
-     },
-     "date" => "2021-10-11T18:00:00-06:00",
-     "id" => 137205,
-     "league" => %{
-       "id" => 12,
-       "logo" => "https://media.api-sports.io/basketball/leagues/12.png",
-       "name" => "NBA",
-       "season" => "2021-2022",
-       "type" => "League"
-     },
-     "scores" => %{
-       "away" => %{
-         "over_time" => nil,
-         "quarter_1" => 27,
-         "quarter_2" => 19,
-         "quarter_3" => 21,
-         "quarter_4" => nil,
-         "total" => 67
-       },
-       "home" => %{
-         "over_time" => nil,
-         "quarter_1" => 34,
-         "quarter_2" => 36,
-         "quarter_3" => 21,
-         "quarter_4" => nil,
-         "total" => 91
-       }
-     }, ...]
-  """
-  # TODO def case for fetch_games(:today)
-  #   must get current date, current timezone, and a league_id or game id
-      # get_games(:today, league: 1), get_games(team: 1200, :today)
-
-  def fetch_games( :today, opts )do
-        with when is_integer(opts.league)
-        # get today season
-        # get today date
-        # get timezone
-        do
-          raise ArithmeticError, message: "Implement"
-        end
-  end
-
-  def fetch_games(params \\ %{league: 12, season: "2021-2022", timezone: "america/chihuahua" })do
-    with league = %BasketballLeague{ name: name } <- Repo.get_by( BasketballLeague, source_id: params.league ),
-    _ <- IO.inspect("Fetching teams from league #{name}"),
-      # TBD implement cashing mechanism
-      games <- SportsAPIBasketball.get_games(params)
-      # TODO update league with fetched params in a task
-      # TODO prepare data / adapter for information
-      # TODO insert games into database
-    do
-
-      {:ok, games}
-    else
-      _ -> {:error, "Could not fetch basketball league"}
-
-    end
-
-  end
-
-
 
 end

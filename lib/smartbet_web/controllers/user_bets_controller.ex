@@ -60,7 +60,7 @@ defmodule SmartbetWeb.UserBetsController do
     user_bets = Bets.get_user_bets!(id)
     case Bets.update_user_bets_and_profit(user_bets, user_bets_params) do
       {:ok, user_bets} ->
-        user_bets = Bets.list_user_bets(%{})
+        user_bets = Bets.list_user_bets()
         conn
         |> put_flash(:info, "User bets updated successfully.")
         |> redirect(to: Routes.user_bets_path(conn, :index, user_bets))
