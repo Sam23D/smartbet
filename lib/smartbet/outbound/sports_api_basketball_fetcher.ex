@@ -193,13 +193,37 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   #   must get current date, current timezone, and a league_id or game id
       # get_games(:today, league: 1), get_games(team: 1200, :today)
 
-  def fetch_games( :today, opts )do
-        with when is_integer(opts.league)
-        # get today season
-        # get today date
-        # get timezone
+  def get_today_params() do
+    today = Date.utc_today()
+    %{date: today,
+      season: get_season(today)
+    }
+  end
+
+  @doc """
+  Given a date 2010-01-01, will determine the corresponding season, being either
+  2009-2010 & 2010-2011, depending on the month is greater or iqual than 7, it will return season for current and next year,
+  otherwise if its <= month 6 it will return season for previous and current year
+  """
+  def get_season(date=%Date{month: m, year: year})do
+    cond do
+      m <= 6 ->
+        "#{year - 1}-#{year}"
+      m >= 7 ->
+        "#{year}-#{year + 1}"
+    end
+  end
+
+
+  def fetch_games( :today, league_id )do
+        with true <- is_integer(league_id),
+        %{season: season, date: today}=today_params <- get_today_params(),
+        req_params <- today_params
+          |> Map.put(:league, league_id)
+          |> Map.put(:timezone, "america/chihuahua")
+
         do
-          raise ArithmeticError, message: "Implement"
+          fetch_games(req_params)
         end
   end
 
@@ -209,6 +233,7 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
       # TBD implement cashing mechanism
       games <- SportsAPIBasketball.get_games(params)
       # TODO update league with fetched params in a task
+      # create new game record per each game
       # TODO prepare data / adapter for information
       # TODO insert games into database
     do
