@@ -118,10 +118,10 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
 
 
   @doc """
-  Will fetch all teams from SportsAPI,given a league_id and a season ("2020-2021") is required
+  Will fetch all teams from SportsAPI, a league_id and a season is required
   iex> Smartbet.Outbound.APIs.SportsAPIBasketball.get_teams(%{ league: 12, season: "2020-2021" })
   """
-  def fetch_teams_from_league( league_id \\ 12, season \\ "2020-2021" )do # NBA league
+  def fetch_teams( league_id \\ 12, season \\ "2020-2021" )do # NBA league
     with %BasketballLeague{ name: name } <- Repo.get_by( BasketballLeague, source_id: league_id ),
     _ <- IO.inspect("Fetching teams from league #{name}"),
       teams <- SportsAPIBasketball.get_teams(%{ league: league_id, season: "2020-2021" }),
@@ -129,12 +129,11 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
       placeholders <- %{ inserted_at: now, updated_at: now }
     do
       parsed_entries = teams
-      # prepares the data for Repo.insert_all
       |> Enum.map(fn
         %{"id" => source_id,
           "name" => name,
           "logo" => logo,
-          "national" => national,
+          "nationnal" => national,
           } -> [source_id: source_id, name: name, logo_imgurl: logo, national: national,
                 inserted_at:  {:placeholder, :inserted_at}, updated_at:  {:placeholder, :updated_at}]
         end)
@@ -145,6 +144,7 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
     end
   end
 
+<<<<<<< HEAD
   @doc """
   Fetches all games from a given team id on a given date
   fetch_games(%{ }=params\\%{ date: "2021-10-11", league: 12 })
@@ -248,4 +248,6 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
 
 
 
+=======
+>>>>>>> ef869b89b5d3f5add85fe111d5c77959a5fbcfe0
 end
