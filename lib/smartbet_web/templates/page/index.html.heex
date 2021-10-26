@@ -12,7 +12,7 @@
                     <!-- Navbar partial -->
                     <nav class="navbar is-fixed-top is-transparent is-docked" aria-label="main navigation">
                         <div class="navbar-brand">
-                            <a class="navbar-item" href="/">
+                            <a class="navbar-item" >
                                 <div class="brand-icon">
                                     <img class="light-image-l" src={ Routes.static_path(@conn, "/images/logos/logo/logo.svg") } alt="" />
                                     <img class="dark-image-l" src={ Routes.static_path(@conn, "/images/logos/logo/logo-light.svg") } alt="" />
@@ -29,7 +29,7 @@
                         <div class="navbar-menu">
                             <div class="navbar-start">
                                 <div class="navbar-item">
-                                    <a href="https://themeforest.net/item/huro-multipurpose-admin-and-webapp-ui-kit/28933249" class="nav-link is-active">Sports</a>
+                                    <a class="nav-link is-active">Sports</a>
                                 </div>
 
                                 <div class="navbar-item">
@@ -64,9 +64,15 @@
                                     <a href={ Routes.user_session_path(@conn, :new) } class="nav-link">Login</a>
                                 </div>
                                 <div class="navbar-item">
+                                    <%= if @conn.assigns.current_user do %>
+                                    <a href={ Routes.user_registration_path(@conn, :new) } class="button h-button is-rounded is-primary is-raised">
+                                        <strong>Welcome Back</strong>
+                                    </a>
+                                    <% else %>
                                     <a href={ Routes.user_registration_path(@conn, :new) } class="button h-button is-rounded is-primary is-raised">
                                         <strong>Sign up</strong>
                                     </a>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>
