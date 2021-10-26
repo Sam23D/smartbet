@@ -144,7 +144,6 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
     end
   end
 
-<<<<<<< HEAD
   @doc """
   Fetches all games from a given team id on a given date
   fetch_games(%{ }=params\\%{ date: "2021-10-11", league: 12 })
@@ -247,7 +246,4 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   end
 
 
-
-=======
->>>>>>> ef869b89b5d3f5add85fe111d5c77959a5fbcfe0
 end

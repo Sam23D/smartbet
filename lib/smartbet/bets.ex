@@ -7,6 +7,7 @@ defmodule Smartbet.Bets do
   alias Smartbet.Repo
 
   alias Smartbet.Bets.UserBets
+  alias Smartbet.Accounts.User
 
   @doc """
   Returns the list of user_bets.
@@ -52,6 +53,13 @@ defmodule Smartbet.Bets do
   """
   def create_user_bets(attrs \\ %{}) do
     %UserBets{}
+    |> UserBets.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  # this clause will match for when we want to assign a user to the user_bet
+  def create_user_bets(%User{}=user, attrs) do
+    Ecto.build_assoc(user, :user_bets, attrs)
     |> UserBets.changeset(attrs)
     |> Repo.insert()
   end
