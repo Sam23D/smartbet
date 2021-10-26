@@ -11,15 +11,15 @@ defmodule Smartbet.Sports.BasketballGame do
 
   schema "basketball_games" do
     field :game_datetime, :naive_datetime
-    field :source_id, :integer
-    field :scores, :map
+    field :scores, :map # ??
 
+    field :source_id, :integer
+    # TODO add field :source, :string // "sports_api"
     # TODO add :headline, :string
 
     # TODO add :crawled_at, :datetime
-    # TODO add :played_at, :datetime
-
-
+    # TODO add :plays_at, :datetime # use to get incomming games
+    # TODO add :league, :string
 
     timestamps()
   end
