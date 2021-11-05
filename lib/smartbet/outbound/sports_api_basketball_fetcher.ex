@@ -3,8 +3,9 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   require Logger
 
   alias Smartbet.Outbound.APIs.SportsAPIBasketball
-  alias Smartbet.Sports.{BasketballLeague, Country, BasketballTeam}
+  alias Smartbet.Sports.{BasketballLeague, Country, BasketballTeam, BasketballGame}
   alias Smartbet.Repo
+  alias Ecto.Changeset
 
   @moduledoc """
   This module will query the SportsAPI api and then insert all the entries in the DB to later use them as cached entitites.
@@ -227,21 +228,42 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   end
 
   def fetch_games(params \\ %{league: 12, season: "2021-2022", timezone: "america/chihuahua" })do
-    with league = %BasketballLeague{ name: name } <- Repo.get_by( BasketballLeague, source_id: params.league ),
+    with {:league, league = %BasketballLeague{ name: name }} <- {:league, Repo.get_by( BasketballLeague, source_id: params.league )},
     _ <- IO.inspect("Fetching teams from league #{name}"),
       # TBD implement cashing mechanism
       games <- SportsAPIBasketball.get_games(params)
+
       # TODO update league with fetched params in a task
       # create new game record per each game
       # TODO prepare data / adapter for information
       # TODO insert games into database
     do
-
-      {:ok, games}
+      persisted_games = persist_games(games)
+      {:ok, persisted_games}
     else
-      _ -> {:error, "Could not fetch basketball league"}
+      {:league, _} -> {:error, "League not found"}
+      err -> IO.inspect(err)
+        {:error, "Could not fetch basketball league"}
 
     end
+  end
+
+  def persist_games(games)do
+
+    parsed_games = games
+    |> Enum.map(fn
+      game = %{ "teams" => %{ "away" => away, "home" => home },
+        "league" => league
+      } ->
+        game_headline = "[#{home["id"]}] #{home["name"]} VS [#{away["id"]}] #{away["name"]} - #{league["name"]}"
+        IO.inspect(game, label: "Game")
+        params = BasketballGame.parse_params(game, :sports_api)
+        %BasketballGame{}
+        |> BasketballGame.sports_api_changest(params)
+        |> IO.inspect(abel: "Game changeset")
+        |> Repo.insert(on_conflict: :replace_all, conflict_target: [:home, :visit, :league])
+
+      end)
 
   end
 

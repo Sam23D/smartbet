@@ -2,12 +2,16 @@ defmodule Smartbet.Sports.BasketballTeam do
   use Ecto.Schema
   import Ecto.Changeset
 
+  Smartbet.Sports.BasketballLeague
+
   schema "basketball_teams" do
     field :logo_imgurl, :string
     field :name, :string
     field :national, :boolean, default: false
     field :source_id, :integer
     field :source, :string
+
+    # field :league,  BasketballLeague
 
     timestamps()
   end

@@ -11,13 +11,12 @@ defmodule Smartbet.Repo.Migrations.AddsGameRecord do
       add :game_data, :map
       add :game_headline, :string
 
-      add :home_src_id, references(:basketball_teams)
-      add :visit_src_id, references(:basketball_teams)
-      add :league_src_id, references(:basketball_teams)
+      add :game_id, references(:basketball_games)
+      timestamps()
     end
 
 
-    create index(:basketball_game_records, [:home_src_id, :visit_src_id, :league_src_id], unique: true)
+    create index(:basketball_game_records, [:game_id])
   end
 
 end

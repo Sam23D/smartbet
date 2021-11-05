@@ -3,6 +3,7 @@ defmodule Smartbet.Sports.BasketballGameRecord do
   import Ecto.Changeset
 
   alias Smartbet.Sports.BasketballTeam
+  alias Smartbet.Sports.BasketballGame
   alias Smartbet.Sports.BasketballLeague
 
   @moduledoc """
@@ -11,13 +12,10 @@ defmodule Smartbet.Sports.BasketballGameRecord do
   """
 
   schema "basketball_game_records" do
-    belongs_to :home, BasketballTeam
-    belongs_to :visit, BasketballTeam
-    belongs_to :league, BasketballLeague
     field :game_data, :map
     field :game_headline, :string
 
-
+    belongs_to :basketball_game, BasketballGame
     timestamps()
   end
 
