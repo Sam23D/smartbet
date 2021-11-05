@@ -20,7 +20,15 @@ defmodule Smartbet.Bets do
   """
   def list_user_bets(params) do
     page = params["page"] || 1
-    Repo.paginate(UserBets, page: page)
+    UserBets
+    |> order_by([user_bet], desc: user_bet.inserted_at)
+    |> Repo.paginate(page: page)
+  end
+
+  def all_user_bets(user_id) do
+    query = from user_bet in UserBets,
+    where: user_bet.user_id == ^user_id
+    Repo.all(query)
   end
 
   @doc """
