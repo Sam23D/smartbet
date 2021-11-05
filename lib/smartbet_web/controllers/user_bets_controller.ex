@@ -10,9 +10,12 @@ defmodule SmartbetWeb.UserBetsController do
 
   def index(conn, params) do
     user_bets = Bets.list_user_bets(params)
+    all_user_bets = conn.assigns.current_user.id
+    |> IO.inspect(label: "current user")
+    |> Bets.all_user_bets()
     changeset = Bets.change_user_bets(%UserBets{})
-    bet_count = Bets.count_bet_count(user_bets)
-    net_profit = Bets.net_profit(user_bets) # this will ventually calculate the users user_bets_summary
+    bet_count = Bets.count_bet_count(all_user_bets)
+    net_profit = Bets.net_profit(all_user_bets) # this will ventually calculate the users user_bets_summary
     render(conn, "index.html", user_bets: user_bets, changeset: changeset, bet_count: bet_count, net_profit: net_profit )
   end
 
@@ -59,7 +62,7 @@ defmodule SmartbetWeb.UserBetsController do
     user_bets = Bets.get_user_bets!(id)
     case Bets.update_user_bets_and_profit(user_bets, user_bets_params) do
       {:ok, user_bets} ->
-        user_bets = Bets.list_user_bets()
+        user_bets = Bets.list_user_bets(%{})
         conn
         |> put_flash(:info, "User bets updated successfully.")
         |> redirect(to: Routes.user_bets_path(conn, :index, user_bets))
