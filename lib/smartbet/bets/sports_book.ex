@@ -20,6 +20,9 @@ defmodule Smartbet.Bets.SportsBook do
       %{ bet_result: "Lost" } ->
         Decimal.mult(user_bet.amount, Decimal.new(-1) )
 
+      %{ bet_result: _ } ->
+         0
+
 
     end
   end

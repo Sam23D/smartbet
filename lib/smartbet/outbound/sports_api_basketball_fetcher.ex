@@ -3,8 +3,9 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   require Logger
 
   alias Smartbet.Outbound.APIs.SportsAPIBasketball
-  alias Smartbet.Sports.{BasketballLeague, Country, BasketballTeam}
+  alias Smartbet.Sports.{BasketballLeague, Country, BasketballTeam, BasketballGame}
   alias Smartbet.Repo
+  alias Ecto.Changeset
 
   @moduledoc """
   This module will query the SportsAPI api and then insert all the entries in the DB to later use them as cached entitites.
@@ -143,5 +144,128 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
       _ -> {:error, "No league found with id: #{league_id}"}
     end
   end
+
+  @doc """
+  Fetches all games from a given team id on a given date
+  fetch_games(%{ }=params\\%{ date: "2021-10-11", league: 12 })
+
+  Fetches all games from a given date, such as all games from today # all games for league's season
+  fetch_games(%{league_id: league_src_id, season: iso_date })
+  fetch_games(%{league: 12, season: "2021-2022", date: "2021-10-11", timezone: "america/chihuahua" }) # specific date games
+
+  [...,
+  %{
+     "country" => %{
+       "code" => "US",
+       "flag" => "https://media.api-sports.io/flags/us.svg",
+       "id" => 5,
+       "name" => "USA"
+     },
+     "date" => "2021-10-11T18:00:00-06:00",
+     "id" => 137205,
+     "league" => %{
+       "id" => 12,
+       "logo" => "https://media.api-sports.io/basketball/leagues/12.png",
+       "name" => "NBA",
+       "season" => "2021-2022",
+       "type" => "League"
+     },
+     "scores" => %{
+       "away" => %{
+         "over_time" => nil,
+         "quarter_1" => 27,
+         "quarter_2" => 19,
+         "quarter_3" => 21,
+         "quarter_4" => nil,
+         "total" => 67
+       },
+       "home" => %{
+         "over_time" => nil,
+         "quarter_1" => 34,
+         "quarter_2" => 36,
+         "quarter_3" => 21,
+         "quarter_4" => nil,
+         "total" => 91
+       }
+     }, ...]
+  """
+  # TODO def case for fetch_games(:today)
+  #   must get current date, current timezone, and a league_id or game id
+      # get_games(:today, league: 1), get_games(team: 1200, :today)
+
+  def get_today_params() do
+    today = Date.utc_today()
+    %{date: today,
+      season: get_season(today)
+    }
+  end
+
+  @doc """
+  Given a date 2010-01-01, will determine the corresponding season, being either
+  2009-2010 & 2010-2011, depending on the month is greater or iqual than 7, it will return season for current and next year,
+  otherwise if its <= month 6 it will return season for previous and current year
+  """
+  def get_season(date=%Date{month: m, year: year})do
+    cond do
+      m <= 6 ->
+        "#{year - 1}-#{year}"
+      m >= 7 ->
+        "#{year}-#{year + 1}"
+    end
+  end
+
+
+  def fetch_games( :today, league_id )do
+        with true <- is_integer(league_id),
+        %{season: season, date: today}=today_params <- get_today_params(),
+        req_params <- today_params
+          |> Map.put(:league, league_id)
+          |> Map.put(:timezone, "america/chihuahua")
+
+        do
+          fetch_games(req_params)
+        end
+  end
+
+  def fetch_games(params \\ %{league: 12, season: "2021-2022", timezone: "america/chihuahua" })do
+    with {:league, league = %BasketballLeague{ name: name }} <- {:league, Repo.get_by( BasketballLeague, source_id: params.league )},
+    _ <- IO.inspect("Fetching teams from league #{name}"),
+      # TBD implement cashing mechanism
+      games <- SportsAPIBasketball.get_games(params)
+
+      # TODO update league with fetched params in a task
+      # create new game record per each game
+      # TODO prepare data / adapter for information
+      # TODO insert games into database
+    do
+      persisted_games = persist_games(games)
+      {:ok, persisted_games}
+    else
+      {:league, _} -> {:error, "League not found"}
+      err -> IO.inspect(err)
+        {:error, "Could not fetch basketball league"}
+
+    end
+  end
+
+  def persist_games(games)do
+
+    parsed_games = games
+    |> Enum.map(fn
+      game = %{ "teams" => %{ "away" => away, "home" => home },
+        "league" => league
+      } ->
+        game_headline = "[#{home["id"]}] #{home["name"]} VS [#{away["id"]}] #{away["name"]} - #{league["name"]}"
+        IO.inspect(game, label: "Game")
+        params = BasketballGame.parse_params(game, :sports_api)
+        %BasketballGame{}
+        |> BasketballGame.sports_api_changest(params)
+        |> IO.inspect(abel: "Game changeset")
+        |> Repo.insert(on_conflict: :replace_all, conflict_target: [:home, :visit, :league])
+
+      end)
+
+  end
+
 
 end

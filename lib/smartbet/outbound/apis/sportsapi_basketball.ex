@@ -34,9 +34,13 @@ defmodule Smartbet.Outbound.APIs.SportsAPIBasketball do
     end
   end
 
-  # TODO get_games() // by date, by league
-
-  # TODO get_game()
-
+  def get_games(params)do
+    case get("/games", query: Map.to_list(params)) do
+      {:ok, resp } -> resp.body["response"]
+      error ->
+        IO.inspect(error)
+        {:error, "could not fetch games"}
+    end
+  end
 
 end

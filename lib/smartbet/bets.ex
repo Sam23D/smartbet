@@ -7,6 +7,7 @@ defmodule Smartbet.Bets do
   alias Smartbet.Repo
 
   alias Smartbet.Bets.UserBets
+  alias Smartbet.Accounts.User
 
   @doc """
   Returns the list of user_bets.
@@ -19,7 +20,15 @@ defmodule Smartbet.Bets do
   """
   def list_user_bets(params) do
     page = params["page"] || 1
-    Repo.paginate(UserBets, page: max(page, 1)) # removes all pages 0 & below
+    UserBets
+    |> order_by([user_bet], desc: user_bet.inserted_at)
+    |> Repo.paginate(page: page)
+  end
+
+  def all_user_bets(user_id) do
+    query = from user_bet in UserBets,
+    where: user_bet.user_id == ^user_id
+    Repo.all(query)
   end
 
   @doc """
@@ -52,6 +61,13 @@ defmodule Smartbet.Bets do
   """
   def create_user_bets(attrs \\ %{}) do
     %UserBets{}
+    |> UserBets.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  # this clause will match for when we want to assign a user to the user_bet
+  def create_user_bets(%User{}=user, attrs) do
+    Ecto.build_assoc(user, :user_bets, attrs)
     |> UserBets.changeset(attrs)
     |> Repo.insert()
   end
