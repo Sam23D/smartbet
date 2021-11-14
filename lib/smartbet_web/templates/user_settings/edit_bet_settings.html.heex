@@ -104,28 +104,28 @@
                            </div>
                         </div>
                         <div class="account-menu">
-                           <a href= { Routes.user_settings_path(@conn, :edit) } class="account-menu-item">
+                           <a href={ Routes.user_settings_path(@conn, :edit) } class="account-menu-item">
                            <i class="lnil lnil-user-alt"></i>
                            <span>General</span>
                            <span class="end">
                            <i aria-hidden="true" class="fas fa-arrow-right"></i>
                            </span>
                            </a>
-                           <a href= { Routes.user_settings_path(@conn, :edit_teams) } class="account-menu-item">
+                           <a href={ Routes.user_settings_path(@conn, :edit_teams) } class="account-menu-item">
                            <i class="lnil lnil-crown-alt"></i>
                            <span>Favorite Teams</span>
                            <span class="end">
                            <i aria-hidden="true" class="fas fa-arrow-right"></i>
                            </span>
                            </a>
-                           <a href= { Routes.user_settings_path(@conn, :edit_bet) } class="account-menu-item  is-active">
+                           <a href={ Routes.user_settings_path(@conn, :edit_bet) } class="account-menu-item  is-active">
                            <i class="lnil lnil-coin"></i>
                            <span>Bet Settings</span>
                            <span class="end">
                            <i aria-hidden="true" class="fas fa-arrow-right"></i>
                            </span>
                            </a>
-                           <a href= { Routes.user_settings_path(@conn, :edit_password) } class="account-menu-item">
+                           <a href={ Routes.user_settings_path(@conn, :edit_password) } class="account-menu-item">
                            <i class="lnil lnil-cog"></i>
                            <span>Password</span>
                            <span class="end">
@@ -146,7 +146,7 @@
                               </div>
                               <div class="right">
                                  <div class="buttons">
-                                    <a href="/admin-profile-view.html" class="button h-button is-light is-dark-outlined">
+                                    <a href={ Routes.user_settings_path(@conn, :edit) } class="button h-button is-light is-dark-outlined">
                                     <span class="icon">
                                     <i class="lnir lnir-arrow-left rem-100"></i>
                                     </span>
