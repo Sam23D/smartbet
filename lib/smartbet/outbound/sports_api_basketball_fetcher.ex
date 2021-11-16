@@ -14,6 +14,7 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   iex> SportsAPIBasketballFetcher.fetch_all_countries :fetch_api
   iex> SportsAPIBasketballFetcher.fetch_all_leagues %{}, :fetch_api
   iex> SportsAPIBasketballFetcher.fetch_teams 12, :fetch_api
+  iex> SportsAPIBasketballFetcher.fetch_games :today, 12
   """
 
   @doc """
@@ -248,6 +249,9 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
     end
   end
 
+  @doc """
+  Takes the list of games, from the API response, parses them, creates changesets and then inserts the into the Repo
+  """
   def persist_games(games)do
 
     parsed_games = games

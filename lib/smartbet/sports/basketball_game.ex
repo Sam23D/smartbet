@@ -13,6 +13,7 @@ defmodule Smartbet.Sports.BasketballGame do
   """
 
   schema "basketball_games" do
+    field :game_data, :map
     field :game_datetime, :naive_datetime
     field :scores, :map # ??
 
@@ -42,17 +43,14 @@ defmodule Smartbet.Sports.BasketballGame do
   end
 
   def parse_params(game_params=%{"id" => source_id,  "timestamp" => timestamp, "scores" => scores, "teams" => %{ "away" => away, "home" => home }, "league" => league }, :sports_api)do
-    IO.inspect( home, label: "HOME ")
-    IO.inspect( away, label: "AWAY ")
-    IO.inspect( league, label: "LEAGUE ")
-    plays_at = DateTime.from_unix(timestamp )
+    {:ok, plays_at} = DateTime.from_unix(timestamp )
     game_headline = "[#{home["id"]}] #{home["name"]} VS [#{away["id"]}] #{away["name"]} - #{league["name"]}"
-    %{ game_headline: game_headline, home: home["id"], visit: away["id"], league: league["id"], source_id: source_id, scores: scores, plays_at: plays_at }
+    %{ game_data: game_params, game_headline: game_headline, home: home["id"], visit: away["id"], league: league["id"], source_id: source_id, scores: scores, plays_at: plays_at, source: :sports_api}
   end
 
   def sports_api_changest(basketball_game, attrs)do
     basketball_game
-    |> cast(attrs, [:home, :visit, :league, :game_headline, :source_id, :plays_at])
+    |> cast(attrs, [:home, :visit, :league, :game_headline, :source_id, :plays_at, :scores, :game_data])
     |> validate_required([:home, :visit, :league, :game_headline])
   end
 

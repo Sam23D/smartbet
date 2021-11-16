@@ -22,7 +22,7 @@ defmodule Smartbet.Repo.Migrations.CreatesBasketballGame do
       # composite index used for game creation and update
       add :home, :integer
       add :visit, :integer
-      add :league, :integer
+      add :league,  references(:basketball_leagues, column: :source_id)
 
       timestamps()
     end

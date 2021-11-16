@@ -19,7 +19,7 @@ defmodule Smartbet.Repo.Migrations.CreateBasketballLeagues do
     end
 
     create index(:basketball_leagues, [:name, :type], unique: true)
-    create index(:basketball_leagues, [:source_id])
+    create index(:basketball_leagues, [:source_id], unique: true)
 
   end
 end
