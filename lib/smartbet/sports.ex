@@ -198,6 +198,38 @@ defmodule Smartbet.Sports do
     BasketballLeague.changeset(basketball_leage, attrs)
   end
 
+  @doc """
+  # TODO
+  # [ ] checks if that league exists, and if has been fetched today or at all
+  # [ ] the request the API for the league information, then persists it into the DB as well as its games
+  #
+  """
+  def fetch_league_information(%{id: id})do
+
+  end
+
+  @doc """
+  Takes a league, and sets it's being_tracked? attribute to `true`, this will take the league into account for system's crawling/tracking
+  ```
+  Smartbet.Sports.toggle_league_tracking(%{id: 1}) # toggles on the current value
+  Smartbet.Sports.toggle_league_tracking(%{id: 1}, set_val: true) # sets value to :set_val
+  ```
+  """
+  def toggle_league_tracking(%{ id: id }, opts \\ [])do
+    league = get_basketball_leage!(id)
+    set_to_being_tracked = opts[:set_val] || !league.being_tracked?
+    update_basketball_leage(league, %{being_tracked?: set_to_being_tracked })
+  end
+
+  @doc """
+  Returns all leagues that are marked for tracking
+  """
+  def get_tracked_leagues() do
+    query = from league in BasketballLeague,
+      where: league.being_tracked? == true
+    Repo.all(query)
+  end
+
   alias Smartbet.Sports.Country
 
   @doc """

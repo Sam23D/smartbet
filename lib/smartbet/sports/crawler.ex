@@ -29,7 +29,9 @@ defmodule Smartbet.Sports.Crawler do
     end
   end
 
+  @doc """
 
+  """
   def daily_crawl do
     # get games that have today as crawling day ( we will be configuring jobs along the day for a given game )
     # add as many leagues as desired to crawl games for...
@@ -38,8 +40,10 @@ defmodule Smartbet.Sports.Crawler do
 
   @doc """
 
+
+  crawl_game(%{ source_id: source_id })
   """
-  def crawl_game do
+  def crawl_game() do
    # crawls game, creates updates game
    # creates game_record
    # sends required notifications

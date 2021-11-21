@@ -11,6 +11,10 @@ defmodule Smartbet.Sports.BasketballLeague do
     field :api_source, :string
     field :fetched_at, :utc_datetime
 
+    field :games_crawled_at, :utc_datetime
+    field :being_tracked?, :boolean
+    field :season_ends, :utc_datetime
+
     timestamps()
   end
 
@@ -37,7 +41,10 @@ defmodule Smartbet.Sports.BasketballLeague do
   def changeset(basketball_leage, attrs) do
     params = patch_params(attrs, [{"id", "source_id"}, {"logo", "logo_imgurl"}])
     basketball_leage
-    |> cast(params, [:logo_imgurl, :source_id, :name, :type, :seasons])
+    |> cast(params, [:logo_imgurl, :source_id, :name, :type, :seasons, :being_tracked?])
     |> validate_required([:logo_imgurl, :source_id, :name, :type, :seasons])
   end
+
+
+
 end
