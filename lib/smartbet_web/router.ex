@@ -1,5 +1,6 @@
 defmodule SmartbetWeb.Router do
   use SmartbetWeb, :router
+  import Phoenix.LiveView.Router
 
   import SmartbetWeb.UserAuth
 
@@ -84,7 +85,12 @@ defmodule SmartbetWeb.Router do
       resources "/basketball_teams", BasketballTeamController
       resources "/basketball_leagues", BasketballLeageController
 
+      live "/live_console", AdminConsoleLive
     end
+
+
+    # TODO make with LiveView a dynamic dashboard for League tracking
+    # make a LiveView session
 
 
   end
