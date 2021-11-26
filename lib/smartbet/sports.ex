@@ -118,6 +118,23 @@ defmodule Smartbet.Sports do
   end
 
   @doc """
+  Gets all leagues with being_tracked? == true
+  """
+  def list_tracked_basketball_leagues() do
+    query = from league in BasketballLeague,
+      where: league.being_tracked? == true
+    Repo.all(query)
+  end
+
+  def list_basketball_leagues_like(league_name)do
+    like_str = "%#{league_name}%"
+    query = from league in BasketballLeague,
+      where: ilike(league.name, ^like_str),
+      order_by: league.name
+    Repo.all(query)
+  end
+
+  @doc """
   Gets a single basketball_leage.
 
   Raises `Ecto.NoResultsError` if the Basketball leage does not exist.

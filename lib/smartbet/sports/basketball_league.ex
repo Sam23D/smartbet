@@ -45,6 +45,9 @@ defmodule Smartbet.Sports.BasketballLeague do
     |> validate_required([:logo_imgurl, :source_id, :name, :type, :seasons])
   end
 
-
+  def live_console_changeset(basketball_leage, attrs)do
+    basketball_leage
+    |> cast(attrs, [:name, :being_tracked?])
+  end
 
 end
