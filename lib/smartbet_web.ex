@@ -39,6 +39,24 @@ defmodule SmartbetWeb do
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
+      import Phoenix.LiveView.Helpers
+    end
+  end
+
+  def live_view do
+    quote do
+      use Phoenix.LiveView,
+        layout: {SmartbetWeb.LayoutView, "live.html"}
+
+      unquote(view_helpers())
+    end
+  end
+
+  def live_component do
+    quote do
+      use Phoenix.LiveComponent
+
+      unquote(view_helpers())
     end
   end
 
@@ -48,6 +66,7 @@ defmodule SmartbetWeb do
 
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 

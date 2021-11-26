@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <title>Smartbet</title>
+    <link rel="stylesheet" href={ Routes.static_path(@socket, "/css/app.css") }/>
+    <link rel="stylesheet" href={ Routes.static_path(@socket, "/css/main.css") }/>
+    <script defer type="text/javascript" src={ Routes.static_path(@socket, "/assets/app.js") }></script>
+    <link rel="icon" type="image/png" href={ Routes.static_path(@socket, "/images/favicon.png") } />
+  </head>
+  <body>
+    <!--%= render "_user_menu.html", assigns %-->
+
+    <p class="alert alert-info" role="alert"
+        phx-click="lv:clear-flash"
+        phx-value-key="info"><%= live_flash(@flash, :info) %></p>
+
+    <p class="alert alert-danger" role="alert"
+        phx-click="lv:clear-flash"
+        phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+
+    <%= @inner_content %>
+
+
+    <script src={ Routes.static_path(@socket, "/js/app.js") }></script>
+
+
+    <script src={ Routes.static_path(@socket, "/js/functions.js") } async></script>
+    <script src={ Routes.static_path(@socket, "/js/main.js") } async></script>
+    <script src={ Routes.static_path(@socket, "/js/components.js") } async></script>
+    <script src={ Routes.static_path(@socket, "/js/popover.js") } async></script>
+    <script src={ Routes.static_path(@socket, "/js/widgets.js") } async></script>
+    <script src={ Routes.static_path(@socket, "/js/touch.js") } async></script>
+    <script src={ Routes.static_path(@socket, "/js/syntax.js") } async></script>
+
+  </body>
+</html>
