@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Smartbet</title>
+    <%= csrf_meta_tag() %>
     <link rel="stylesheet" href={ Routes.static_path(@conn, "/css/app.css") }/>
     <link rel="stylesheet" href={ Routes.static_path(@conn, "/css/main.css") }/>
     <script defer type="text/javascript" src={ Routes.static_path(@conn, "/js/app.js") }></script>
@@ -19,12 +20,8 @@
       <%= render(SmartbetWeb.DashboardView, "navbar.html", conn: @conn, changeset: @changeset) %>
       <%= @inner_content %>
 
-
-
-
-    </div>
-   <script src={ Routes.static_path(@conn, "/js/app.js") }></script>
-
+    </div>  
+   <script src={ Routes.static_path(@conn, "/assets/app.js") } defer></script>
 
     <script src={ Routes.static_path(@conn, "/js/functions.js")} ></script>
     <script src={ Routes.static_path(@conn, "/js/main.js")}  async></script>

@@ -1,0 +1,278 @@
+
+
+            
+            <div class="page-title has-text-centered is-webapp">
+
+                <div class="title-wrap">
+                    <h1 class="title is-4">Projects</h1>
+                </div>
+
+                <div class="toolbar ml-auto">
+
+                    <div class="toolbar-link">
+                        <label class="dark-mode ml-auto">
+                            <input type="checkbox" checked>
+                            <span></span>
+                        </label>
+                    </div>
+
+                    <div class="toolbar-notifications is-hidden-mobile">
+                        <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
+                            <div class="is-trigger" aria-haspopup="true">
+                                <i data-feather="bell"></i>
+                                <span class="new-indicator pulsate"></span>
+                            </div>
+                            <div class="dropdown-menu" role="menu">
+                                <div class="dropdown-content">
+                                    <div class="heading">
+                                        <div class="heading-left">
+                                            <h6 class="heading-title">Notifications</h6>
+                                        </div>
+                                        <div class="heading-right">
+                                            <a class="notification-link" href="/admin-profile-notifications.html">See
+                                                all</a>
+                                        </div>
+                                    </div>
+                                    <ul class="notification-list">
+                                        <li>
+                                            <a class="notification-item">
+                                                <div class="img-left">
+                                                    <img class="user-photo" alt=""
+                                                        src="https://via.placeholder.com/150x150"
+                                                        data-demo-src="assets/img/avatars/photos/7.jpg" />
+                                                </div>
+                                                <div class="user-content">
+                                                    <p class="user-info"><span class="name">Alice C.</span> left a
+                                                        comment.</p>
+                                                    <p class="time">1 hour ago</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="notification-item">
+                                                <div class="img-left">
+                                                    <img class="user-photo" alt=""
+                                                        src="https://via.placeholder.com/150x150"
+                                                        data-demo-src="assets/img/avatars/photos/12.jpg" />
+                                                </div>
+                                                <div class="user-content">
+                                                    <p class="user-info"><span class="name">Joshua S.</span> uploaded a
+                                                        file.</p>
+                                                    <p class="time">2 hours ago</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="notification-item">
+                                                <div class="img-left">
+                                                    <img class="user-photo" alt=""
+                                                        src="https://via.placeholder.com/150x150"
+                                                        data-demo-src="assets/img/avatars/photos/13.jpg" />
+                                                </div>
+                                                <div class="user-content">
+                                                    <p class="user-info"><span class="name">Tara S.</span> sent you a
+                                                        message.</p>
+                                                    <p class="time">2 hours ago</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="notification-item">
+                                                <div class="img-left">
+                                                    <img class="user-photo" alt=""
+                                                        src="https://via.placeholder.com/150x150"
+                                                        data-demo-src="assets/img/avatars/photos/25.jpg" />
+                                                </div>
+                                                <div class="user-content">
+                                                    <p class="user-info"><span class="name">Melany W.</span> left a
+                                                        comment.</p>
+                                                    <p class="time">3 hours ago</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <a class="toolbar-link right-panel-trigger" data-panel="activity-panel">
+                        <i data-feather="grid"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="page-content-inner all-projects">
+
+                <h3 class="section-heading">Leagues statistics - current season <%= @league_tracked_stats.current_season %> </h3>
+
+                <div class="columns is-multiline project-grid">
+
+                    <div class="column is-one-fifth">
+                        <a class="project-grid-item">
+                            <img class="project-avatar" src="https://via.placeholder.com/150x150"
+                                data-demo-src="assets/img/icons/logos/slicer.svg" alt="">
+                            <h3>Total tracked leagues</h3>
+                            <p><%= @league_tracked_stats.total_tracked_leagues %> leagues tracked</p>
+                            <progress class="progress is-primary is-tiny" value="31" max="100">31%</progress>
+                        </a>
+                    </div>
+
+                    <div class="column is-one-fifth">
+                        <a class="project-grid-item">
+                            <img class="project-avatar" src="https://via.placeholder.com/150x150"
+                                data-demo-src="assets/img/icons/logos/metamovies.svg" alt="">
+                            <h3>Total tracked games</h3>
+                            <p>Design project</p>
+                            <progress class="progress is-primary is-tiny" value="84" max="100">84%</progress>
+                        </a>
+                    </div>
+
+                    <div class="column is-one-fifth">
+                        <a class="project-grid-item">
+                            <img class="project-avatar" src="https://via.placeholder.com/150x150"
+                                data-demo-src="assets/img/illustrations/dashboards/flights/company1.svg" alt="">
+                            <h3>Countries covered</h3>
+                            <p>Software project</p>
+                            <progress class="progress is-primary is-tiny" value="45" max="100">45%</progress>
+                        </a>
+                    </div>
+
+                    <div class="column is-one-fifth">
+                        <a class="project-grid-item">
+                            <img class="project-avatar" src="https://via.placeholder.com/150x150"
+                                data-demo-src="assets/img/icons/logos/fastpizza.svg" alt="">
+                            <h3>Number of placed bets</h3>
+                            <p>Software project</p>
+                            <progress class="progress is-primary is-tiny" value="90" max="100">90%</progress>
+                        </a>
+                    </div>
+
+                    <div class="column is-one-fifth">
+                        <a class="project-grid-item">
+                            <img class="project-avatar" src="https://via.placeholder.com/150x150"
+                                data-demo-src="assets/img/icons/logos/drop.svg" alt="">
+                            <h3>Total betted amount</h3>
+                            <p>Design project</p>
+                            <progress class="progress is-primary is-tiny" value="12" max="100">12%</progress>
+                        </a>
+                    </div>
+
+                </div>
+
+                <h3 class="section-heading">Leagues</h3>
+                <div class="projects-toolbar">
+                    <div class="control has-icon">
+                        <.form let={f} for={@league_changeset} phx-change="search_league" phx-submit="search_league">
+                            <input name="league_name" class="input" phx-change="search_league"
+                                placeholder="Search league...">
+                        </.form>
+                        <div class="form-icon">
+                            <i data-feather="search"></i>
+                        </div>
+                    </div>
+                    <!--a class="button h-button is-primary is-raised is-bold">
+                        <span>New Project</span>
+                    </a-->
+                </div>
+
+                <div class="columns">
+                    <div class="column is-12">
+
+                        <div class="flex-table is-compact">
+
+                            <!--Table header-->
+                            <div class="flex-table-header">
+                                <span class="is-grow">League name</span>
+                                <span>Games</span>
+                                <span>Curr. Season</span>
+                                <span>Fetched at</span>
+                                <span>Tracked</span>
+                                <span class="cell-end">Actions</span>
+                            </div>
+
+
+                            <%= for league <- @leagues do %>
+                                <div class="flex-table-item">
+                                    <div class="flex-table-cell is-bold is-grow" data-th="Company">
+                                        <div class="h-avatar is-medium mr-2">
+                                            <img class="avatar is-squared" src={ league.logo_imgurl }>
+                                        </div>
+                                        <span class="dark-text">
+                                            <%= league.name %>
+                                        </span>
+                                    </div>
+                                    <div class="flex-table-cell" data-th="Type">
+                                        <span class="light-text">New lead</span>
+                                    </div>
+                                    <div class="flex-table-cell" data-th="Industry">
+                                        <span class="light-text">Software</span>
+                                    </div>
+                                    <div class="flex-table-cell" data-th="Status">
+                                        <span class="tag is-solid is-rounded">Active</span>
+                                    </div>
+                                    <div class="flex-table-cell" data-th="Tracked">
+                                        <.form let={f} for={@league_changeset} phx-change="toggle_league_tracking">
+                                            <label class="form-switch is-info">
+                                                <%= checkbox f, :league_id , checked_value: league.id, unchecked_value: league.id, checked: league.being_tracked?, class: "is-switch" %>        
+                                                <i></i>
+                                            </label>
+                                        </.form>
+                                    </div>
+                                    <div class="flex-table-cell cell-end" data-th="Actions">
+                                        <div
+                                            class="current-fix dropdown is-spaced is-dots is-right dropdown-trigger is-pushed-mobile">
+                                            <div class="is-trigger" aria-haspopup="true">
+                                                <i class="lnil lnil-cog"></i>
+                                            </div>
+                                            <div class="dropdown-menu current-fix-target"  id="dropdown-menu"  role="menu">
+                                                <div class="dropdown-content">
+                                                    <a href="#" class="dropdown-item is-media">
+                                                        <div class="icon">
+                                                            <i class="lnil lnil-eye"></i>
+                                                        </div>
+                                                        <div class="meta">
+                                                            <span>View</span>
+                                                            <span>Does nothing</span>
+                                                        </div>
+                                                    </a>
+                                                    <button phx-click="fetch_league_games" phx-value-league_id={league.source_id} class="dropdown-item is-media">
+                                                        <div class="icon">
+                                                            <i class="lnil lnil-cloud-sync-alt"></i>
+                                                        </div>
+                                                        <div class="meta">
+                                                            <span>Fetch league games data</span>
+                                                            <span>Requests API for all games in league</span>
+                                                        </div>
+                                                    </button>
+                                                    <a href="#" class="dropdown-item is-media">
+                                                        <div class="icon">
+                                                            <i class="lnil lnil-calender-alt-1"></i>
+                                                        </div>
+                                                        <div class="meta">
+                                                            <span>Schedule data fetch</span>
+                                                            <span>Does nothing</span>
+                                                        </div>
+                                                    </a>
+                                                    <hr class="dropdown-divider">
+                                                    <a href="#" class="dropdown-item is-media">
+                                                        <div class="icon">
+                                                            <i class="lnil lnil-pause"></i>
+                                                        </div>
+                                                        <div class="meta">
+                                                            <span>Stop tracking</span>
+                                                            <span>Remove from list</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
