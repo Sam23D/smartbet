@@ -133,6 +133,14 @@ defmodule Smartbet.Sports do
       order_by: league.name
     Repo.all(query)
   end
+  @doc """
+  Given a list of tracked leagues, will return a series of statistics about it
+  """
+  def get_league_tracking_data(tracked_leagues) do
+    %{ total_tracked_leagues: Enum.count(tracked_leagues),
+      current_season: get_season(Date.utc_today())
+    }
+  end
 
   @doc """
   Gets a single basketball_leage.
@@ -328,6 +336,21 @@ defmodule Smartbet.Sports do
   """
   def delete_country(%Country{} = country) do
     Repo.delete(country)
+  end
+
+   @doc """
+  Given a date 2010-01-01, will determine the corresponding season, being either
+  2009-2010 & 2010-2011, depending on the month is greater or iqual than 7, it will return season for current and next year,
+  otherwise if its <= month 6 it will return season for previous and current year
+  """
+  @spec get_season(Date.t()) :: String
+  def get_season(date=%Date{month: m, year: year})do
+    cond do
+      m <= 6 ->
+        "#{year - 1}-#{year}"
+      m >= 7 ->
+        "#{year}-#{year + 1}"
+    end
   end
 
   @doc """

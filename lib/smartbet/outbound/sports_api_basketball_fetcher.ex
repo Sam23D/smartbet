@@ -5,7 +5,6 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   alias Smartbet.Outbound.APIs.SportsAPIBasketball
   alias Smartbet.Sports.{BasketballLeague, Country, BasketballTeam, BasketballGame}
   alias Smartbet.Repo
-  alias Ecto.Changeset
 
   @moduledoc """
   This module will query the SportsAPI api and then insert all the entries in the DB to later use them as cached entitites.
@@ -216,21 +215,9 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   end
 
 
-  def fetch_games( :today, league_id )do
-        with true <- is_integer(league_id),
-        %{season: season, date: today}=today_params <- get_today_params(),
-        req_params <- today_params
-          |> Map.put(:league, league_id)
-          |> Map.put(:timezone, "america/chihuahua")
-
-        do
-          fetch_games(req_params)
-        end
-  end
-
   def fetch_games(params \\ %{league: 12, season: "2021-2022", timezone: "america/chihuahua" })do
     with {:league, league = %BasketballLeague{ name: name }} <- {:league, Repo.get_by( BasketballLeague, source_id: params.league )},
-    _ <- IO.inspect("Fetching teams from league #{name}"),
+    _ <- IO.inspect("Fetching games from league #{name}"),
       # TBD implement cashing mechanism
       games <- SportsAPIBasketball.get_games(params)
 
@@ -248,6 +235,30 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
 
     end
   end
+
+
+  def fetch_games( :today, league_id ) when is_binary league_id do
+    case Integer.parse(league_id) do
+      :error -> {:error, "league_id must be an integer"}
+        {league_id, _} -> fetch_games( :today, league_id )
+    end
+  end
+
+  def fetch_games( :today, league_id )do
+        with true <- is_integer(league_id),
+        %{season: season, date: today}=today_params <- get_today_params(),
+        req_params <- today_params
+          |> Map.put(:league, league_id)
+          |> Map.put(:timezone, "america/chihuahua")
+
+        do
+          fetch_games(req_params)
+        else
+          _ ->
+            raise ArgumentError, message: "Wee need a AN INTEGER"
+        end
+  end
+
 
   @doc """
   Takes the list of games, from the API response, parses them, creates changesets and then inserts the into the Repo

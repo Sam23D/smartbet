@@ -1,9 +1,6 @@
-<div id="app-projects" class="view-wrapper is-webapp" data-page-title="Projects" data-naver-offset="214"
-    data-menu-item="#layouts-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
 
-    <div class="page-content-wrapper">
-        <div class="page-content is-relative">
 
+            
             <div class="page-title has-text-centered is-webapp">
 
                 <div class="title-wrap">
@@ -18,10 +15,6 @@
                             <span></span>
                         </label>
                     </div>
-
-                    <a class="toolbar-link right-panel-trigger" data-panel="languages-panel">
-                        <img src="assets/img/icons/flags/united-states-of-america.svg" alt="">
-                    </a>
 
                     <div class="toolbar-notifications is-hidden-mobile">
                         <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
@@ -112,7 +105,7 @@
 
             <div class="page-content-inner all-projects">
 
-                <h3 class="section-heading">Leagues statistics</h3>
+                <h3 class="section-heading">Leagues statistics - current season <%= @league_tracked_stats.current_season %> </h3>
 
                 <div class="columns is-multiline project-grid">
 
@@ -121,7 +114,7 @@
                             <img class="project-avatar" src="https://via.placeholder.com/150x150"
                                 data-demo-src="assets/img/icons/logos/slicer.svg" alt="">
                             <h3>Total tracked leagues</h3>
-                            <p>Design project</p>
+                            <p><%= @league_tracked_stats.total_tracked_leagues %> leagues tracked</p>
                             <progress class="progress is-primary is-tiny" value="31" max="100">31%</progress>
                         </a>
                     </div>
@@ -192,9 +185,9 @@
                             <!--Table header-->
                             <div class="flex-table-header">
                                 <span class="is-grow">League name</span>
-                                <span>Country</span>
-                                <span>Sport</span>
-                                <span>Status</span>
+                                <span>Games</span>
+                                <span>Curr. Season</span>
+                                <span>Fetched at</span>
                                 <span>Tracked</span>
                                 <span class="cell-end">Actions</span>
                             </div>
@@ -202,7 +195,6 @@
 
                             <%= for league <- @leagues do %>
                                 <div class="flex-table-item">
-
                                     <div class="flex-table-cell is-bold is-grow" data-th="Company">
                                         <div class="h-avatar is-medium mr-2">
                                             <img class="avatar is-squared" src={ league.logo_imgurl }>
@@ -230,11 +222,11 @@
                                     </div>
                                     <div class="flex-table-cell cell-end" data-th="Actions">
                                         <div
-                                            class="dropdown is-spaced is-dots is-right dropdown-trigger is-pushed-mobile">
+                                            class="current-fix dropdown is-spaced is-dots is-right dropdown-trigger is-pushed-mobile">
                                             <div class="is-trigger" aria-haspopup="true">
                                                 <i class="lnil lnil-cog"></i>
                                             </div>
-                                            <div class="dropdown-menu" role="menu">
+                                            <div class="dropdown-menu current-fix-target"  id="dropdown-menu"  role="menu">
                                                 <div class="dropdown-content">
                                                     <a href="#" class="dropdown-item is-media">
                                                         <div class="icon">
@@ -245,7 +237,7 @@
                                                             <span>Does nothing</span>
                                                         </div>
                                                     </a>
-                                                    <a href="#" class="dropdown-item is-media">
+                                                    <button phx-click="fetch_league_games" phx-value-league_id={league.source_id} class="dropdown-item is-media">
                                                         <div class="icon">
                                                             <i class="lnil lnil-cloud-sync-alt"></i>
                                                         </div>
@@ -253,7 +245,7 @@
                                                             <span>Fetch league games data</span>
                                                             <span>Requests API for all games in league</span>
                                                         </div>
-                                                    </a>
+                                                    </button>
                                                     <a href="#" class="dropdown-item is-media">
                                                         <div class="icon">
                                                             <i class="lnil lnil-calender-alt-1"></i>
@@ -278,13 +270,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <% end %>
-
-
+                            <% end %>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+
