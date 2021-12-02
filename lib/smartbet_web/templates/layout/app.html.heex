@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Smartbet</title>
-    <link rel="stylesheet" href={ Routes.static_path(@conn, "/css/app.css") }/>
-    <link rel="stylesheet" href={ Routes.static_path(@conn, "/css/main.css") }/>
-    <%= csrf_meta_tag() %>
-    <script defer type="text/javascript" src={ Routes.static_path(@conn, "/js/app.js") }></script>
-    <link rel="icon" type="image/png" href={ Routes.static_path(@conn, "/images/favicon.png") } />
-  </head>
-  <body>
+
     <!--%= render "_user_menu.html", assigns %-->
 
     <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
@@ -31,6 +18,3 @@
     <script src={ Routes.static_path(@conn, "/js/widgets.js") } async></script>
     <script src={ Routes.static_path(@conn, "/js/touch.js") } async></script>
     <script src={ Routes.static_path(@conn, "/js/syntax.js") } async></script>
-
-  </body>
-</html>
