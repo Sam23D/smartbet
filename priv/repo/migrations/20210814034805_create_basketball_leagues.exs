@@ -13,6 +13,9 @@ defmodule Smartbet.Repo.Migrations.CreateBasketballLeagues do
 
       # add belongs_to :country, CountrySchema
       # TODO add api_source (:sports_api) # TODO make Enum for APISources
+      add :games_crawled_at, :utc_datetime
+      add :being_tracked?, :boolean, default: false
+      add :season_ends, :utc_datetime # this is used to disable being_tracked?
 
       # make composite key with name & type
       timestamps()
@@ -20,6 +23,7 @@ defmodule Smartbet.Repo.Migrations.CreateBasketballLeagues do
 
     create index(:basketball_leagues, [:name, :type], unique: true)
     create index(:basketball_leagues, [:source_id], unique: true)
+    create index(:basketball_leagues, [:being_tracked?])
 
   end
 end

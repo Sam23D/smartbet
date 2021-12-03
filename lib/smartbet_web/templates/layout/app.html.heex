@@ -1,41 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Smartbet</title>
-    <link rel="stylesheet" href={ Routes.static_path(@conn, "/css/app.css") }/>
-    <link rel="stylesheet" href={ Routes.static_path(@conn, "/css/main.css") }/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&display=swap" rel="stylesheet">
-    <script defer type="text/javascript" src={ Routes.static_path(@conn, "/js/app.js") }></script>
-    <link rel="icon" type="image/png" href={ Routes.static_path(@conn, "/images/favicon.png") } />
-  </head>
-  <body>
-    <!--%= render "_user_menu.html", assigns %-->
 
-    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+<!--%= render "_user_menu.html", assigns %-->
 
-    <div id="huro-app" class="app-wrapper">
-    <%= @inner_content %>
+<p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+<p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+<div id="huro-app" class="app-wrapper">
+<%= @inner_content %>
 
 
 
-    </div>
-    <script src={ Routes.static_path(@conn, "/js/app.js") }></script>
+</div>
 
-
-    <script src={ Routes.static_path(@conn, "/js/functions.js") } async></script>
-    <script src={ Routes.static_path(@conn, "/js/main.js") } async></script>
-    <script src={ Routes.static_path(@conn, "/js/components.js") } async></script>
-    <script src={ Routes.static_path(@conn, "/js/popover.js") } async></script>
-    <script src={ Routes.static_path(@conn, "/js/widgets.js") } async></script>
-    <script src={ Routes.static_path(@conn, "/js/touch.js") } async></script>
-    <script src={ Routes.static_path(@conn, "/js/syntax.js") } async></script>
-
-  </body>
-</html>
+<script src={ Routes.static_path(@conn, "/js/functions.js") } async></script>
+<script src={ Routes.static_path(@conn, "/js/main.js") } async></script>
+<script src={ Routes.static_path(@conn, "/js/components.js") } async></script>
+<script src={ Routes.static_path(@conn, "/js/popover.js") } async></script>
+<script src={ Routes.static_path(@conn, "/js/widgets.js") } async></script>
+<script src={ Routes.static_path(@conn, "/js/touch.js") } async></script>
+<script src={ Routes.static_path(@conn, "/js/syntax.js") } async></script>

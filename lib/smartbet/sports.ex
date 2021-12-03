@@ -118,6 +118,31 @@ defmodule Smartbet.Sports do
   end
 
   @doc """
+  Gets all leagues with being_tracked? == true
+  """
+  def list_tracked_basketball_leagues() do
+    query = from league in BasketballLeague,
+      where: league.being_tracked? == true
+    Repo.all(query)
+  end
+
+  def list_basketball_leagues_like(league_name)do
+    like_str = "%#{league_name}%"
+    query = from league in BasketballLeague,
+      where: ilike(league.name, ^like_str),
+      order_by: league.name
+    Repo.all(query)
+  end
+  @doc """
+  Given a list of tracked leagues, will return a series of statistics about it
+  """
+  def get_league_tracking_data(tracked_leagues) do
+    %{ total_tracked_leagues: Enum.count(tracked_leagues),
+      current_season: get_season(Date.utc_today())
+    }
+  end
+
+  @doc """
   Gets a single basketball_leage.
 
   Raises `Ecto.NoResultsError` if the Basketball leage does not exist.
@@ -196,6 +221,38 @@ defmodule Smartbet.Sports do
   """
   def change_basketball_leage(%BasketballLeague{} = basketball_leage, attrs \\ %{}) do
     BasketballLeague.changeset(basketball_leage, attrs)
+  end
+
+  @doc """
+  # TODO
+  # [ ] checks if that league exists, and if has been fetched today or at all
+  # [ ] the request the API for the league information, then persists it into the DB as well as its games
+  #
+  """
+  def fetch_league_information(%{id: id})do
+
+  end
+
+  @doc """
+  Takes a league, and sets it's being_tracked? attribute to `true`, this will take the league into account for system's crawling/tracking
+  ```
+  Smartbet.Sports.toggle_league_tracking(%{id: 1}) # toggles on the current value
+  Smartbet.Sports.toggle_league_tracking(%{id: 1}, set_val: true) # sets value to :set_val
+  ```
+  """
+  def toggle_league_tracking(%{ id: id }, opts \\ [])do
+    league = get_basketball_leage!(id)
+    set_to_being_tracked = opts[:set_val] || !league.being_tracked?
+    update_basketball_leage(league, %{being_tracked?: set_to_being_tracked })
+  end
+
+  @doc """
+  Returns all leagues that are marked for tracking
+  """
+  def get_tracked_leagues() do
+    query = from league in BasketballLeague,
+      where: league.being_tracked? == true
+    Repo.all(query)
   end
 
   alias Smartbet.Sports.Country
@@ -279,6 +336,21 @@ defmodule Smartbet.Sports do
   """
   def delete_country(%Country{} = country) do
     Repo.delete(country)
+  end
+
+   @doc """
+  Given a date 2010-01-01, will determine the corresponding season, being either
+  2009-2010 & 2010-2011, depending on the month is greater or iqual than 7, it will return season for current and next year,
+  otherwise if its <= month 6 it will return season for previous and current year
+  """
+  @spec get_season(Date.t()) :: String
+  def get_season(date=%Date{month: m, year: year})do
+    cond do
+      m <= 6 ->
+        "#{year - 1}-#{year}"
+      m >= 7 ->
+        "#{year}-#{year + 1}"
+    end
   end
 
   @doc """
