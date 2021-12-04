@@ -77,6 +77,8 @@ defmodule SmartbetWeb.Router do
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
 
+    live "/live_dashboard", DashboardLive
+
     scope "/admin" do
       get "/user_bets/delete/:id", UserBetsController, :delete
       resources "/user_bets", UserBetsController, except: [:delete]

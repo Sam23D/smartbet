@@ -1,3 +1,4 @@
+<p>USER</p>
 <div id="app-projects" class="view-wrapper is-webapp" data-page-title="Projects" data-naver-offset="214"
     data-menu-item="#layouts-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
 
@@ -23,17 +24,18 @@
     </div>
   <% end %>
 
+  <%= live_render(@socket, SmartbetWeb.NavbarLive, id: "navbar") %>
+
   <%= @inner_content %>
 
-  <script src={ Routes.static_path(@socket, "/js/app.js" ) }></script>
-
-  <script src={ Routes.static_path(@socket, "/js/functions.js" ) } async></script>
-  <script src={ Routes.static_path(@socket, "/js/main.js" ) } async></script>
-  <script src={ Routes.static_path(@socket, "/js/components.js" ) } async></script>
-  <script src={ Routes.static_path(@socket, "/js/popover.js" ) } async></script>
-  <script src={ Routes.static_path(@socket, "/js/widgets.js" ) } async></script>
-  <script src={ Routes.static_path(@socket, "/js/touch.js" ) } async></script>
-  <script src={ Routes.static_path(@socket, "/js/syntax.js" ) } async></script>
+  <script src={ Routes.static_path(@socket, "/js/app.js" )} async ></script>
+  <script src={ Routes.static_path(@socket, "/js/main.js" )} async></script>
+  <script src={ Routes.static_path(@socket, "/js/functions.js" )} async></script>
+  <script src={ Routes.static_path(@socket, "/js/components.js" )} async></script>
+  <script src={ Routes.static_path(@socket, "/js/popover.js" )} async></script>
+  <script src={ Routes.static_path(@socket, "/js/widgets.js" )} async></script>
+  <script src={ Routes.static_path(@socket, "/js/touch.js" )} async></script>
+  <script src={ Routes.static_path(@socket, "/js/syntax.js" )} async></script>
 
 
         </div>
