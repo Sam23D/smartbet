@@ -250,58 +250,24 @@
                               <h3 class="title is-5">Available leagues</h3>
                            </div>
                            <div class="leagues-list">
+                            <%= for league <- @leagues do %>
                               <a
                                  href="#"
                                  class="league-item"
                                  >
-                                 <img class="league-logo" src={ Routes.static_path(@conn, "/images/soccer/leagues/ligue-1.svg") }>
-                                 <div class="meta">
-                                    <span class="league-name">Ligue 1</span>
-                                    <span class="league-country">France</span>
-                                 </div>
-                                 <div class="end">
-                                    <span>8 matches</span>
-                                 </div>
+                                <div class="h-avatar is-medium mr-2">
+                                  <img class="avatar is-squared" src={ league.logo_imgurl }>
+                                </div>
+                                <div class="meta">
+                                  <span class="league-name"><%= league.name %></span>
+                                  <span class="league-country">France</span>
+                                </div>
+                                <div class="end">
+                                  <span>8 matches</span>
+                                </div>
                               </a>
-                              <a
-                                 href="#"
-                                 class="league-item"
-                                 >
-                                 <img class="league-logo" src={ Routes.static_path(@conn, "/images/soccer/leagues/laliga.svg") }>
-                                 <div class="meta">
-                                    <span class="league-name">La Liga</span>
-                                    <span class="league-country">Spain</span>
-                                 </div>
-                                 <div class="end">
-                                    <span>8 matches</span>
-                                 </div>
-                              </a>
-                              <a
-                                 href="#"
-                                 class="league-item"
-                                 >
-                                 <img class="league-logo" src={ Routes.static_path(@conn, "/images/soccer/leagues/liga.svg") }>
-                                 <div class="meta">
-                                    <span class="league-name">Liga</span>
-                                    <span class="league-country">Portugal</span>
-                                 </div>
-                                 <div class="end">
-                                    <span>8 matches</span>
-                                 </div>
-                              </a>
-                              <a
-                                 href="#"
-                                 class="league-item"
-                                 >
-                                 <img class="league-logo" src={ Routes.static_path(@conn, "/images/soccer/leagues/bundesliga.svg") }>
-                                 <div class="meta">
-                                    <span class="league-name">Bundesliga</span>
-                                    <span class="league-country">Germany</span>
-                                 </div>
-                                 <div class="end">
-                                    <span>8 matches</span>
-                                 </div>
-                              </a>
+                              <% end %>
+                           
                            </div>
                         </div>
                      </div>
@@ -355,7 +321,7 @@
                                   <div class="score score-vertical">
                                     <div class="score-team score-team-vertical">
                                       <span>Barcelona</span>
-                                      <img  src={ Routes.static_path(@conn, "/images/soccer/teams/barcelona.svg") }>
+                                        <img src={ Routes.static_path(@conn, "/images/soccer/teams/barcelona.svg") }>
                                     </div>
                                     <p class="score-result score-result-vertical">
                                       <span class="score-goals">4</span>

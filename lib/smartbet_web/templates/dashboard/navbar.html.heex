@@ -130,17 +130,8 @@
                            <i class="lnil lnil-briefcase"></i>
                         </div>
                         <div class="meta">
-                           <span>Projects</span>
-                           <span>All my projects</span>
-                        </div>
-                     </a>
-                     <a href="#" class="dropdown-item is-media">
-                        <div class="icon">
-                           <i class="lnil lnil-users-alt"></i>
-                        </div>
-                        <div class="meta">
-                           <span>Team</span>
-                           <span>Manage your team</span>
+                           <span>Admin panel</span>
+                           <span>Live admin console</span>
                         </div>
                      </a>
                      <hr class="dropdown-divider">
@@ -376,25 +367,18 @@
                         <span>Switch to admin/webapp</span>
                      </div>
                   </a>
+                  <%= if SmartbetWeb.UserAuth.has_role?(@conn.assigns.current_user, "admin") do %>
                   <hr class="dropdown-divider">
-                  <a href="#" class="dropdown-item is-media">
+                  <a href= { Routes.live_path(@conn, SmartbetWeb.AdminConsoleLive) } class="dropdown-item is-media">
                      <div class="icon">
                         <i class="lnil lnil-briefcase"></i>
                      </div>
                      <div class="meta">
-                        <span>Projects</span>
-                        <span>All my projects</span>
+                        <span>Admin panel</span>
+                        <span>Live admin console</span>
                      </div>
                   </a>
-                  <a href="#" class="dropdown-item is-media">
-                     <div class="icon">
-                        <i class="lnil lnil-users-alt"></i>
-                     </div>
-                     <div class="meta">
-                        <span>Team</span>
-                        <span>Manage your team</span>
-                     </div>
-                  </a>
+                  <% end %>
                   <hr class="dropdown-divider">
                   <a href= { Routes.user_settings_path(@conn, :edit) } class="dropdown-item is-media">
                      <div class="icon">

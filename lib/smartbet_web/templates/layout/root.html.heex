@@ -12,11 +12,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&display=swap" rel="stylesheet">
-    <script defer type="text/javascript" src={ Routes.static_path(@conn, "/js/app.js") }></script>
+    <script defer type="text/javascript" src={ Routes.static_path(@conn, "/assets/app.js") }></script>
     <link rel="icon" type="image/png" href={ Routes.static_path(@conn, "/images/favicon.png") } />
   </head>
   <body>
-
+    <%= render(SmartbetWeb.DashboardView, "navbar.html", conn: @conn, changeset: @changeset) %>
     <%= @inner_content %>
 
     <script src={ Routes.static_path(@conn, "/js/app.js") } defer ></script>
