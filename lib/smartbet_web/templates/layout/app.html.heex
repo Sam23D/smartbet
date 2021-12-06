@@ -1,13 +1,10 @@
-
 <!--%= render "_user_menu.html", assigns %-->
-
+<%= if assigns[:changeset] do %>
+    <%= render(SmartbetWeb.DashboardView, "navbar.html", conn: @conn, changeset: @changeset) %>
+<% end %>
 <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
 <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
 <div id="huro-app" class="app-wrapper">
-<%= @inner_content %>
-
-
-
+    <%= @inner_content %>
 </div>
-

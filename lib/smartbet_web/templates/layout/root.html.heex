@@ -16,7 +16,6 @@
     <link rel="icon" type="image/png" href={ Routes.static_path(@conn, "/images/favicon.png") } />
   </head>
   <body>
-    <%= render(SmartbetWeb.DashboardView, "navbar.html", conn: @conn, changeset: @changeset) %>
     <%= @inner_content %>
 
     <script src={ Routes.static_path(@conn, "/js/app.js") } defer ></script>

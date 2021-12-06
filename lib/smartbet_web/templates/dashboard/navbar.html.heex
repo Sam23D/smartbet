@@ -367,7 +367,7 @@
                         <span>Switch to admin/webapp</span>
                      </div>
                   </a>
-                  <%= if SmartbetWeb.UserAuth.has_role?(@conn.assigns.current_user, "admin") do %>
+                  <%= if user_has_role(@conn, "admin") do %>
                   <hr class="dropdown-divider">
                   <a href= { Routes.live_path(@conn, SmartbetWeb.AdminConsoleLive) } class="dropdown-item is-media">
                      <div class="icon">

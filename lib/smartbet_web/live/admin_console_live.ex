@@ -4,13 +4,15 @@ defmodule SmartbetWeb.AdminConsoleLive do
   alias Smartbet.Sports
   alias Smartbet.Sports.BasketballLeague
   alias Smartbet.Outbound.SportsAPIBasketballFetcher
+  alias Smartbet.Accounts
 
   def mount(_params, _session, socket) do
+    IO.inspect(socket.private)
+    current_user = Accounts.get_user_by_session_token(get_current_user_token(socket))
     leagues = Sports.list_tracked_basketball_leagues()
     league_live_console_changeset = BasketballLeague.live_console_changeset(%BasketballLeague{}, %{})
     league_tracked_stats = Sports.get_league_tracking_data(leagues)
-    # get league statistics
-    {:ok, assign(socket,
+    {:ok, assign(socket, changeset: league_live_console_changeset, current_user: current_user,
         league_changeset: league_live_console_changeset, leagues: leagues, league_tracked_stats: league_tracked_stats )}
   end
 
@@ -71,5 +73,13 @@ defmodule SmartbetWeb.AdminConsoleLive do
 
   def _put_dismissalbe_flash(_, _, _, _), do: raise ArgumentError, message: "Only supported flash types are: #{@supported_flash_types}"
 
+  def get_current_user_token(params)do
+    case params.private do
+      %{connect_info: %{session: session }} ->
+        session["user_token"]
+      %{conn_session: conn_sesion} ->
+        conn_sesion["user_token"]
+    end
+  end
 
 end

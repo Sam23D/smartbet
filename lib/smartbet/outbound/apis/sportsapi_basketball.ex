@@ -1,4 +1,4 @@
-defmodule Smartbet.Outbound.APIs.SportsAPIBasketball do
+  defmodule Smartbet.Outbound.APIs.SportsAPIBasketball do
   use Tesla
 
   plug Tesla.Middleware.BaseUrl, "https://v1.basketball.api-sports.io"

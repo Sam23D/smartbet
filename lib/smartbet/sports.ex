@@ -7,6 +7,7 @@ defmodule Smartbet.Sports do
   alias Smartbet.Repo
 
   alias Smartbet.Sports.BasketballTeam
+  alias Smartbet.Sports.BasketballGame
 
   @doc """
   Returns the list of basketball_teams.
@@ -233,6 +234,30 @@ defmodule Smartbet.Sports do
 
   end
 
+  @doc """
+  Will search that the headline contains the query
+  search_game(%{ query: "red so..." })
+  Will search all the games where the given id is the home team
+  search_game(%{ home: id })
+  Will search all the games for the specified home & visit teams
+  search_game(%{ home: id, visit: id })
+  """
+  def search_game(%{ query: query  })do
+    ilike_str = "%#{query}%"
+    query = from game in BasketballGame,
+      where: ilike(game.game_headline, ^ilike_str)
+    # TODO filter only incomming games & order by asc: plays_at
+
+    Repo.all(query)
+  end
+
+  def search_game(%{ home: home_id, visit: visit_id  })do
+    query = from game in BasketballGame,
+      where: game.home == ^home_id,
+      where: game.visit == ^visit_id
+
+    Repo.all(query)
+  end
   @doc """
   Takes a league, and sets it's being_tracked? attribute to `true`, this will take the league into account for system's crawling/tracking
   ```
