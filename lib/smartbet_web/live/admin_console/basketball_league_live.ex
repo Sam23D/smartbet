@@ -17,7 +17,7 @@ defmodule SmartbetWeb.BasketballLeagueLive do
     # Get league name and fetch games for corresponding league
     case params do
       %{"league_id" => league_id} ->
-        league = Sports.get_league!(%{ "league_id" => String.to_integer(league_id)})
+        league = Sports.get_league!(%{ "league_id" => String.to_integer(league_id)}, games: :preload)
         |> IO.inspect(label: "LEAGUE FROM PARAMS")
         {:noreply, assign(socket, league: league)}
       params ->

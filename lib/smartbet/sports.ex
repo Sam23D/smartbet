@@ -283,6 +283,13 @@ defmodule Smartbet.Sports do
   @doc """
   Returns a league with the given id, it will try to query for :source_id by default
   """
+  def get_league!(%{ "league_id" => league_id }, [{:games, :preload}])do
+    query = from league in BasketballLeague,
+      where: league.source_id == ^league_id,
+      preload: :games
+    Repo.one!(query)
+  end
+
   def get_league!(%{ "league_id" => league_id })do
     query = from league in BasketballLeague,
       where: league.source_id == ^league_id

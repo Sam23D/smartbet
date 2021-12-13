@@ -97,13 +97,20 @@
                 <div class="booking-bar-info">
                     <i class="lnil lnil-basketball"></i>
                     <div class="inner">
-                        <h2 class="booking-bar-heading">Paris <small>[PAR]</small> - New York
-                            <small>[NY]</small>
-                        </h2>
-                        <p class="booking-bar-sub-heading">1 adult - Business</p>
+                        <h2 class="booking-bar-heading">League filters</h2>
+                        <p class="booking-bar-sub-heading">only for admins</p>
                     </div>
                 </div>
                 <div class="booking-bar">
+                    <div class="booking-bar-inputs">
+                        <div class="control has-icon">
+                            <input type="text" class="input flight-datepicker" placeholder="Home team" value="">
+                            <div class="form-icon">
+                                <i data-feather="calendar"></i>
+                            </div>
+                        </div>
+                    
+                    </div>
                     <div class="booking-bar-inputs">
                         <div class="control has-icon">
                             <input type="text" class="input flight-datepicker" placeholder="Home team" value="">
@@ -122,7 +129,7 @@
             </div>
 
             <div class="flights-toolbar">
-                <h3 class="dark-inverted">74 results</h3>
+                <h3 class="dark-inverted"><%= Enum.count(@league.games) %> games on the league</h3>
                 <!--Dropdown-->
                 <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
                     <div class="is-trigger" aria-haspopup="true">
@@ -166,131 +173,37 @@
 
 
             <div class="flights">
-
-                <!--Flight-->
-                <a class="flight-card">
-                    <img src="assets/img/illustrations/dashboards/flights/company1.svg" alt="">
-                    <div class="start">
-                        <span>11:30 am</span>
-                        <span>Paris ORLY</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="route">
-                        <div class="departure"></div>
-                        <div class="line" data-content="1 stop"></div>
-                        <div class="arrival">
-                            <i class="lnil lnil-plane-alt"></i>
+                <%= for game <- Enum.take(@league.games, 10) do %>
+                    <!--Flight-->
+                    <a class="flight-card">
+                        <img src="assets/img/illustrations/dashboards/flights/company1.svg" alt="">
+                        <div class="start">
+                            <span><%= game.game_headline %></span>
+                            <span><%= Timex.format!(Timex.Timezone.convert(game.plays_at, "America/Chihuahua"), "%Y-%b-%d %H:%M", :strftime) %></span>
+                            <span>Game date</span>
                         </div>
-                    </div>
-                    <div class="end">
-                        <span>06:59 pm</span>
-                        <span>New York JFK</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="flight-price">
-                        374
-                    </div>
-                </a>
-
-                <!--Flight-->
-                <a class="flight-card">
-                    <img src="assets/img/illustrations/dashboards/flights/company2.svg" alt="">
-                    <div class="start">
-                        <span>09:30 am</span>
-                        <span>Paris ORLY</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="route">
-                        <div class="departure"></div>
-                        <div class="line" data-content="1 stop"></div>
-                        <div class="arrival">
-                            <i class="lnil lnil-plane-alt"></i>
+                        <div class="end">
+                            <span><%= get_in(game.game_data, ["teams", "home", "name"]) %></span>
+                            <span>home</span>
+                            <span><%= get_in(game.game_data, ["teams", "home", "id"]) %></span>
                         </div>
-                    </div>
-                    <div class="end">
-                        <span>04:18 pm</span>
-                        <span>New York JFK</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="flight-price">
-                        392
-                    </div>
-                </a>
-
-                <!--Flight-->
-                <a class="flight-card">
-                    <img src="assets/img/illustrations/dashboards/flights/company1.svg" alt="">
-                    <div class="start">
-                        <span>06:42 am</span>
-                        <span>Paris ORLY</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="route">
-                        <div class="departure"></div>
-                        <div class="line" data-content="direct"></div>
-                        <div class="arrival">
-                            <i class="lnil lnil-plane-alt"></i>
+                        <div>
+                            <div class="h-avatar is-medium">
+                                <img class="avatar" src={get_in(game.game_data, ["teams", "home", "logo"])} data-user-popover="9">
+                            </div>
                         </div>
-                    </div>
-                    <div class="end">
-                        <span>02:11 pm</span>
-                        <span>New York JFK</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="flight-price">
-                        398
-                    </div>
-                </a>
-
-                <!--Flight-->
-                <a class="flight-card">
-                    <img src="assets/img/illustrations/dashboards/flights/company3.svg" alt="">
-                    <div class="start">
-                        <span>07:23 am</span>
-                        <span>Paris ORLY</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="route">
-                        <div class="departure"></div>
-                        <div class="line" data-content="direct"></div>
-                        <div class="arrival">
-                            <i class="lnil lnil-plane-alt"></i>
+                        <div class="end">
+                            <span><%= get_in(game.game_data, ["teams", "away", "name"]) %></span>
+                            <span>visit</span>
+                            <span><%= get_in(game.game_data, ["teams", "away", "id"]) %></span>
                         </div>
-                    </div>
-                    <div class="end">
-                        <span>01:46 pm</span>
-                        <span>New York JFK</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="flight-price">
-                        407
-                    </div>
-                </a>
-
-                <!--Flight-->
-                <a class="flight-card">
-                    <img src="assets/img/illustrations/dashboards/flights/company1.svg" alt="">
-                    <div class="start">
-                        <span>10:12 am</span>
-                        <span>Paris ORLY</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="route">
-                        <div class="departure"></div>
-                        <div class="line" data-content="1 stop"></div>
-                        <div class="arrival">
-                            <i class="lnil lnil-plane-alt"></i>
+                        <div>
+                            <div class="h-avatar is-medium">
+                                <img class="avatar" src={get_in(game.game_data, ["teams", "away", "logo"])} data-user-popover="9">
+                            </div>
                         </div>
-                    </div>
-                    <div class="end">
-                        <span>03:39 pm</span>
-                        <span>New York JFK</span>
-                        <span>Monday, Jul 7th</span>
-                    </div>
-                    <div class="flight-price">
-                        431
-                    </div>
-                </a>
+                    </a>
+                <% end %>
             </div>
         </div>
 

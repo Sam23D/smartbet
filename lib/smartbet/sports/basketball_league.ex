@@ -1,6 +1,7 @@
 defmodule Smartbet.Sports.BasketballLeague do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Smartbet.Sports.BasketballGame
 
   schema "basketball_leagues" do
     field :logo_imgurl, :string
@@ -14,7 +15,8 @@ defmodule Smartbet.Sports.BasketballLeague do
     field :games_crawled_at, :utc_datetime
     field :being_tracked?, :boolean
     field :season_ends, :utc_datetime
-
+    # add basketball league games relationship BasketballGame
+    has_many :games, BasketballGame, foreign_key: :league, references: :source_id
     timestamps()
   end
 
