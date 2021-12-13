@@ -76,6 +76,7 @@ defmodule SmartbetWeb.Router do
       resources "/basketball_leagues", BasketballLeageController
 
       live "/live_console", AdminConsoleLive
+      live "/live_console/basketball_league", BasketballLeagueLive
     end
 
   end

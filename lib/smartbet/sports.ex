@@ -280,6 +280,15 @@ defmodule Smartbet.Sports do
     Repo.all(query)
   end
 
+  @doc """
+  Returns a league with the given id, it will try to query for :source_id by default
+  """
+  def get_league!(%{ "league_id" => league_id })do
+    query = from league in BasketballLeague,
+      where: league.source_id == ^league_id
+    Repo.one!(query)
+  end
+
   alias Smartbet.Sports.Country
 
   @doc """

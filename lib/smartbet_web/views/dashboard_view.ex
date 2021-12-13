@@ -4,7 +4,6 @@ defmodule SmartbetWeb.DashboardView do
     alias SmartbetWeb.Components.Huro
     alias Phoenix.LiveView.Socket
     alias Smartbet.Accounts
-    alias SmartbetWeb.AdminConsoleLive
 
     def class_is_active_for_view?(conn, view_name) when is_binary(view_name) do
         if String.contains?(conn.request_path, view_name)do
@@ -22,7 +21,7 @@ defmodule SmartbetWeb.DashboardView do
     def user_has_role(socket_conn, role) do
         case socket_conn do
             socket=%Socket{} ->
-                AdminConsoleLive.get_current_user_token(socket)
+                Accounts.get_current_user_token(socket)
                 |> Accounts.get_user_by_session_token()
                 |> SmartbetWeb.UserAuth.has_role?(role)
             conn ->

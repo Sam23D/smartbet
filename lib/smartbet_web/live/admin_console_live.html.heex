@@ -197,7 +197,7 @@
                                 <img class="avatar is-squared" src={ league.logo_imgurl }>
                             </div>
                             <span class="dark-text">
-                                <%= league.name %>
+                                <%= live_redirect "#{league.name}", to: Routes.live_path(@socket, SmartbetWeb.BasketballLeagueLive, league_id: league.source_id) %>
                             </span>
                         </div>
                         <div class="flex-table-cell" data-th="Type">
