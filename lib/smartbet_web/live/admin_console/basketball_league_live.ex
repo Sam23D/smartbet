@@ -16,15 +16,23 @@ defmodule SmartbetWeb.BasketballLeagueLive do
   def handle_params(params, _uri, socket) do
     # Get league name and fetch games for corresponding league
     case params do
-      %{"league_id" => league_id} ->
+      %{"league_id" => league_id}->
         league = Sports.get_league!(%{ "league_id" => String.to_integer(league_id)}, games: :preload)
-        |> IO.inspect(label: "LEAGUE FROM PARAMS")
-        {:noreply, assign(socket, league: league)}
+        {:noreply, assign(socket, league: league, games: league.games )}
       params ->
         IO.inspect(params, label: "Getting this params")
         {:noreply, socket}
     end
   end
+
+  def handle_event("apply_league_filters_admin", %{ "query" => query }=params, socket) do
+    IO.inspect(params, label: "Admin filters")
+    IO.inspect(query, label: "Query")
+    queried_games = Sports.search_game(%{ query: query, league: socket.assigns.league.source_id })
+    |> IO.inspect(label: "Fetched games")
+    {:noreply, assign(socket, games: queried_games)}
+  end
+
 
 
 end

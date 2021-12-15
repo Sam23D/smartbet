@@ -236,12 +236,21 @@ defmodule Smartbet.Sports do
 
   @doc """
   Will search that the headline contains the query
-  search_game(%{ query: "red so..." })
+  search_game(%{ query: "red so" })
   Will search all the games where the given id is the home team
-  search_game(%{ home: id })
+  search_game(%{ query: "", league: legue_id })
   Will search all the games for the specified home & visit teams
-  search_game(%{ home: id, visit: id })
+  search_game(%{ home: id, league: legue_id, as: :visit })
   """
+  def search_game(%{ query: query, league: id  })do
+    # TODO implement to handle league_id
+    ilike_str = "%#{query}%"
+    query = from game in BasketballGame,
+      where: game.league == ^ id,
+      where: ilike(game.game_headline, ^ilike_str)
+    Repo.all(query)
+  end
+
   def search_game(%{ query: query  })do
     ilike_str = "%#{query}%"
     query = from game in BasketballGame,

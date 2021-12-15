@@ -90,10 +90,6 @@
 
             <!--Booking bar-->
             <div class="booking-bar-wrapper">
-                <img class="travel-illustration light-image"
-                    src="assets/img/illustrations/dashboards/flights/travel.svg" alt="">
-                <img class="travel-illustration dark-image"
-                    src="assets/img/illustrations/dashboards/flights/travel-dark.svg" alt="">
                 <div class="booking-bar-info">
                     <i class="lnil lnil-basketball"></i>
                     <div class="inner">
@@ -103,12 +99,14 @@
                 </div>
                 <div class="booking-bar">
                     <div class="booking-bar-inputs">
+                        <.form let={f} for={@changeset} phx-change="apply_league_filters_admin" phx-submit="search_league">
                         <div class="control has-icon">
-                            <input type="text" class="input flight-datepicker" placeholder="Home team" value="">
+                                <input type="text" name="query"  class="input flight-datepicker" placeholder="Search league..." value="">
                             <div class="form-icon">
-                                <i data-feather="calendar"></i>
+                                <i data-feather="calendar"></i>                            
                             </div>
                         </div>
+                        </.form>
                     
                     </div>
                     <div class="booking-bar-inputs">
@@ -129,7 +127,7 @@
             </div>
 
             <div class="flights-toolbar">
-                <h3 class="dark-inverted"><%= Enum.count(@league.games) %> games on the league</h3>
+                <h3 class="dark-inverted"><%= Enum.count(@games) %> games on the league</h3>
                 <!--Dropdown-->
                 <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
                     <div class="is-trigger" aria-haspopup="true">
@@ -173,10 +171,9 @@
 
 
             <div class="flights">
-                <%= for game <- Enum.take(@league.games, 10) do %>
+                <%= for game <- @games do %>
                     <!--Flight-->
                     <a class="flight-card">
-                        <img src="assets/img/illustrations/dashboards/flights/company1.svg" alt="">
                         <div class="start">
                             <span><%= game.game_headline %></span>
                             <span><%= Timex.format!(Timex.Timezone.convert(game.plays_at, "America/Chihuahua"), "%Y-%b-%d %H:%M", :strftime) %></span>
@@ -187,7 +184,7 @@
                             <span>home</span>
                             <span><%= get_in(game.game_data, ["teams", "home", "id"]) %></span>
                         </div>
-                        <div>
+                        <div class="end">
                             <div class="h-avatar is-medium">
                                 <img class="avatar" src={get_in(game.game_data, ["teams", "home", "logo"])} data-user-popover="9">
                             </div>
