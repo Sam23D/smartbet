@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,16 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Smartbet</title>
+      <%= csrf_meta_tag() %>
     <link rel="stylesheet" href={ Routes.static_path(@conn, "/css/app.css") }/>
     <link rel="stylesheet" href={ Routes.static_path(@conn, "/css/main.css") }/>
-    <%= csrf_meta_tag() %>
-    <script defer type="text/javascript" src={ Routes.static_path(@conn, "/assets/app.js" ) }></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&display=swap" rel="stylesheet">
+    <script defer type="text/javascript" src={ Routes.static_path(@conn, "/assets/app.js") }></script>
     <link rel="icon" type="image/png" href={ Routes.static_path(@conn, "/images/favicon.png") } />
   </head>
   <body>
-
     <%= @inner_content %>
 
+    <%# <script src={ Routes.static_path(@conn, "/js/app.js") } defer ></script> %>
 
+    <script src={ Routes.static_path(@conn, "/js/functions.js") } async></script>
+    <script src={ Routes.static_path(@conn, "/js/main.js") } async></script>
+    <%# <script src={ Routes.static_path(@conn, "/js/components.js") } async></script> %>
+    <%# <script src={ Routes.static_path(@conn, "/js/popover.js") } async></script> %>
+    <script src={ Routes.static_path(@conn, "/js/widgets.js") } async></script>
+    <script src={ Routes.static_path(@conn, "/js/touch.js") } async></script>
+    <script src={ Routes.static_path(@conn, "/js/syntax.js") } async></script>
   </body>
 </html>

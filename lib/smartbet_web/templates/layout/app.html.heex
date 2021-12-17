@@ -1,20 +1,10 @@
-
 <!--%= render "_user_menu.html", assigns %-->
-
+<%= if assigns[:changeset] do %>
+    <%= render(SmartbetWeb.DashboardView, "navbar.html", conn: @conn, changeset: @changeset) %>
+<% end %>
 <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
 <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
 <div id="huro-app" class="app-wrapper">
-<%= @inner_content %>
-
-
-
+    <%= @inner_content %>
 </div>
-
-<script src={ Routes.static_path(@conn, "/js/functions.js") } async></script>
-<script src={ Routes.static_path(@conn, "/js/main.js") } async></script>
-<script src={ Routes.static_path(@conn, "/js/components.js") } async></script>
-<script src={ Routes.static_path(@conn, "/js/popover.js") } async></script>
-<script src={ Routes.static_path(@conn, "/js/widgets.js") } async></script>
-<script src={ Routes.static_path(@conn, "/js/touch.js") } async></script>
-<script src={ Routes.static_path(@conn, "/js/syntax.js") } async></script>

@@ -1,0 +1,364 @@
+<div class="lifestyle-dashboard lifestyle-dashboard-v3 business-dashboard flights-dashboard pt-3">
+    <div class="illustration-header">
+        <div class="header-image">
+            <img src={@league.logo_imgurl} alt="">
+        </div>
+        <div class="header-meta">
+            <h3><%= @league.name %></h3>
+            <p>Basketball League</p>
+            <div class="summary-stats">
+                <div class="summary-stat">
+                    <span>Last fetched</span>
+                    <span><%= @league.fetched_at %></span>
+                </div>
+                <div class="summary-stat">
+                    <span>Games crawled at</span>
+                    <span><%= @league.games_crawled_at %></span>
+                </div>
+                
+                <div class="summary-stat">
+                    <span>League being tracked</span>
+                    <span><%= @league.being_tracked? %></span>
+                </div>
+                <div class="summary-stat">
+                    <span>Source API ID</span>
+                    <span><%= @league.source_id %></span>
+                </div>
+                <div class="summary-stat">
+                    <span>API source</span>
+                    <span><%= @league.api_source %></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columns is-multiline is-flex-tablet-p">
+
+        <!--Tile-->
+        <div class="column is-4">
+            <div class="health-tile">
+                <div class="tile-head">
+                    <div class="h-icon">
+                        <i aria-hidden="true" class="fas fa-trophy"></i>
+                    </div>
+                    <h4>
+                        <span class="dark-inverted">181/490</span>
+                        <span>Pending/Total</span>
+                    </h4>
+                </div>
+                <h3 class="dark-inverted">Games</h3>
+                <p>Remaining games in the league</p>
+            </div>
+        </div>
+
+        <!--Tile-->
+        <div class="column is-4">
+            <div class="health-tile">
+                <div class="tile-head">
+                    <div class="h-icon">
+                        <i aria-hidden="true" class="fas fa-heart"></i>
+                    </div>
+                    <h4>
+                        <span class="dark-inverted">112</span>
+                        <span>Scrbd</span>
+                    </h4>
+                </div>
+                <h3 class="dark-inverted">Subscribed</h3>
+                <p>Number of users with this league in ther favorite list.</p>
+            </div>
+        </div>
+
+        <!--Tile-->
+        <div class="column is-4">
+            <div class="health-tile">
+                <div class="tile-head">
+                    <div class="h-icon">
+                        <i aria-hidden="true" class="fas fa-pump-medical"></i>
+                    </div>
+                    <h4>
+                        <span class="dark-inverted">12/14</span>
+                        <span>units</span>
+                    </h4>
+                </div>
+                <h3 class="dark-inverted">Blood Pressure</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Illis videtur.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="columns m-t-20">
+        <div class="column is-9">
+
+            <!--Booking bar-->
+            <div class="booking-bar-wrapper">
+                <div class="booking-bar-info">
+                    <i class="lnil lnil-basketball"></i>
+                    <div class="inner">
+                        <h2 class="booking-bar-heading">League filters</h2>
+                        <p class="booking-bar-sub-heading">only for admins</p>
+                    </div>
+                </div>
+                <div class="booking-bar">
+                    <.form let={f} for={@search_changeset} phx-change="apply_league_filters_admin">
+                    <div class="booking-bar-inputs">
+                        <div class="control has-icon">
+                                <%= text_input f, :query, class: "input" %>
+                            <div class="form-icon">
+                                <i data-feather="calendar"></i>                            
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="switch-block">
+                        <div class="text">
+                            <span>As home</span>
+                        </div>
+                        <label class="form-switch is-success">
+                            <%= checkbox f, :as, checked_value: "visit", unchecked_value: "home" %>
+                            <i></i>
+                        </label>
+                        <div class="text">
+                            <span>As visit</span>
+                        </div>
+                    </div>
+                    </.form>
+                </div>
+            </div>
+
+            <div class="flights-toolbar">
+                <h3 class="dark-inverted"><%= Enum.count(@games) %> games on the league</h3>
+                <!--Dropdown-->
+                <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
+                    <div class="is-trigger" aria-haspopup="true">
+                        <i data-feather="more-vertical"></i>
+                    </div>
+                    <div class="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                            <a href="#" class="dropdown-item is-media">
+                                <div class="icon">
+                                    <i class="lnil lnil-reload"></i>
+                                </div>
+                                <div class="meta">
+                                    <span>Reload</span>
+                                    <span>Refresh search results</span>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item is-media">
+                                <div class="icon">
+                                    <i class="lnil lnil-save"></i>
+                                </div>
+                                <div class="meta">
+                                    <span>Save</span>
+                                    <span>Save this search</span>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item is-media">
+                                <div class="icon">
+                                    <i class="lnil lnil-cog"></i>
+                                </div>
+                                <div class="meta">
+                                    <span>Settings</span>
+                                    <span>configuration options</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="flights">
+                <%= for game <- @games do %>
+                    <!--Flight-->
+                    <a class="flight-card">
+                        <div class="start">
+                            <span><%= game.game_headline %></span>
+                            <span><%= Timex.format!(Timex.Timezone.convert(game.plays_at, "America/Chihuahua"), "%Y-%b-%d %H:%M", :strftime) %></span>
+                            <span>Game date</span>
+                        </div>
+                        <div class="end">
+                            <span><%= get_in(game.game_data, ["teams", "home", "name"]) %></span>
+                            <span>home</span>
+                            <span><%= get_in(game.game_data, ["teams", "home", "id"]) %></span>
+                        </div>
+                        <div class="end">
+                            <div class="h-avatar is-medium">
+                                <img class="avatar" src={get_in(game.game_data, ["teams", "home", "logo"])} data-user-popover="9">
+                            </div>
+                        </div>
+                        <div class="end">
+                            <span><%= get_in(game.game_data, ["teams", "away", "name"]) %></span>
+                            <span>visit</span>
+                            <span><%= get_in(game.game_data, ["teams", "away", "id"]) %></span>
+                        </div>
+                        <div>
+                            <div class="h-avatar is-medium">
+                                <img class="avatar" src={get_in(game.game_data, ["teams", "away", "logo"])} data-user-popover="9">
+                            </div>
+                        </div>
+                    </a>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="column is-3">
+
+            <div class="filters-card">
+                <a class="button h-button is-primary is-fullwidth is-bold is-raised">Add To Favorites</a>
+
+                <div class="checkboxes-list">
+                    <div class="field">
+                        <h5 class="dark-inverted">Filtros</h5>
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="radio" name="flight_stops" checked>
+                                <span></span>
+                                Played
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="radio" name="flight_stops">
+                                <span></span>
+                                No Stops
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <%# <div class="checkboxes-list">
+                    <div class="field">
+                        <h5 class="dark-inverted">Luggage</h5>
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="radio" name="flight_luggage" checked>
+                                <span></span>
+                                All Options
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="radio" name="flight_luggage">
+                                <span></span>
+                                1 Cabin luggage
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="radio" name="flight_luggage">
+                                <span></span>
+                                2 Cabin luggage
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="radio" name="flight_luggage">
+                                <span></span>
+                                None
+                            </label>
+                        </div>
+                    </div>
+            </div>
+            %>
+        </div>
+
+        <!--Widget-->
+        <div class="widget picker-widget is-straight">
+            <div class="widget-toolbar">
+                <div class="left">
+                    <a class="action-icon">
+                        <i data-feather="chevron-left"></i>
+                    </a>
+                </div>
+                <div class="center">
+                    <h3>October 2020</h3>
+                </div>
+                <div class="right">
+                    <a class="action-icon">
+                        <i data-feather="chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+            <table class="calendar">
+
+                <thead>
+
+                    <tr>
+
+                        <td>Mon</td>
+                        <td>Tue</td>
+                        <td>Wed</td>
+                        <td>Thu</td>
+                        <td>Fri</td>
+                        <td>Sat</td>
+                        <td>Sun</td>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td class="prev-month">29</td>
+                        <td class="prev-month">30</td>
+                        <td class="prev-month">31</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                    </tr>
+
+                    <tr>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td class="current-day">18</td>
+                    </tr>
+
+                    <tr>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                    </tr>
+
+                    <tr>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td class="next-month">1</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+</div>

@@ -1,3 +1,4 @@
+<div class="app-overlay"></div>
 
 <!--Mobile navbar-->
 <nav class="navbar mobile-navbar no-shadow is-hidden-desktop is-hidden-tablet" aria-label="main navigation">
@@ -13,8 +14,8 @@
             </div>
          </div>
          <a class="navbar-item is-brand" href="index.html">
-            <img class="light-image" src={ Routes.static_path(@conn, "/images/logos/logo/logo.svg" )} alt="" />
-            <img class="dark-image" src={ Routes.static_path(@conn, "/images/logos/logo/logo-light.svg" )} alt="" />
+            <img class="light-image" src={ Routes.static_path(@socket, "/images/logos/logo/logo.svg" )} alt="" />
+            <img class="dark-image" src={ Routes.static_path(@socket, "/images/logos/logo/logo-light.svg" )} alt="" />
          </a>
          <div class="brand-end">
             <div class="navbar-item has-dropdown is-notification is-hidden-tablet is-hidden-desktop">
@@ -130,12 +131,21 @@
                            <i class="lnil lnil-briefcase"></i>
                         </div>
                         <div class="meta">
-                           <span>Admin panel</span>
-                           <span>Live admin console</span>
+                           <span>Projects</span>
+                           <span>All my projects</span>
+                        </div>
+                     </a>
+                     <a href="#" class="dropdown-item is-media">
+                        <div class="icon">
+                           <i class="lnil lnil-users-alt"></i>
+                        </div>
+                        <div class="meta">
+                           <span>Team</span>
+                           <span>Manage your team</span>
                         </div>
                      </a>
                      <hr class="dropdown-divider">
-                     <a href= { Routes.user_settings_path(@conn, :edit) } class="dropdown-item is-media">
+                     <a href= { Routes.user_settings_path(@socket, :edit) } class="dropdown-item is-media">
                         <div class="icon">
                            <i class="lnil lnil-cog"></i>
                         </div>
@@ -146,7 +156,7 @@
                      </a>
                      <hr class="dropdown-divider">
                      <div class="dropdown-item is-button">
-                        <a href={ Routes.user_session_path(@conn, :delete)}
+                        <a href={ Routes.user_session_path(@socket, :delete)}
                            class="button h-button is-primary is-raised is-fullwidth logout-button">
                            <span class="icon is-small">
                               <i data-feather="log-out"></i>
@@ -210,19 +220,19 @@
    <div class="webapp-navbar-inner">
       <div class="left">
          <a href="/" class="brand">
-            <img class="light-image" src={ Routes.static_path(@conn, "/images/logos/logo/logo.svg" ) } alt="" />
-            <img class="dark-image" src={ Routes.static_path(@conn, "/images/logos/logo/logo-light.svg" )} alt="" />
+            <img class="light-image" src={ Routes.static_path(@socket, "/images/logos/logo/logo.svg" ) } alt="" />
+            <img class="dark-image" src={ Routes.static_path(@socket, "/images/logos/logo/logo-light.svg" )} alt="" />
          </a>
          <div class="separator"></div>
          <h1 id="webapp-page-title" class="title is-5">Smartbet</h1>
       </div>
       <div class="center">
          <div id="webapp-navbar-menu" class="centered-links">
-            <a class="centered-link" href={ Routes.dashboard_path(@conn, :index) }>
+            <a class="centered-link" href={ Routes.dashboard_path(@socket, :index) }>
                <i data-feather="home"></i>
                <span>Dashboard</span>
             </a>
-            <a href={ Routes.dashboard_path(@conn, :scores) } class="centered-link">
+            <a href={ Routes.dashboard_path(@socket, :scores) } class="centered-link">
                <i data-feather="calendar"></i>
                <span>Scores</span>
             </a>
@@ -234,7 +244,7 @@
                <i data-feather="star"></i>
                <span>Pro report</span>
             </a>
-            <a class="centered-link" href={ Routes.user_bets_path(@conn, :index) }>
+            <a class="centered-link" href={ Routes.user_bets_path(@socket, :index) }>
                <i data-feather="file-text"></i>
                <span>My picks</span>
             </a>
@@ -253,7 +263,7 @@
                </label>
             </div>
             <!--a class="toolbar-link right-panel-trigger" data-panel="languages-panel">
-               <img src={ Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")} alt="">
+               <img src={ Routes.static_path(@socket, "/images/icons/flags/united-states-of-america.svg")} alt="">
                </a-->
             <div class="toolbar-notifications is-hidden-mobile">
                <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
@@ -277,7 +287,7 @@
                               <a class="notification-item">
                                  <div class="img-left">
                                     <img class="user-photo" alt="" src={
-                                       Routes.static_path(@conn, "/images/avatars/svg/huro-2.svg" )} />
+                                       Routes.static_path(@socket, "/images/avatars/svg/huro-2.svg" )} />
                                  </div>
                                  <div class="user-content">
                                     <p class="user-info"><span class="name">Alice C.</span> left a comment.
@@ -290,7 +300,7 @@
                               <a class="notification-item">
                                  <div class="img-left">
                                     <img class="user-photo" alt="" src={
-                                       Routes.static_path(@conn, "/images/avatars/svg/huro-1.svg" )} />
+                                       Routes.static_path(@socket, "/images/avatars/svg/huro-1.svg" )} />
                                  </div>
                                  <div class="user-content">
                                     <p class="user-info"><span class="name">Joshua S.</span> uploaded a file.</p>
@@ -302,7 +312,7 @@
                               <a class="notification-item">
                                  <div class="img-left">
                                     <img class="user-photo" alt="" src={
-                                       Routes.static_path(@conn, "/images/avatars/svg/huro-3.svg" )} />
+                                       Routes.static_path(@socket, "/images/avatars/svg/huro-3.svg" )} />
                                  </div>
                                  <div class="user-content">
                                     <p class="user-info"><span class="name">Tara S.</span> sent you a
@@ -316,7 +326,7 @@
                               <a class="notification-item">
                                  <div class="img-left">
                                     <img class="user-photo" alt="" src={
-                                       Routes.static_path(@conn, "/images/avatars/svg/huro-4.svg" )} />
+                                       Routes.static_path(@socket, "/images/avatars/svg/huro-4.svg" )} />
                                  </div>
                                  <div class="user-content">
                                     <p class="user-info"><span class="name">Melany W.</span> left a comment.
@@ -335,13 +345,13 @@
             </a>
          </div>
          <div class="dropdown profile-dropdown dropdown-trigger is-spaced is-right">
-            <img class="user-photo" alt="" src={ Routes.static_path(@conn, "/images/avatars/svg/huro-5.svg" )} />
+            <img class="user-photo" alt="" src={ Routes.static_path(@socket, "/images/avatars/svg/huro-5.svg" )} />
             <span class="status-indicator"></span>
             <div class="dropdown-menu" role="menu">
                <div class="dropdown-content">
                   <div class="dropdown-head">
                      <div class="h-avatar is-large">
-                        <img class="user-photo" alt="" src={ Routes.static_path(@conn, "/images/avatars/svg/huro-5.svg"
+                        <img class="user-photo" alt="" src={ Routes.static_path(@socket, "/images/avatars/svg/huro-5.svg"
                            )} />
                      </div>
                      <div class="meta">
@@ -358,20 +368,36 @@
                         <span>View your profile</span>
                      </div>
                   </a>
-                  <%= if user_has_role(@conn, "admin") do %>
+                  <a class="dropdown-item is-media layout-switcher">
+                     <div class="icon">
+                        <i class="lnil lnil-layout"></i>
+                     </div>
+                     <div class="meta">
+                        <span>Layout</span>
+                        <span>Switch to admin/webapp</span>
+                     </div>
+                  </a>
                   <hr class="dropdown-divider">
-                  <a href= { Routes.live_path(@conn, SmartbetWeb.AdminConsoleLive) } class="dropdown-item is-media">
+                  <a href="#" class="dropdown-item is-media">
                      <div class="icon">
                         <i class="lnil lnil-briefcase"></i>
                      </div>
                      <div class="meta">
-                        <span>Admin panel</span>
-                        <span>Live admin console</span>
+                        <span>Projects</span>
+                        <span>All my projects</span>
                      </div>
                   </a>
-                  <% end %>
+                  <a href="#" class="dropdown-item is-media">
+                     <div class="icon">
+                        <i class="lnil lnil-users-alt"></i>
+                     </div>
+                     <div class="meta">
+                        <span>Team</span>
+                        <span>Manage your team</span>
+                     </div>
+                  </a>
                   <hr class="dropdown-divider">
-                  <a href= { Routes.user_settings_path(@conn, :edit) } class="dropdown-item is-media">
+                  <a href= { Routes.user_settings_path(@socket, :edit) } class="dropdown-item is-media">
                      <div class="icon">
                         <i class="lnil lnil-cog"></i>
                      </div>
@@ -382,7 +408,7 @@
                   </a>
                   <hr class="dropdown-divider">
                   <div class="dropdown-item is-button">
-                     <a href={ Routes.user_session_path(@conn, :delete)}
+                     <a href={ Routes.user_session_path(@socket, :delete)}
                         class="button h-button is-primary is-raised is-fullwidth logout-button">
                         <span class="icon is-small">
                            <i data-feather="log-out"></i>
@@ -413,7 +439,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection" checked>
                        <div class="language-option-inner">
-                           <img src={ Routes.static_path(@conn, "/images/icons/flags/united-states-of-america.svg")} alt="">
+                           <img src={ Routes.static_path(@socket, "/images/icons/flags/united-states-of-america.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -425,7 +451,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src={ Routes.static_path(@conn, "/images/icons/flags/france.svg")} alt="">
+                           <img src={ Routes.static_path(@socket, "/images/icons/flags/france.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -437,7 +463,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src={ Routes.static_path(@conn, "/images/icons/flags/spain.svg")} alt="">
+                           <img src={ Routes.static_path(@socket, "/images/icons/flags/spain.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -449,7 +475,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src={ Routes.static_path(@conn, "/images/icons/flags/germany.svg")} alt="">
+                           <img src={ Routes.static_path(@socket, "/images/icons/flags/germany.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -461,7 +487,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src={ Routes.static_path(@conn, "/images/icons/flags/mexico.svg")} alt="">
+                           <img src={ Routes.static_path(@socket, "/images/icons/flags/mexico.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -473,7 +499,7 @@
                    <div class="language-option">
                        <input type="radio" name="language_selection">
                        <div class="language-option-inner">
-                           <img src={ Routes.static_path(@conn, "/images/icons/flags/china.svg")} alt="">
+                           <img src={ Routes.static_path(@socket, "/images/icons/flags/china.svg")} alt="">
                            <div class="indicator">
                                <i data-feather="check"></i>
                            </div>
@@ -483,28 +509,12 @@
            </div>
 
            <div class="img-wrap has-text-centered">
-               <img class="light-image" src={ Routes.static_path(@conn, "/images/illustrations/right-panel/languages.svg")} alt="">
-               <img class="dark-image"  src={ Routes.static_path(@conn, "/images/illustrations/right-panel/languages-dark.svg")} alt="">
+               <img class="light-image" src={ Routes.static_path(@socket, "/images/illustrations/right-panel/languages.svg")} alt="">
+               <img class="dark-image"  src={ Routes.static_path(@socket, "/images/illustrations/right-panel/languages-dark.svg")} alt="">
            </div>
        </div>
    </div>
    </div-->
-<div id="bet-panel" class="right-panel-wrapper is-activity">
-   <div class="panel-overlay"></div>
-   <div class="right-panel">
-      <div class="right-panel-head">
-         <h3>Add New Bet</h3>
-         <a class="close-panel">
-            <i data-feather="chevron-right"></i>
-         </a>
-      </div>
-      <div class="tabs-wrapper is-triple-slider is-squared">
-         <div class="right-panel-body">
-            <%= render( SmartbetWeb.UserBetsView, "huro_side_panel_new.html", conn: @conn, changeset: @changeset) %>
-         </div>
-      </div>
-   </div>
-</div>
 <div id="edit-bet-panel" class="right-panel-wrapper is-activity">
    <div class="panel-overlay"></div>
    <div class="right-panel">
@@ -781,82 +791,6 @@
                                  data-demo-src="assets/img/avatars/photos/25.jpg" alt="">
                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div id="schedule-side-tab" class="tab-content">
-               <!--Timeline-->
-               <div class="icon-timeline">
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="phone-call"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Call Danny at Colby's</p>
-                        <span>Today - 11:30am</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <img class="avatar" src="https://via.placeholder.com/150x150"
-                           data-demo-src="assets/img/avatars/photos/7.jpg" alt="">
-                     </div>
-                     <div class="timeline-content">
-                        <p>Meeting with Alice</p>
-                        <span>Today - 01:00pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="message-circle"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Answer Annie's message</p>
-                        <span>Today - 01:45pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="mail"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Send new campaign</p>
-                        <span>Today - 02:30pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="smile"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Project review</p>
-                        <span>Today - 03:30pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="phone-call"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Call Trisha Jackson</p>
-                        <span>Today - 05:00pm</span>
-                     </div>
-                  </div>
-                  <!--Timeline item-->
-                  <div class="timeline-item">
-                     <div class="timeline-icon">
-                        <i data-feather="feather"></i>
-                     </div>
-                     <div class="timeline-content">
-                        <p>Write proposal for Don</p>
-                        <span>Today - 06:00pm</span>
                      </div>
                   </div>
                </div>

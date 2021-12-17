@@ -25,6 +25,10 @@ defmodule Smartbet.Bets do
     |> Repo.paginate(page: page)
   end
 
+  def all_user_bets(%{id: user_id}), do:
+    all_user_bets(user_id)
+
+
   def all_user_bets(user_id) do
     query = from user_bet in UserBets,
     where: user_bet.user_id == ^user_id

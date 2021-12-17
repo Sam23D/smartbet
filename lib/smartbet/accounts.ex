@@ -346,4 +346,17 @@ defmodule Smartbet.Accounts do
       {:error, :user, changeset, _} -> {:error, changeset}
     end
   end
+
+  @doc """
+  Returns the current "user_token" from a @socket
+  """
+  def get_current_user_token(params)do
+    case params.private do
+      %{connect_info: %{session: session }} ->
+        session["user_token"]
+      %{conn_session: conn_sesion} ->
+        conn_sesion["user_token"]
+    end
+  end
+
 end

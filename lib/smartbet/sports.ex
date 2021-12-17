@@ -7,6 +7,7 @@ defmodule Smartbet.Sports do
   alias Smartbet.Repo
 
   alias Smartbet.Sports.BasketballTeam
+  alias Smartbet.Sports.BasketballGame
 
   @doc """
   Returns the list of basketball_teams.
@@ -234,6 +235,56 @@ defmodule Smartbet.Sports do
   end
 
   @doc """
+  Will search that the headline contains the query
+  search_game(%{ query: "red so" })
+  Will search all the games where the given id is the home team
+  search_game(%{ query: "", league: legue_id })
+  Will search all the games for the specified home & visit teams
+  search_game(%{ home: id, league: legue_id, as: :visit })
+  """
+  def search_game(%{ query: query, league: id , as: playing_as })do
+    ilike_str = "%#{query}%"
+    case playing_as do
+      "visit" ->
+        query = from game in BasketballGame,
+          where: game.league == ^id,
+          where: fragment("?->'teams'->'away'->>'name' ilike ?", game.game_data, ^ilike_str),
+          order_by: [asc: game.plays_at]
+      "home" ->
+        query = from game in BasketballGame,
+          where: game.league == ^id,
+          where: fragment("?->'teams'->'home'->>'name' ilike ?", game.game_data, ^ilike_str),
+          order_by: [asc: game.plays_at]
+    end
+    |> Repo.all()
+  end
+
+  def search_game(%{ query: query, league: id  })do
+    # TODO implement to handle league_id
+    ilike_str = "%#{query}%"
+    query = from game in BasketballGame,
+      where: game.league == ^ id,
+      where: ilike(game.game_headline, ^ilike_str),
+      order_by: [asc: game.plays_at]
+    Repo.all(query)
+  end
+
+  def search_game(%{ query: query  })do
+    ilike_str = "%#{query}%"
+    query = from game in BasketballGame,
+      where: ilike(game.game_headline, ^ilike_str),
+      order_by: [asc: game.plays_at]
+    Repo.all(query)
+  end
+
+  def search_game(%{ home: home_id, visit: visit_id  })do
+    query = from game in BasketballGame,
+      where: game.home == ^home_id,
+      where: game.visit == ^visit_id
+
+    Repo.all(query)
+  end
+  @doc """
   Takes a league, and sets it's being_tracked? attribute to `true`, this will take the league into account for system's crawling/tracking
   ```
   Smartbet.Sports.toggle_league_tracking(%{id: 1}) # toggles on the current value
@@ -253,6 +304,22 @@ defmodule Smartbet.Sports do
     query = from league in BasketballLeague,
       where: league.being_tracked? == true
     Repo.all(query)
+  end
+
+  @doc """
+  Returns a league with the given id, it will try to query for :source_id by default
+  """
+  def get_league!(%{ "league_id" => league_id }, [{:games, :preload}])do
+    query = from league in BasketballLeague,
+      where: league.source_id == ^league_id,
+      preload: :games
+    Repo.one!(query)
+  end
+
+  def get_league!(%{ "league_id" => league_id })do
+    query = from league in BasketballLeague,
+      where: league.source_id == ^league_id
+    Repo.one!(query)
   end
 
   alias Smartbet.Sports.Country

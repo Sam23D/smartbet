@@ -1,358 +1,358 @@
  <!--Full pageloader-->
-        <!-- Pageloader -->
-        <div class="pageloader is-full"></div>
-        <div class="infraloader is-full is-active"></div>
-        <div class="minimal-wrapper light">
-            <!--Page body-->
+<!-- Pageloader -->
+<div class="pageloader is-full"></div>
+<div class="infraloader is-full is-active"></div>
+<div class="minimal-wrapper light">
+    <!--Page body-->
 
-            <div class="landing-page-wrapper">
-                <!-- Hero and Navbar -->
-                <div id="huro-landing" class="hero is-fullheight rounded-hero">
+    <div class="landing-page-wrapper">
+        <!-- Hero and Navbar -->
+        <div id="huro-landing" class="hero is-fullheight rounded-hero">
 
-                    <!-- Navbar partial -->
-                    <nav class="navbar is-fixed-top is-transparent is-docked" aria-label="main navigation">
-                        <div class="navbar-brand">
-                            <a class="navbar-item" >
-                                <div class="brand-icon">
-                                    <img class="light-image-l" src={ Routes.static_path(@conn, "/images/logos/logo/logo.svg") } alt="" />
-                                    <img class="dark-image-l" src={ Routes.static_path(@conn, "/images/logos/logo/logo-light.svg") } alt="" />
-                                </div>
-                            </a>
-
-                            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                            </a>
+            <!-- Navbar partial -->
+            <nav class="navbar is-fixed-top is-transparent is-docked" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a class="navbar-item" >
+                        <div class="brand-icon">
+                            <img class="light-image-l" src={ Routes.static_path(@conn, "/images/logos/logo/logo.svg") } alt="" />
+                            <img class="dark-image-l" src={ Routes.static_path(@conn, "/images/logos/logo/logo-light.svg") } alt="" />
                         </div>
+                    </a>
 
-                        <div class="navbar-menu">
-                            <div class="navbar-start">
-                                <div class="navbar-item">
-                                    <a class="nav-link is-active">Sports</a>
-                                </div>
-
-                                <div class="navbar-item">
-                                    <a href="#huro-demos-list" class="nav-link is-scroll">Picks</a>
-                                </div>
-
-                                <div class="navbar-item">
-                                    <a href="#huro-demo-elements" class="nav-link is-scroll">Statistics</a>
-                                </div>
-
-                                <div class="navbar-item">
-                                    <a class="nav-link">Pro Report</a>
-                                </div>
-                            </div>
-                            
-
-                            <div class="navbar-end">
-                                <div class="navbar-item is-theme-toggle">
-                                    <label class="theme-toggle">
-                                        <input id="navbar-night-toggle--daynight" type="checkbox">
-                                        <span class="toggler">
-                                        <span class="dark">
-                                            <i data-feather="moon"></i>
-                                        </span>
-                                        <span class="light">
-                                            <i data-feather="sun"></i>
-                                        </span>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="navbar-item">
-                                    <a href={ Routes.user_session_path(@conn, :new) } class="nav-link">Login</a>
-                                </div>
-                                <div class="navbar-item">
-                                    <%= if @conn.assigns.current_user do %>
-                                    <a href={ Routes.user_registration_path(@conn, :new) } class="button h-button is-rounded is-primary is-raised">
-                                        <strong>Welcome Back</strong>
-                                    </a>
-                                    <% else %>
-                                    <a href={ Routes.user_registration_path(@conn, :new) } class="button h-button is-rounded is-primary is-raised">
-                                        <strong>Sign up</strong>
-                                    </a>
-                                    <% end %>
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-                    <div class="absolute-header">
-                        <div class="header-inner">
-                            <img class="cut-circle light-image-l" src="images/shapes/cut-circle.svg" alt="">
-                            <img class="cut-circle dark-image-l" src="images/shapes/cut-circle-dark.svg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="hero-body has-text-centered">
-                        <div class="container">
-                        <div class="switch-wrapper">
-                            </div>
-                            <h1 class="title is-1 is-bold is-light is-bold">Improve your bets with <span>Smart Bet</span></h1>
-                            <h3 class="subtitle is-4 is-light">Premium Statistics for bets</h3>
-                            <img class="light-image-l hero-mockup" src="images/illustrations/landing/app-1.png" alt="">
-                            <img class="dark-image-l hero-mockup" src="images/illustrations/landing/app-1-dark.png" alt="">
-                        </div>
-                    </div>
-
-                    <canvas id="demo-canvas"></canvas>
-                </div>
-
-                <!--Stacks Section-->
-                <div id="stacks-section" class="section">
-                    <div class="container">
-
-                        <!--Title-->
-                        <div class="section-title has-text-centered">
-                            <h2 class="title is-2">Smart Bet Features</h2>
-                            <h4>All you need to improve your bets is there.</h4>
-                        </div>
-
-                        <!--Boxed Features-->
-                        <div class="boxed-features">
-                            <div class="flex-card light-bordered hover-inset">
-                                <div class="flex-cell">
-                                    <i class="lnil lnil-toolbox"></i>
-                                    <h3>1000+ Leagues</h3>
-                                    <p>You can track a great quantity of bets from differents leagues</p>
-                                </div>
-                                <div class="flex-cell">
-                                    <i class="lnil lnil-pie-chart-dollar"></i>
-                                    <h3>Premium Statistics</h3>
-                                    <p>We provide premium statistics that will help you chose the right bet</p>
-                                </div>
-                                <div class="flex-cell">
-                                    <i class="lnil lnil-alarm-4"></i>
-                                    <h3>Live Scores</h3>
-                                    <p>Live scores of the most importatn leagues in the US</p>
-                                </div>
-                                <div class="flex-cell no-border-edge">
-                                    <i class="lnil lnil-rocket"></i>
-                                    <h3>Pro Report</h3>
-                                    <p>Analize your desitions based on our Pro Report tha will show you how the bets are moving</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!--Side Features Section-->
-                <div class="section">
-                    <div class="container">
-                        <!--Title-->
-                        <div class="section-title has-text-centered">
-                            <h2 class="title is-2">Start betting like a pro</h2>
-                            <h4>Pro report and analysis for your picks</h4>
-                        </div>
-
-                        <!-- Feature -->
-                        <div class="columns is-vcentered side-feature">
-                            <div class="column is-6 has-text-centered">
-                                <img class="light-image-l featured-image" src="images/illustrations/landing/picks-1.png" alt="">
-                                <img class="dark-image-l featured-image" src="images/illustrations/landing/picks-1-dark.png" alt="">
-                            </div>
-                            <div class="column is-5">
-                                <h2 class="title m-b-10 is-centered-tablet-portrait">Follow all your picks</h2>
-                                <p class="section-feature-description is-centered-tablet-portrait">
-                                    Start tracking all your picks in the same place, you can track every match and star analyzing all the stats from your bets. 
-                                    Diligently tracking your bets is the best way to keep tabs on your bankroll, strengths, weaknesses and more. 
-                                    Smartbet makes that so much easier. Since we can verify the bets are real, we’ll display your record.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Feature -->
-                        <div class="columns is-vcentered side-feature">
-                            <div class="column is-6 has-text-centered h-hidden-desktop h-hidden-tablet-p">
-                                <img class="light-image-l featured-image" src="images/illustrations/landing/feature-2.svg" alt="">
-                                <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-2-dark.svg" alt="">
-                            </div>
-                            <div class="column is-5 is-offset-1">
-                                <h2 class="title m-b-10 is-centered-tablet-portrait">Live Scores</h2>
-                                <p class="section-feature-description is-centered-tablet-portrait">
-                                    Get Live Sport Scores with SmartBet! We cover best leagues in the world,
-                                    Leagues and Competitions in unbeatable detail. Join Now!
-                                </p>
-                            </div>
-                            <div class="column is-6 has-text-centered h-hidden-mobile">
-                                <img class="light-image-l featured-image" src="images/illustrations/landing/scores-1.png" alt="">
-                                <img class="dark-image-l featured-image" src="images/illustrations/landing/scores-1-dark.png" alt="">
-                            </div>
-                        </div>
-                        <!-- Feature -->
-                        <div class="columns is-vcentered side-feature">
-                            <div class="column is-6 has-text-centered">
-                                <img class="light-image-l featured-image" src="images/illustrations/landing/feature-3.svg" alt="">
-                                <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-3-dark.svg" alt="">
-                            </div>
-                            <div class="column is-5">
-                                <h2 class="title m-b-10 is-centered-tablet-portrait">Pro Reports</h2>
-                                <p class="section-feature-description is-centered-tablet-portrait">
-                                    Make sports betting more entertaining and enable more confident in-play trading with Pro Stats from SmartBet,
-                                    sports data and bet stimulation content for you in one place.
-                                </p>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-
-               
-
-
-                <div class="section">
-                    <div class="container">
-                        <!--Title-->
-                        <div class="section-title has-text-centered pt-40">
-                            <h2 class="title is-3">3 More Reasons To Choose SmartBet</h2>
-                            <h4>If you're not convinced yet, here's some more.</h4>
-                        </div>
-
-                        <div class="customers-choice p-t-40 p-b-40">
-                            <!-- Feature -->
-                            <div class="columns is-vcentered side-feature">
-                                <div class="column is-5 is-offset-1 has-text-centered">
-                                    <img class="light-image-l featured-image" src="images/illustrations/landing/feature-4.svg" alt="">
-                                    <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-4-dark.svg" alt="">
-                                </div>
-                                <div class="column is-5">
-                                    <h2 class="title m-b-10 is-centered-tablet-portrait">Focused on probabilities</h2>
-                                    <p class="section-feature-description is-centered-tablet-portrait">
-                                        All our predictions and recomendations are based on statistical analysis all made from your past bets.
-                                        
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Feature -->
-                            <div class="columns is-vcentered side-feature">
-                                <div class="column is-5 has-text-centered h-hidden-desktop h-hidden-tablet-p">
-                                    <img class="light-image-l featured-image" src="images/illustrations/landing/feature-5.svg" alt="">
-                                    <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-5-dark.svg" alt="">
-                                </div>
-                                <div class="column is-5 is-offset-1">
-                                    <h2 class="title m-b-10 is-centered-tablet-portrait">Follow Your Friend’s Bets</h2>
-                                    <p class="section-feature-description is-centered-tablet-portrait">
-                                        Share tips and place bets with friends using SmartBet. Find & share any bet in seconds and compare odds.
-                                        See where and when your friends have action, and follow bets from all the big names.
-                                        
-                                    </p>
-                                </div>
-                                <div class="column is-5 has-text-centered h-hidden-mobile">
-                                    <img class="light-image-l featured-image" src="images/illustrations/landing/feature-5.svg" alt="">
-                                    <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-5-dark.svg" alt="">
-                                </div>
-                            </div>
-
-                            <!-- Feature -->
-                            <div class="columns is-vcentered side-feature">
-                                <div class="column is-5 is-offset-1 has-text-centered">
-                                    <img class="light-image-l featured-image" src="images/illustrations/landing/feature-6.svg" alt="">
-                                    <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-6-dark.svg" alt="">
-                                </div>
-                                <div class="column is-5">
-                                    <h2 class="title m-b-10 is-centered-tablet-portrait">Extensive Documentation</h2>
-                                    <p class="section-feature-description is-centered-tablet-portrait">
-                                        Learn betting basics like how to read & understand odds, moneyline betting, betting against the spread and over / under bets.
-                                        We share tips and tricks you should know when starting to place bets.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                       
-                    </div>
-
-
-                </div>
-
-                <!-- Footer -->
-                <!-- Simple light footer -->
-                <footer class="huro-footer">
-                    <div class="container">
-                        
-                        <div class="columns footer-body">
-                            <!-- Column -->
-                            <div class="column is-4">
-                                <div class="p-t-10 p-b-10">
-                                    <img class="small-footer-logo light-image-l" src="images/logos/logo/logo.svg" alt="" />
-                                    <img class="small-footer-logo dark-image-l" src="images/logos/logo/logo-light.svg" alt="" />
-                                    <div class="footer-description p-t-10 p-b-10">
-                                        SmartBet is a platform designed for those who want to improve their bets and become professionals.
-                                        Founded in March 2020 by two sports and betting fans
-                                    </div>
-                                </div>
-                                <div>
-                            
-                                    <div class="social-links p-t-10 p-b-10">
-                                        <a href="#">
-                                            <span class="icon"><i aria-hidden="true" class="fab fa-facebook"></i></span>
-                                        </a>
-                                        <a href="#">
-                                            <span class="icon"><i aria-hidden="true" class="fab fa-twitter"></i></span>
-                                        </a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Column -->
-                            <div class="column is-6 is-offset-2">
-                                <div class="columns is-flex-tablet-p">
-                                    <!-- Column -->
-                                    <div class="column">
-                                        <ul class="footer-column">
-                                            <li class="column-header">
-                                                Smartbet
-                                            </li>
-                                            <li class="column-item"><a href="#">Home</a></li>
-                                            <li class="column-item"><a href="#">Picks</a></li>
-                                            <li class="column-item"><a href="#">Scores</a></li>
-                                            <li class="column-item"><a href="#">Pro Report</a></li>
-                                            <li class="column-item"><a href="#">Sign Up</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- Column -->
-                                    <div class="column">
-                                        <ul class="footer-column">
-                                            <li class="column-header">
-                                                Resources
-                                            </li>
-                                            <li class="column-item"><a href="#">Learning</a></li>
-                                            <li class="column-item"><a href="#">Support center</a></li>
-                                            <li class="column-item"><a href="#">FAQ</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- Column -->
-                                    <div class="column">
-                                        <ul class="footer-column">
-                                            <li class="column-header">
-                                                Terms
-                                            </li>
-                                            <li class="column-item"><a href="#">Terms of Service</a></li>
-                                            <li class="column-item"><a href="#">Privacy policy</a></li>
-                                          
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer-copyright has-text-centered">
-                            <p>&copy; 2020-2021 | Smart Bet | All Rights Reserved.</p>
-                        </div>
-                    </div>
-                </footer>
-                <!-- /Simple light footer -->
-                <!-- Back To Top Button -->
-                <div id="backtotop">
-                    <a href="#">
-                        <i aria-hidden="true" class="fas fa-angle-up"></i>
+                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
                     </a>
                 </div>
+
+                <div class="navbar-menu">
+                    <div class="navbar-start">
+                        <div class="navbar-item">
+                            <a class="nav-link is-active">Sports</a>
+                        </div>
+
+                        <div class="navbar-item">
+                            <a href="#huro-demos-list" class="nav-link is-scroll">Picks</a>
+                        </div>
+
+                        <div class="navbar-item">
+                            <a href="#huro-demo-elements" class="nav-link is-scroll">Statistics</a>
+                        </div>
+
+                        <div class="navbar-item">
+                            <a class="nav-link">Pro Report</a>
+                        </div>
+                    </div>
+                    
+
+                    <div class="navbar-end">
+                        <div class="navbar-item is-theme-toggle">
+                            <label class="theme-toggle">
+                                <input id="navbar-night-toggle--daynight" type="checkbox">
+                                <span class="toggler">
+                                <span class="dark">
+                                    <i data-feather="moon"></i>
+                                </span>
+                                <span class="light">
+                                    <i data-feather="sun"></i>
+                                </span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="navbar-item">
+                            <a href={ Routes.user_session_path(@conn, :new) } class="nav-link">Login</a>
+                        </div>
+                        <div class="navbar-item">
+                            <%= if @conn.assigns.current_user do %>
+                            <a href={ Routes.user_registration_path(@conn, :new) } class="button h-button is-rounded is-primary is-raised">
+                                <strong>Welcome Back</strong>
+                            </a>
+                            <% else %>
+                            <a href={ Routes.user_registration_path(@conn, :new) } class="button h-button is-rounded is-primary is-raised">
+                                <strong>Sign up</strong>
+                            </a>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="absolute-header">
+                <div class="header-inner">
+                    <img class="cut-circle light-image-l" src="images/shapes/cut-circle.svg" alt="">
+                    <img class="cut-circle dark-image-l" src="images/shapes/cut-circle-dark.svg" alt="">
+                </div>
+            </div>
+
+            <div class="hero-body has-text-centered">
+                <div class="container">
+                <div class="switch-wrapper">
+                    </div>
+                    <h1 class="title is-1 is-bold is-light is-bold">Improve your bets with <span>Smart Bet</span></h1>
+                    <h3 class="subtitle is-4 is-light">Premium Statistics for bets</h3>
+                    <img class="light-image-l hero-mockup" src="images/illustrations/landing/app-1.png" alt="">
+                    <img class="dark-image-l hero-mockup" src="images/illustrations/landing/app-1-dark.png" alt="">
+                </div>
+            </div>
+
+            <canvas id="demo-canvas"></canvas>
+        </div>
+
+        <!--Stacks Section-->
+        <div id="stacks-section" class="section">
+            <div class="container">
+
+                <!--Title-->
+                <div class="section-title has-text-centered">
+                    <h2 class="title is-2">Smart Bet Features</h2>
+                    <h4>All you need to improve your bets is there.</h4>
+                </div>
+
+                <!--Boxed Features-->
+                <div class="boxed-features">
+                    <div class="flex-card light-bordered hover-inset">
+                        <div class="flex-cell">
+                            <i class="lnil lnil-toolbox"></i>
+                            <h3>1000+ Leagues</h3>
+                            <p>You can track a great quantity of bets from differents leagues</p>
+                        </div>
+                        <div class="flex-cell">
+                            <i class="lnil lnil-pie-chart-dollar"></i>
+                            <h3>Premium Statistics</h3>
+                            <p>We provide premium statistics that will help you chose the right bet</p>
+                        </div>
+                        <div class="flex-cell">
+                            <i class="lnil lnil-alarm-4"></i>
+                            <h3>Live Scores</h3>
+                            <p>Live scores of the most importatn leagues in the US</p>
+                        </div>
+                        <div class="flex-cell no-border-edge">
+                            <i class="lnil lnil-rocket"></i>
+                            <h3>Pro Report</h3>
+                            <p>Analize your desitions based on our Pro Report tha will show you how the bets are moving</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!--Huro Scripts-->
-        <!--Load Mapbox-->
+        <!--Side Features Section-->
+        <div class="section">
+            <div class="container">
+                <!--Title-->
+                <div class="section-title has-text-centered">
+                    <h2 class="title is-2">Start betting like a pro</h2>
+                    <h4>Pro report and analysis for your picks</h4>
+                </div>
 
-        <script src={ Routes.static_path(@conn, "/js/landing.js") } defer ></script>
+                <!-- Feature -->
+                <div class="columns is-vcentered side-feature">
+                    <div class="column is-6 has-text-centered">
+                        <img class="light-image-l featured-image" src="images/illustrations/landing/picks-1.png" alt="">
+                        <img class="dark-image-l featured-image" src="images/illustrations/landing/picks-1-dark.png" alt="">
+                    </div>
+                    <div class="column is-5">
+                        <h2 class="title m-b-10 is-centered-tablet-portrait">Follow all your picks</h2>
+                        <p class="section-feature-description is-centered-tablet-portrait">
+                            Start tracking all your picks in the same place, you can track every match and star analyzing all the stats from your bets. 
+                            Diligently tracking your bets is the best way to keep tabs on your bankroll, strengths, weaknesses and more. 
+                            Smartbet makes that so much easier. Since we can verify the bets are real, we’ll display your record.
+                        </p>
+                    </div>
+                </div>
+                <!-- Feature -->
+                <div class="columns is-vcentered side-feature">
+                    <div class="column is-6 has-text-centered h-hidden-desktop h-hidden-tablet-p">
+                        <img class="light-image-l featured-image" src="images/illustrations/landing/feature-2.svg" alt="">
+                        <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-2-dark.svg" alt="">
+                    </div>
+                    <div class="column is-5 is-offset-1">
+                        <h2 class="title m-b-10 is-centered-tablet-portrait">Live Scores</h2>
+                        <p class="section-feature-description is-centered-tablet-portrait">
+                            Get Live Sport Scores with SmartBet! We cover best leagues in the world,
+                            Leagues and Competitions in unbeatable detail. Join Now!
+                        </p>
+                    </div>
+                    <div class="column is-6 has-text-centered h-hidden-mobile">
+                        <img class="light-image-l featured-image" src="images/illustrations/landing/scores-1.png" alt="">
+                        <img class="dark-image-l featured-image" src="images/illustrations/landing/scores-1-dark.png" alt="">
+                    </div>
+                </div>
+                <!-- Feature -->
+                <div class="columns is-vcentered side-feature">
+                    <div class="column is-6 has-text-centered">
+                        <img class="light-image-l featured-image" src="images/illustrations/landing/feature-3.svg" alt="">
+                        <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-3-dark.svg" alt="">
+                    </div>
+                    <div class="column is-5">
+                        <h2 class="title m-b-10 is-centered-tablet-portrait">Pro Reports</h2>
+                        <p class="section-feature-description is-centered-tablet-portrait">
+                            Make sports betting more entertaining and enable more confident in-play trading with Pro Stats from SmartBet,
+                            sports data and bet stimulation content for you in one place.
+                        </p>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+        
+
+
+        <div class="section">
+            <div class="container">
+                <!--Title-->
+                <div class="section-title has-text-centered pt-40">
+                    <h2 class="title is-3">3 More Reasons To Choose SmartBet</h2>
+                    <h4>If you're not convinced yet, here's some more.</h4>
+                </div>
+
+                <div class="customers-choice p-t-40 p-b-40">
+                    <!-- Feature -->
+                    <div class="columns is-vcentered side-feature">
+                        <div class="column is-5 is-offset-1 has-text-centered">
+                            <img class="light-image-l featured-image" src="images/illustrations/landing/feature-4.svg" alt="">
+                            <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-4-dark.svg" alt="">
+                        </div>
+                        <div class="column is-5">
+                            <h2 class="title m-b-10 is-centered-tablet-portrait">Focused on probabilities</h2>
+                            <p class="section-feature-description is-centered-tablet-portrait">
+                                All our predictions and recomendations are based on statistical analysis all made from your past bets.
+                                
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature -->
+                    <div class="columns is-vcentered side-feature">
+                        <div class="column is-5 has-text-centered h-hidden-desktop h-hidden-tablet-p">
+                            <img class="light-image-l featured-image" src="images/illustrations/landing/feature-5.svg" alt="">
+                            <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-5-dark.svg" alt="">
+                        </div>
+                        <div class="column is-5 is-offset-1">
+                            <h2 class="title m-b-10 is-centered-tablet-portrait">Follow Your Friend’s Bets</h2>
+                            <p class="section-feature-description is-centered-tablet-portrait">
+                                Share tips and place bets with friends using SmartBet. Find & share any bet in seconds and compare odds.
+                                See where and when your friends have action, and follow bets from all the big names.
+                                
+                            </p>
+                        </div>
+                        <div class="column is-5 has-text-centered h-hidden-mobile">
+                            <img class="light-image-l featured-image" src="images/illustrations/landing/feature-5.svg" alt="">
+                            <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-5-dark.svg" alt="">
+                        </div>
+                    </div>
+
+                    <!-- Feature -->
+                    <div class="columns is-vcentered side-feature">
+                        <div class="column is-5 is-offset-1 has-text-centered">
+                            <img class="light-image-l featured-image" src="images/illustrations/landing/feature-6.svg" alt="">
+                            <img class="dark-image-l featured-image" src="images/illustrations/landing/feature-6-dark.svg" alt="">
+                        </div>
+                        <div class="column is-5">
+                            <h2 class="title m-b-10 is-centered-tablet-portrait">Extensive Documentation</h2>
+                            <p class="section-feature-description is-centered-tablet-portrait">
+                                Learn betting basics like how to read & understand odds, moneyline betting, betting against the spread and over / under bets.
+                                We share tips and tricks you should know when starting to place bets.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+
+        </div>
+
+        <!-- Footer -->
+        <!-- Simple light footer -->
+        <footer class="huro-footer">
+            <div class="container">
+                
+                <div class="columns footer-body">
+                    <!-- Column -->
+                    <div class="column is-4">
+                        <div class="p-t-10 p-b-10">
+                            <img class="small-footer-logo light-image-l" src="images/logos/logo/logo.svg" alt="" />
+                            <img class="small-footer-logo dark-image-l" src="images/logos/logo/logo-light.svg" alt="" />
+                            <div class="footer-description p-t-10 p-b-10">
+                                SmartBet is a platform designed for those who want to improve their bets and become professionals.
+                                Founded in March 2020 by two sports and betting fans
+                            </div>
+                        </div>
+                        <div>
+                    
+                            <div class="social-links p-t-10 p-b-10">
+                                <a href="#">
+                                    <span class="icon"><i aria-hidden="true" class="fab fa-facebook"></i></span>
+                                </a>
+                                <a href="#">
+                                    <span class="icon"><i aria-hidden="true" class="fab fa-twitter"></i></span>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="column is-6 is-offset-2">
+                        <div class="columns is-flex-tablet-p">
+                            <!-- Column -->
+                            <div class="column">
+                                <ul class="footer-column">
+                                    <li class="column-header">
+                                        Smartbet
+                                    </li>
+                                    <li class="column-item"><a href="#">Home</a></li>
+                                    <li class="column-item"><a href="#">Picks</a></li>
+                                    <li class="column-item"><a href="#">Scores</a></li>
+                                    <li class="column-item"><a href="#">Pro Report</a></li>
+                                    <li class="column-item"><a href="#">Sign Up</a></li>
+                                </ul>
+                            </div>
+                            <!-- Column -->
+                            <div class="column">
+                                <ul class="footer-column">
+                                    <li class="column-header">
+                                        Resources
+                                    </li>
+                                    <li class="column-item"><a href="#">Learning</a></li>
+                                    <li class="column-item"><a href="#">Support center</a></li>
+                                    <li class="column-item"><a href="#">FAQ</a></li>
+                                </ul>
+                            </div>
+                            <!-- Column -->
+                            <div class="column">
+                                <ul class="footer-column">
+                                    <li class="column-header">
+                                        Terms
+                                    </li>
+                                    <li class="column-item"><a href="#">Terms of Service</a></li>
+                                    <li class="column-item"><a href="#">Privacy policy</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright has-text-centered">
+                    <p>&copy; 2020-2021 | Smart Bet | All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- /Simple light footer -->
+        <!-- Back To Top Button -->
+        <div id="backtotop">
+            <a href="#">
+                <i aria-hidden="true" class="fas fa-angle-up"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--Huro Scripts-->
+<!--Load Mapbox-->
+
+<script src={ Routes.static_path(@conn, "/js/landing.js") } defer ></script>

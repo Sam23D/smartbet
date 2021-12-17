@@ -18,6 +18,16 @@ defmodule SmartbetWeb.Router do
     plug :accepts, ["json"]
   end
 
+
+  if Mix.env() in [:dev, :test] do
+    import Phoenix.LiveDashboard.Router
+
+    scope "/" do
+      pipe_through :browser
+      live_dashboard "/server_dashboard", metrics: SmartbetWeb.Telemetry
+    end
+  end
+
   scope "/", SmartbetWeb do
     pipe_through :browser
 
@@ -30,29 +40,6 @@ defmodule SmartbetWeb.Router do
     end
 
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", SmartbetWeb do
-  #   pipe_through :api
-  # end
-
-  # Enables LiveDashboard only for development
-  #
-  # If you want to use the LiveDashboard in production, you should put
-  # it behind authentication and allow only admins to access it.
-  # If your application does not have an admins-only section yet,
-  # you can use Plug.BasicAuth to set up some basic authentication
-  # as long as you are also using SSL (which you should anyway).
-  if Mix.env() in [:dev, :test] do
-    import Phoenix.LiveDashboard.Router
-
-    scope "/" do
-      pipe_through :browser
-      live_dashboard "/dashboard", metrics: SmartbetWeb.Telemetry
-    end
-  end
-
-  ## Authentication routes
 
   scope "/", SmartbetWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
@@ -77,6 +64,8 @@ defmodule SmartbetWeb.Router do
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
 
+    live "/live_dashboard", DashboardLive
+
     scope "/admin" do
       get "/user_bets/delete/:id", UserBetsController, :delete
       resources "/user_bets", UserBetsController, except: [:delete]
@@ -87,12 +76,8 @@ defmodule SmartbetWeb.Router do
       resources "/basketball_leagues", BasketballLeageController
 
       live "/live_console", AdminConsoleLive
+      live "/live_console/basketball_league", BasketballLeagueLive
     end
-
-
-    # TODO make with LiveView a dynamic dashboard for League tracking
-    # make a LiveView session
-
 
   end
 

@@ -8,8 +8,6 @@ defmodule Smartbet.Sports.BasketballGame do
   @moduledoc """
   This schema will store information about games for crawling, and autocomplete related information
 
-
-
   """
 
   schema "basketball_games" do
