@@ -242,21 +242,38 @@ defmodule Smartbet.Sports do
   Will search all the games for the specified home & visit teams
   search_game(%{ home: id, league: legue_id, as: :visit })
   """
+  def search_game(%{ query: query, league: id , as: playing_as })do
+    ilike_str = "%#{query}%"
+    case playing_as do
+      "visit" ->
+        query = from game in BasketballGame,
+          where: game.league == ^id,
+          where: fragment("?->'teams'->'away'->>'name' ilike ?", game.game_data, ^ilike_str),
+          order_by: [asc: game.plays_at]
+      "home" ->
+        query = from game in BasketballGame,
+          where: game.league == ^id,
+          where: fragment("?->'teams'->'home'->>'name' ilike ?", game.game_data, ^ilike_str),
+          order_by: [asc: game.plays_at]
+    end
+    |> Repo.all()
+  end
+
   def search_game(%{ query: query, league: id  })do
     # TODO implement to handle league_id
     ilike_str = "%#{query}%"
     query = from game in BasketballGame,
       where: game.league == ^ id,
-      where: ilike(game.game_headline, ^ilike_str)
+      where: ilike(game.game_headline, ^ilike_str),
+      order_by: [asc: game.plays_at]
     Repo.all(query)
   end
 
   def search_game(%{ query: query  })do
     ilike_str = "%#{query}%"
     query = from game in BasketballGame,
-      where: ilike(game.game_headline, ^ilike_str)
-    # TODO filter only incomming games & order by asc: plays_at
-
+      where: ilike(game.game_headline, ^ilike_str),
+      order_by: [asc: game.plays_at]
     Repo.all(query)
   end
 

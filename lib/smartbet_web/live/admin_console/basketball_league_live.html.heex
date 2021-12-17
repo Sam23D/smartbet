@@ -98,31 +98,29 @@
                     </div>
                 </div>
                 <div class="booking-bar">
+                    <.form let={f} for={@search_changeset} phx-change="apply_league_filters_admin">
                     <div class="booking-bar-inputs">
-                        <.form let={f} for={@changeset} phx-change="apply_league_filters_admin" phx-submit="search_league">
                         <div class="control has-icon">
-                                <input type="text" name="query"  class="input flight-datepicker" placeholder="Search league..." value="">
+                                <%= text_input f, :query, class: "input" %>
                             <div class="form-icon">
                                 <i data-feather="calendar"></i>                            
                             </div>
                         </div>
-                        </.form>
                     
                     </div>
-                    <div class="booking-bar-inputs">
-                        <div class="control has-icon">
-                            <input type="text" class="input flight-datepicker" placeholder="Home team" value="">
-                            <div class="form-icon">
-                                <i data-feather="calendar"></i>
-                            </div>
+                    <div class="switch-block">
+                        <div class="text">
+                            <span>As home</span>
                         </div>
-                        <div class="control has-icon">
-                            <input type="text" class="input flight-datepicker" placeholder="Visit team" value="">
-                            <div class="form-icon">
-                                <i data-feather="calendar"></i>
-                            </div>
+                        <label class="form-switch is-success">
+                            <%= checkbox f, :as, checked_value: "visit", unchecked_value: "home" %>
+                            <i></i>
+                        </label>
+                        <div class="text">
+                            <span>As visit</span>
                         </div>
                     </div>
+                    </.form>
                 </div>
             </div>
 
