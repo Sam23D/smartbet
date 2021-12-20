@@ -25,7 +25,7 @@ defmodule SmartbetWeb.BasketballLeagueLive do
     end
   end
 
-  def handle_event("apply_league_filters_admin", %{ "gen_search_params" => search_params }, socket) do
+  def handle_event("apply_league_filters_admin", params=%{ "gen_search_params" => search_params }, socket) do
     queried_games = case search_params do
       %{ "query" => query, "as" => "visit"} ->
          Sports.search_game(%{ query: query, league: socket.assigns.league.source_id, as: "visit" })
