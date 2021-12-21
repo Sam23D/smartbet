@@ -92,7 +92,7 @@
                 <div class="list-view-toolbar ">
                         <div class="control has-icon">
                             <%# <input class="input custom-text-filter" placeholder="League name" data-filter-target=".list-view-item"> %>
-                            <%= text_input f, :query, class: "input custom-text-filte", placeholder: "Team name" %>
+                            <%= text_input f, :query, class: "input custom-text-filte", value: (@query || ""), placeholder: "Team name" %>
                             <div class="form-icon">
                                 <i data-feather="search"></i>
                             </div>
@@ -101,13 +101,24 @@
                         <div class="tabs-inner">
                             <div class="tabs">
                                 <ul>
-                                    <%= radio_button(f, :as, "none" , [hidden: true]) %>
-                                    <%= radio_button(f, :as, "home" , [hidden: true]) %> 
-                                    <%= radio_button(f, :as, "visit", [hidden: true]) %> 
-                                    <li data-tab="inactive-items-tab" ><label for="gen_search_params_as_none" ><a><span>All</span></a></label></li>
-                                    <li data-tab="inactive-items-tab" ><label for="gen_search_params_as_home" ><a><span>Home</span></a></label></li>
-                                    <li data-tab="inactive-items-tab" ><label for="gen_search_params_as_visit" ><a><span>Visit</span></a></label></li>
+                                    <li><label>
+                                    <%= live_patch to: Routes.live_path(@socket, SmartbetWeb.BasketballLeagueLive, league_id: @league.source_id, query: (@query || "") ), replace: false do %>
+                                    <span>All</span>
+                                    <% end %>
+                                    </label></li>
+
+                                    <li><label>
+                                    <%= live_patch to: Routes.live_path(@socket, SmartbetWeb.BasketballLeagueLive, league_id: @league.source_id, as: "home", query: (@query || "") ), replace: false do %>
+                                    <span>Home</span>
+                                    <% end %>
+                                    </label></li>
                                     
+                                    <li><label>
+                                    <%= live_patch to: Routes.live_path(@socket, SmartbetWeb.BasketballLeagueLive, league_id: @league.source_id, as: "visit", query: (@query || "") ), replace: false do %>
+                                    <span>Visit</span>
+                                    <% end %>
+                                    </label></li>
+
                                 </ul>
                             </div>
                         </div>
