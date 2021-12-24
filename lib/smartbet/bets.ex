@@ -8,6 +8,7 @@ defmodule Smartbet.Bets do
 
   alias Smartbet.Bets.UserBets
   alias Smartbet.Accounts.User
+  alias Smartbet.Accounts.User
 
   @doc """
   Returns the list of user_bets.
@@ -18,6 +19,13 @@ defmodule Smartbet.Bets do
       [%UserBets{}, ...]
 
   """
+  def list_user_bets(user=%User{}) do
+    page = 1
+    UserBets
+    |> order_by([user_bet], desc: user_bet.inserted_at)
+    |> Repo.paginate(page: page)
+  end
+
   def list_user_bets(params) do
     page = params["page"] || 1
     UserBets

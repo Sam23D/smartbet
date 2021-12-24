@@ -19,8 +19,8 @@ defmodule SmartbetWeb.UserBetsView do
         "Lost" ->
           "is-danger is-rounded tag"
 
-          _ ->
-            "is-danger is-rounded tag"
+        _ ->
+          "is-danger is-rounded tag"
 
     end
 
