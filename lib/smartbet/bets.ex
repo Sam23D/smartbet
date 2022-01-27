@@ -1,6 +1,12 @@
 defmodule Smartbet.Bets do
   @moduledoc """
-  The Bets context.
+
+
+  This module contains
+  - Comunicates with Repo to fetch user's bets information
+  - logic to work with bets math, such as getting profits, or working with pure data
+
+
   """
 
   import Ecto.Query, warn: false

@@ -10,7 +10,21 @@ defmodule Smartbet.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+
+      name: "Smartbets",
+      source_url: "https://github.com/USER/PROJECT",
+      homepage_url: "http://smartbets.app",
+      docs: [
+        main: "Smartbet",
+        logo: "priv/static/images/logos/logo/logo.svg",
+        filter_modules: ~r/Smartbet\.[Outbound|Accounts|Sports]?/,
+        extras: ["README.md"],
+        groups_for_modules: [
+          "Interfaces": [Smartbet.Sports],
+          "API Adapters": [Smartbet.Outbound.SportsAPIBasketballFetcher],
+        ]
+      ]
     ]
   end
 
@@ -54,7 +68,8 @@ defmodule Smartbet.MixProject do
       {:hackney, "~> 1.17"},
       {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
       {:timex, "~> 3.0"},
-      {:scrivener_ecto, "~> 2.0"}
+      {:scrivener_ecto, "~> 2.0"},
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false}
     ]
   end
 
