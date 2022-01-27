@@ -5,39 +5,28 @@
     data-menu-item="#layouts-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
 
     <div class="page-content-wrapper">
-        <div class="page-content is-relative">
+      <div class="page-content is-relative">
 
-  <%= if live_flash(@flash, :success) do %>
-  <div class="message is-success">
-    <a class="delete" phx-click="clear_flash"></a>
-    <div class="alert alert-info message-body" role="alert" phx-click="lv:clear-flash" phx-value-key="info">
-      <%= live_flash(@flash, :success) %>
-    </div>
-  </div>
-  <% end %>
+        <%= if live_flash(@flash, :success) do %>
+        <div class="message is-success">
+          <a class="delete" phx-click="clear_flash"></a>
+          <div class="alert alert-info message-body" role="alert" phx-click="lv:clear-flash" phx-value-key="info">
+            <%= live_flash(@flash, :success) %>
+          </div>
+        </div>
+        <% end %>
 
-  <%= if live_flash(@flash, :error) do %>
-    <div class="message is-danger">
-      <a class="delete" phx-click="clear_flash"></a>
-      <div class="alert alert-info message-body" role="alert" phx-click="lv:clear-flash" phx-value-key="info">
-        <i class="lnil lnil-cross-cricle"></i>
-        <%= live_flash(@flash, :error) %>
-      </div>
-    </div>
-  <% end %>
+        <%= if live_flash(@flash, :error) do %>
+          <div class="message is-danger">
+            <a class="delete" phx-click="clear_flash"></a>
+            <div class="alert alert-info message-body" role="alert" phx-click="lv:clear-flash" phx-value-key="info">
+              <i class="lnil lnil-cross-cricle"></i>
+              <%= live_flash(@flash, :error) %>
+            </div>
+          </div>
+        <% end %>
 
-  <%= @inner_content %>
-
-  <script src={ Routes.static_path(@socket, "/js/app.js" ) }></script>
-
-  <%# <script src={ Routes.static_path(@socket, "/js/functions.js" ) } async></script> %>
-  <script src={ Routes.static_path(@socket, "/js/main.js" ) } async></script>
-  <%# <script src={ Routes.static_path(@socket, "/js/components.js" ) } async></script> %>
-  <%# <script src={ Routes.static_path(@socket, "/js/popover.js" ) } async></script> %>
-  <script src={ Routes.static_path(@socket, "/js/widgets.js" ) } async></script>
-  <script src={ Routes.static_path(@socket, "/js/touch.js" ) } async></script>
-  <script src={ Routes.static_path(@socket, "/js/syntax.js" ) } async></script>
-
+        <%= @inner_content %>
 
         </div>
     </div>
