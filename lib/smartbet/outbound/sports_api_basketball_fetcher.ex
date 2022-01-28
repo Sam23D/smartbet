@@ -123,11 +123,11 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
   iex> Smartbet.Outbound.APIs.SportsAPIBasketball.get_teams(%{ league: 12, season: "2020-2021" })
   """
   def fetch_teams( league_id \\ 12, season \\ "2020-2021" )do # NBA league
-    with %BasketballLeague{ name: name } <- Repo.get_by( BasketballLeague, source_id: league_id ),
+    with %BasketballLeague{ id: id, name: name } <- Repo.get_by( BasketballLeague, source_id: league_id ),
     _ <- IO.inspect("Fetching teams from league #{name}"),
       teams <- SportsAPIBasketball.get_teams(%{ league: league_id, season: "2020-2021" }),
       now <- NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second),
-      placeholders <- %{ inserted_at: now, updated_at: now }
+      placeholders <- %{ inserted_at: now, updated_at: now, league_id: id }
     do
       parsed_entries = teams
       |> Enum.map(fn
@@ -135,10 +135,12 @@ defmodule Smartbet.Outbound.SportsAPIBasketballFetcher do
           "name" => name,
           "logo" => logo,
           "nationnal" => national,
-          } -> [source_id: source_id, name: name, logo_imgurl: logo, national: national,
+          }=team_params ->
+            IO.inspect(team_params, label: "Team")
+            [source_id: source_id, name: name, logo_imgurl: logo, national: national, league_id: {:placeholder, :league_id},
                 inserted_at:  {:placeholder, :inserted_at}, updated_at:  {:placeholder, :updated_at}]
         end)
-      {number, _} = Repo.insert_all(BasketballTeam, parsed_entries, placeholders: placeholders, on_conflict: :nothing)
+      {number, _} = Repo.insert_all(BasketballTeam, parsed_entries, placeholders: placeholders, conflict_target: [:name, :source_id], on_conflict: :replace_all)
       IO.inspect("#{number} Basketball teams were inserted from SportsAPI")
     else
       _ -> {:error, "No league found with id: #{league_id}"}

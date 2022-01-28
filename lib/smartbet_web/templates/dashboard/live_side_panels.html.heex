@@ -9,7 +9,7 @@
       </div>
       <div class="tabs-wrapper is-triple-slider is-squared">
          <div class="right-panel-body">
-            <%= render( SmartbetWeb.UserBetsView, "huro_side_panel_new.html", conn: @conn, changeset: @changeset) %>
+            <%= render( SmartbetWeb.UserBetsView, "new_bet_form_live.html", conn: @conn, changeset: @changeset, leagues: @tracked_leagues, league_teams: @league_teams) %>
          </div>
       </div>
    </div>

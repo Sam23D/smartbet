@@ -1,4 +1,4 @@
-<%= render(SmartbetWeb.DashboardView, "live_side_panels.html", conn: @socket, changeset: @changeset) %>
+<%= render(SmartbetWeb.DashboardView, "live_side_panels.html", conn: @socket, changeset: @changeset, tracked_leagues: @tracked_leagues, league_teams: @league_teams) %>
 <div id="app-widgets" class="view-wrapper is-webapp" data-page-title="Picks" data-naver-offset="150" data-menu-item="#dashboards-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
    <div class="page-content-wrapper">
       <div class="page-content is-relative">
@@ -109,8 +109,6 @@
                         <!--List Empty Search Placeholder -->
                         <div class="page-placeholder custom-text-filter-placeholder is-hidden">
                            <div class="placeholder-content">
-                              <img class="light-image" src="assets/img/illustrations/placeholders/search-4.svg" alt="" />
-                              <img class="dark-image" src="assets/img/illustrations/placeholders/search-4-dark.svg" alt="" />
                               <h3>We couldn't find any matching results.</h3>
                               <p class="is-larger">Too bad. Looks like we couldn't find any matching results for the
                                  search terms you've entered. Please try different search terms or criteria.
@@ -241,4 +239,3 @@
       </div>
    </div>
 </div>
-<script src={ Routes.static_path(@socket, "/js/ecommerce-1.js") } async></script>

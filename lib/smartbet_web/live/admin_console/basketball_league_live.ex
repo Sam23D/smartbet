@@ -16,7 +16,7 @@ defmodule SmartbetWeb.BasketballLeagueLive do
     {:ok, assign(socket, search_changeset: generic_search_params_filters_changeset, current_user: current_user)}
   end
 
-  def handle_params(params, _uri, socket) do
+def handle_params(params, _uri, socket) do
     # TODO make a type of check in order to not fetch the league each time if it is already in the socket
     case params do
       %{"league_id" => str_league_id, "query" => query, "as" => as } when as in @valid_as ->

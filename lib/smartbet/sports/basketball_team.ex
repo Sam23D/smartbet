@@ -11,7 +11,7 @@ defmodule Smartbet.Sports.BasketballTeam do
     field :source_id, :integer
     field :source, :string
 
-    # field :league,  BasketballLeague
+    belongs_to :league,  BasketballLeague
 
     timestamps()
   end

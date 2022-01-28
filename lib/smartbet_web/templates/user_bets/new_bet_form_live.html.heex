@@ -1,0 +1,198 @@
+<.form let={f} for={@changeset} phx-change="update_user_bet_params" phx-submit="submit_user_bet">
+    <div id="team-side-tab" class="tab-content is-active">
+        <div class="columns is-multiline">
+
+            <div class="form-fieldset column is-12">
+                <div class="fieldset-heading">
+                    <h4>Game</h4>
+                    <p>Select the game to bet on</p>
+                </div>
+            </div>
+                                
+            <div class="column is-6">     
+                <div class="field">
+                    <label>League:</label>
+                    <%= select f, :game_league, Enum.map(@leagues, &{ &1.name, &1.id }) %>                           
+                </div>                                
+            </div>                                
+            <div class="column is-6">     
+                <div class="field">
+                    <label>Game date:</label>
+                    <input class="button h-button" type="date">            
+                </div>
+            </div>                                
+
+            <datalist id="league_teams">
+             <%= for team <- @league_teams do %>
+                <option ><%= team.name %></option>
+             <% end %>
+            </datalist>
+
+            <div class="column is-6">
+                <div class="field">
+                    <label>Home Team</label>
+                    <div class="control has-icon">
+                        <%= text_input f, :home, class: "input", list: "league_teams" %>
+                        <%= error_tag f, :home %>
+                        <div class="form-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-6">
+                <div class="field">
+                    <label>Visit Team</label>
+                    <div class="control has-icon">
+                        <%= text_input f, :visit, class: "input", list: "league_teams"  %>
+                            <%= error_tag f, :visit %>
+                                <div class="form-icon">
+                                    <i class="fas fa-plane-arrival"></i>
+                                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-fieldset column is-12">
+                <div class="fieldset-heading">
+                    <p>Select game to bet on:</p>
+                </div>
+                <div clas="is-flex-direction-column">
+                    <div class="fieldset-heading is-flex is-justify-content-space-between p-2">      
+                        <h4>Barcelona</h4>
+                        <div class="h-avatar is-small">
+                            <img class="avatar is-squared" src="https://media.api-sports.io/basketball/teams/145.png">
+                        </div>
+                        <p class="">
+                        VS
+                        </p>                    
+                        <div class="h-avatar is-small">
+                            <img class="avatar is-squared" src="https://media.api-sports.io/basketball/teams/145.png">
+                        </div>
+                        <h4>PSG</h4>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-fieldset column is-12">
+                <div class="fieldset-heading">
+                    <h4>Bet details</h4>
+                    <p>What are the details of your bet</p>
+                </div>
+            </div>
+            
+            <div class="column is-6">
+                <div class="field">
+                    <label>Risk Units (bet amount)</label>
+                    <div class="control has-icon">
+                        <%= number_input f, :amount, step: "any" , class: "input" %>
+                            <%= error_tag f, :amount %>
+                                <div class="form-icon">
+                                    <i data-feather="dollar-sign"></i>
+                                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-6">
+                <div class="field">
+                    <label>Odds</label>
+                    <div class="control has-icon">
+                        <%= number_input f, :odds, step: "any" , class: "input" %>
+
+                            <div class="form-icon">
+                                <i class="fas fa-balance-scale-right"></i>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-6">
+                <div class="field">
+                    <label>Sport</label>
+                    <div class="control has-icon">
+                        <%= text_input f, :sport, class: "input" %>
+                            <%= error_tag f, :sport %>
+                                <div class="form-icon">
+                                    <i class="fas fa-football-ball"></i>
+                                </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column is-6">
+                <div class="field">
+                    <label>Line</label>
+                    <div class="control has-icon">
+                        <%= number_input f, :line, step: "any" , class: "input" %>
+                            <%= error_tag f, :line %>
+                                <div class="form-icon">
+                                    <i data-feather="minus"></i>
+                                </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-6">
+                <div class="field">
+                    <label>Platform</label>
+                    <div class="control has-icons-left">
+                        <div class="select is-full-width">
+                            <select name="user_bets[platform]">
+                                <option selected="">Caliente</option>
+                                <option>Bet 365</option>
+                                <option>Upick</option>
+                            </select>
+                        </div>
+                        <div class="icon is-small is-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-6">
+                <div class="field">
+                    <label>Type</label>
+                    <div class="control">
+                        <div class="select is-full-width">
+                            <select name="user_bets[type]">
+                                <option selected="">Money Line</option>
+                                <option>Spread</option>
+                                <option>Over/Under</option>
+                                <option>Parlay</option>
+                                <option>Other</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="column is-6">
+                <button type="button" class="button h-button is-light is-fullwidth close-panel">
+                    <span class="icon">
+                        <i data-feather="edit-2"></i>
+                    </span>
+                    <span>Cancel</span>
+                </button>
+            </div>
+            <div class="column is-6">
+                <button class="button h-button is-success is-elevated is-fullwidth is-medium">
+                    <span class="icon">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    <span>Add bet</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</.form>
