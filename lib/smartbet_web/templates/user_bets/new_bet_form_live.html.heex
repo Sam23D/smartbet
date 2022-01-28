@@ -10,13 +10,13 @@
             </div>
                                 
             <div class="column is-6">     
-                <div class="field">
+                <div class="field select">
                     <label>League:</label>
                     <%= select f, :game_league, Enum.map(@leagues, &{ &1.name, &1.id }) %>                           
                 </div>                                
             </div>                                
             <div class="column is-6">     
-                <div class="field">
+                <div class="field small">
                     <label>Game date:</label>
                     <input class="button h-button" type="date">            
                 </div>

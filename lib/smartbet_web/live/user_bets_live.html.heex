@@ -146,20 +146,16 @@
                         <div class="action-bar is-justify-content-space-between">
                             <h3>Track New Bets</h3>
                             <div class="select">
-                                <select>
-                                    <option>NBA</option>
-                                    <option>NFL</option>
-                                    <option>NHL</option>
-                                    <option>MLB</option>
-                                </select>
+                                <%= select nil, :game_league, Enum.map(@tracked_leagues, &{ &1.name, &1.id }) %> 
                             </div>
                             
                             
-                                <button class="button is-info">
-                                    <span class="icon is-small">
-                                        <i class="fas fa-calendar"></i>
-                                    </span>
-                                </button>
+                           <label for="date-bet" class="button is-info">
+                              <span class="icon is-small">
+                                    <i class="fas fa-calendar"></i>
+                              </span>
+                           </label>
+                           <input name="date-bet" id="date-bet" type="date"  >
                             
                          </div>
                         <div class="stock">
