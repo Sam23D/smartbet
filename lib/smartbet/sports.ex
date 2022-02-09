@@ -245,12 +245,17 @@ defmodule Smartbet.Sports do
   end
 
   @doc """
-  Returns all games for a given league ona given date
+  Returns all games for a given league on a given date
   """
+  def get_league_games(%{ league: league_id }, :today),
+    do: get_league_games(%{league: league_id, date: DateTime.utc_now()})
+
   def get_league_games(%{ league: league_id, date: date })do
+    tomorrow = DateTime.add(date, 1 * 24 *60*60, :second) # change 1 for other number is more days are required
     query = from game in BasketballGame,
       where: game.league == ^league_id,
-      where: game.plays_at <= ^date
+      where: game.plays_at > ^date,
+      where: game.plays_at < ^tomorrow
 
     Repo.all(query)
   end
