@@ -103,8 +103,10 @@
                               <div class="flex-table-item">
                                  <div class="flex-table-cell is-media is-grow" data-th="">
                                     <div class="h-avatar is-small">
-                                       <img class="avatar is-squared" src="assets/img/logos/nba/mavericks.png"
-                                          data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
+                                    <%# TODO change for the logo of the team you bet on %>
+                                       <div class="h-icon is-small is-rounded">
+                                          <i class="fas fa-basketball-ball"></i>
+                                       </div>
                                     </div>
                                     <div>
                                        <span class="item-name dark-inverted is-font-alt is-weight-600"><%= user_bets.details %></span>
@@ -125,10 +127,35 @@
                                  <div class="flex-table-cell" data-th="Status">
                                     <span class={result_class(user_bets.bet_result)} ><%= user_bets.bet_result %></span>
                                  </div>
-                                 <div class="flex-table-cell cell-end" data-th="Actions">
+                                 <div class="flex-table-cell cell-end" >
                                     <button class="button">
                                     <span class="icon is-small">
-                                    <i class="fas fa-pen"></i>
+
+                                    <div class="dropdown is-dots dropdown-trigger">
+                                       <div class="is-trigger" aria-haspopup="true" aria-controls="dropdown-menu">
+                                          <i class="fas fa-pen"></i>
+                                       </div>
+                                       <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                          <div class="dropdown-content">
+                                                <a href="#" class="dropdown-item font-size-base">
+                                                   Edit bet details
+                                                </a>
+                                                <hr class="dropdown-divider">
+                                                <a href="#" class="dropdown-item font-size-base">
+                                                   Set Win
+                                                </a>
+                                                <a href="#" class="dropdown-item font-size-base">
+                                                   Set Lost
+                                                </a>
+                                                <hr class="dropdown-divider">
+                                                <a class="dropdown-item font-size-base">
+                                                   Delete Bet
+                                                </a>
+                                          </div>
+                                       </div>
+                                    </div>
+
+
                                     </span>
                                     </button>
                                  </div>

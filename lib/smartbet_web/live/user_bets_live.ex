@@ -23,14 +23,12 @@ defmodule SmartbetWeb.UserBetsLive do
   def mount(params, session, socket)do
     IO.inspect("User bets live")
 
-    # user_bets = Bets.list_user_bets(params)
-    # all_user_bets = conn.assigns.current_user.id
     user = %User{} = session["user_token"]
     |> Accounts.get_user_by_session_token()
     user_bets = Bets.list_user_bets(user)
     all_user_bets = user.id
     |> Bets.all_user_bets()
-    # get all tracked leagues
+
     tracked_leagues = Sports.get_tracked_leagues()
     |> IO.inspect(label: "tracked leagues")
     changeset = Bets.change_user_bets(%UserBets{})
@@ -48,6 +46,13 @@ defmodule SmartbetWeb.UserBetsLive do
   end
 
   def handle_params(params, _uri, socket) do
+    IO.inspect("USER BETS LIVE handle_params")
+    # TODO preload today games
+    # TODO preload tracked_leagues
+    # TODO preload uset_bets
+    # TODO preload user_portfolio_profit
+
+
     # TODO add select_home
 
     # TODO add select_visit
