@@ -75,9 +75,13 @@ defmodule SmartbetWeb.UserBetsLive do
     new_socket = case params do
       %{"_target" => [_, "game_league"], "user_bets" => %{ "game_league" => league_id}} ->
         params
-        # get league teams
+        IO.inspect(league_id, label: "LEAGUE_ID")
+
         league_teams = Sports.basketball_teams_from_lague(league_id)
-        assign(socket, league_teams: league_teams)
+        selected_league = String.to_integer(league_id)
+        today_games = Sports.get_league_games( %{league: selected_league} , :today)
+
+        assign(socket, league_teams: league_teams, selected_league: selected_league, today_games: today_games)
         # assign team options
 
       %{"_target" => [_, "home"]} ->

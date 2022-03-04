@@ -92,12 +92,14 @@ defmodule SmartbetWeb.Components.Huro do
         <h3 class="has-text-grey-light">Bet on today's games</h3>
       </div>
       <div class="action-bar is-justify-content-space-between">
-        <div class="select">
-          <%= select nil, :game_league, Enum.map(@tracked_leagues, &{ &1.name, &1.id }) %>
-        </div>
+        <.form let={f} for={@changeset} phx-change="update_user_bet_params" >
+          <div class="select">
+            <%= select f, :game_league, Enum.map(@tracked_leagues, &{ &1.name, &1.source_id }) %>
+          </div>
+        </.form>
         <.dropdown_calendar ></.dropdown_calendar>
       </div>
-      <%= if @today_games do %>
+      <%= if @today_games != [] and @today_games != nil do %>
         <%= for game <- @today_games do %>
         <div class="stock">
           <div class="h-avatar is-small">
