@@ -35,14 +35,18 @@ defmodule SmartbetWeb.UserBetsLive do
     bet_count = Bets.count_bet_count(all_user_bets)
     net_profit = Bets.net_profit(all_user_bets) # this will ventually calculate the users user_bets_summary
 
-    {:ok, assign(socket,
+    new_socket =  assign(socket,
       user_bets: user_bets,
       changeset: changeset,
       bet_count: bet_count,
+      selected_league: 12,
+      today_games: [],
       net_profit: net_profit,
       tracked_leagues: tracked_leagues,
       league_teams: []
-      )}
+      )
+
+    {:ok, new_socket}
   end
 
   def handle_params(params, _uri, socket) do
@@ -51,16 +55,11 @@ defmodule SmartbetWeb.UserBetsLive do
     # TODO preload tracked_leagues
     # TODO preload uset_bets
     # TODO preload user_portfolio_profit
+    today_games = Sports.get_league_games( %{league: 12} , :today)
 
+    IO.inspect(socket, label: "PARAMS SOCKET")
 
-    # TODO add select_home
-
-    # TODO add select_visit
-
-    # TODO add odds
-
-    # TODO modify ammount
-    {:noreply, socket}
+    {:noreply, assign(socket, :today_games, today_games)}
   end
 
 
@@ -76,28 +75,23 @@ defmodule SmartbetWeb.UserBetsLive do
     new_socket = case params do
       %{"_target" => [_, "game_league"], "user_bets" => %{ "game_league" => league_id}} ->
         params
-        |> IO.inspect(label: "params")
         # get league teams
         league_teams = Sports.basketball_teams_from_lague(league_id)
-        |> IO.inspect(label: "league teams")
         assign(socket, league_teams: league_teams)
         # assign team options
 
       %{"_target" => [_, "home"]} ->
         params
-        |> IO.inspect(label: "Home name updated")
         # update game options
         socket
 
       %{"_target" => [_, "visit"]} ->
         params
-        |> IO.inspect(label: "Visit name updated")
         # update game options
         socket
 
       params ->
         params
-        |> IO.inspect(label: "PARAMS")
 
         socket
     end

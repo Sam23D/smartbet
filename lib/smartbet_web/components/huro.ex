@@ -81,11 +81,10 @@ defmodule SmartbetWeb.Components.Huro do
   <Huro.bet_today_games tracked_leagues={} today_games={}  >
   """
   def bet_today_games(assigns) do
-    IO.inspect(assigns, label: "BET FROM TODAY GAMES")
 
     assigns =
       assigns
-      |> assign_new(:games, fn -> false end)
+      |> assign_new(:today_games, fn -> [] end)
 
     ~H"""
     <div class="dashboard-card is-side stock-card">
@@ -98,44 +97,28 @@ defmodule SmartbetWeb.Components.Huro do
         </div>
         <.dropdown_calendar ></.dropdown_calendar>
       </div>
-      <%= if @games do %>
-
-      <div class="stock">
-        <div class="h-avatar is-small">
-          <img class="avatar is-squared" src="assets/img/logos/nba/lakers.png" alt="">
+      <%= if @today_games do %>
+        <%= for game <- @today_games do %>
+        <div class="stock">
+          <div class="h-avatar is-small">
+            <img class="avatar is-squared" src={ game.game_data["teams"]["home"]["logo"] } alt="">
+          </div>
+          <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
+          <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
+          <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
         </div>
-        <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
-        <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
-        <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
-      </div>
-      <div class="stock">
-          <div class="h-avatar is-small">
-            <img class="avatar is-squared" src="assets/img/logos/nba/suns.png" alt="">
-          </div>
-          <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
-          <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
-          <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
-      </div>
-
-      <div class="p-2"></div>
-      <div class="stock">
-          <div class="h-avatar is-small">
-            <img class="avatar is-squared" src="assets/img/logos/nba/mavericks.png" alt="">
-          </div>
-          <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
-          <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
-          <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
-      </div>
-      <div class="stock">
-          <div class="h-avatar is-small">
-            <img class="avatar is-squared" src="assets/img/logos/nba/spurs.png" alt="">
-          </div>
-          <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
-          <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
-          <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
-      </div>
+        <div class="stock">
+            <div class="h-avatar is-small">
+              <img class="avatar is-squared" src={game.game_data["teams"]["away"]["logo"] } alt="">
+            </div>
+            <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
+            <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
+            <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
+        </div>
+        <div class="p-2"></div>
+      <% end %>
       <% else %>
-        <p>NoGames</p>
+        <p>No games for today</p>
       <% end %>
 
     </div>
