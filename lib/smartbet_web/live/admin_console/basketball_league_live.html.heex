@@ -1,8 +1,8 @@
 <div class="lifestyle-dashboard lifestyle-dashboard-v3 business-dashboard flights-dashboard pt-3">
     <div class="illustration-header">
-        <div class="header-image">
+        <figure class="image is-4x3 pl-2 pr-4">
             <img src={@league.logo_imgurl} alt="">
-        </div>
+        </figure>
         <div class="header-meta">
             <h3><%= @league.name %></h3>
             <p>Basketball League</p>
@@ -79,7 +79,7 @@
                         <span>units</span>
                     </h4>
                 </div>
-                <h3 class="dark-inverted">Blood Pressure</h3>
+                <h3 class="dark-inverted">Total bets on league</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Illis videtur.</p>
             </div>
         </div>
@@ -88,44 +88,45 @@
     <div class="columns m-t-20">
         <div class="column is-9">
 
-            <!--Booking bar-->
-            <div class="booking-bar-wrapper">
-                <div class="booking-bar-info">
-                    <i class="lnil lnil-basketball"></i>
-                    <div class="inner">
-                        <h2 class="booking-bar-heading">League filters</h2>
-                        <p class="booking-bar-sub-heading">only for admins</p>
-                    </div>
-                </div>
-                <div class="booking-bar">
-                    <.form let={f} for={@search_changeset} phx-change="apply_league_filters_admin">
-                    <div class="booking-bar-inputs">
+            <.form let={f} for={@search_changeset} phx-change="apply_league_filters_admin" phx-submit="apply_league_filters_admin">
+                <div class="list-view-toolbar ">
                         <div class="control has-icon">
-                                <%= text_input f, :query, class: "input" %>
+                            <%# <input class="input custom-text-filter" placeholder="League name" data-filter-target=".list-view-item"> %>
+                            <%= text_input f, :query, class: "input custom-text-filte", value: (@query || ""), placeholder: "Team name" %>
                             <div class="form-icon">
-                                <i data-feather="calendar"></i>                            
+                                <i data-feather="search"></i>
                             </div>
                         </div>
-                    
-                    </div>
-                    <div class="switch-block">
-                        <div class="text">
-                            <span>As home</span>
+
+                        <div class="tabs-inner">
+                            <div class="tabs">
+                                <ul>
+                                    <li><label>
+                                    <%= live_patch to: Routes.live_path(@socket, SmartbetWeb.BasketballLeagueLive, league_id: @league.source_id, query: (@query || "") ), replace: false do %>
+                                    <span>All</span>
+                                    <% end %>
+                                    </label></li>
+
+                                    <li><label>
+                                    <%= live_patch to: Routes.live_path(@socket, SmartbetWeb.BasketballLeagueLive, league_id: @league.source_id, as: "home", query: (@query || "") ), replace: false do %>
+                                    <span>Home</span>
+                                    <% end %>
+                                    </label></li>
+                                    
+                                    <li><label>
+                                    <%= live_patch to: Routes.live_path(@socket, SmartbetWeb.BasketballLeagueLive, league_id: @league.source_id, as: "visit", query: (@query || "") ), replace: false do %>
+                                    <span>Visit</span>
+                                    <% end %>
+                                    </label></li>
+
+                                </ul>
+                            </div>
                         </div>
-                        <label class="form-switch is-success">
-                            <%= checkbox f, :as, checked_value: "visit", unchecked_value: "home" %>
-                            <i></i>
-                        </label>
-                        <div class="text">
-                            <span>As visit</span>
-                        </div>
-                    </div>
-                    </.form>
                 </div>
-            </div>
+            </.form>
 
             <div class="flights-toolbar">
-                <h3 class="dark-inverted"><%= Enum.count(@games) %> games on the league</h3>
+                <h3 class="dark-inverted"><%= Enum.count(@games) %> found for the league</h3>
                 <!--Dropdown-->
                 <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
                     <div class="is-trigger" aria-haspopup="true">
@@ -265,6 +266,21 @@
 
         <!--Widget-->
         <div class="widget picker-widget is-straight">
+            <div class="widget-toolbar">
+                <div class="left">
+                    <a class="action-icon">
+                        <i data-feather="chevron-left"></i>
+                    </a>
+                </div>
+                <div class="center">
+                    <h3>October 2020</h3>
+                </div>
+                <div class="right">
+                    <a class="action-icon">
+                        <i data-feather="chevron-right"></i>
+                    </a>
+                </div>
+            </div>
             <div class="widget-toolbar">
                 <div class="left">
                     <a class="action-icon">

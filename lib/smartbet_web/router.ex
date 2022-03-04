@@ -64,6 +64,8 @@ defmodule SmartbetWeb.Router do
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
 
+
+    live "/live_user_bets", UserBetsLive
     live "/live_dashboard", DashboardLive
 
     scope "/admin" do

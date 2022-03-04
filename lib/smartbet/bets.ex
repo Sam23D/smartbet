@@ -1,12 +1,19 @@
 defmodule Smartbet.Bets do
   @moduledoc """
-  The Bets context.
+
+
+  This module contains
+  - Comunicates with Repo to fetch user's bets information
+  - logic to work with bets math, such as getting profits, or working with pure data
+
+
   """
 
   import Ecto.Query, warn: false
   alias Smartbet.Repo
 
   alias Smartbet.Bets.UserBets
+  alias Smartbet.Accounts.User
   alias Smartbet.Accounts.User
 
   @doc """
@@ -18,6 +25,13 @@ defmodule Smartbet.Bets do
       [%UserBets{}, ...]
 
   """
+  def list_user_bets(user=%User{}) do
+    page = 1
+    UserBets
+    |> order_by([user_bet], desc: user_bet.inserted_at)
+    |> Repo.paginate(page: page)
+  end
+
   def list_user_bets(params) do
     page = params["page"] || 1
     UserBets

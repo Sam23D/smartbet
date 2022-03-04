@@ -1,4 +1,4 @@
-<%= form_for @changeset, Routes.user_bets_path(@conn, :create), fn f -> %>
+<.form let={f} for={@changeset} phx-change="update_user_bet_params" phx-submit="submit_user_bet">
     <div id="team-side-tab" class="tab-content is-active">
         <div class="columns is-multiline">
 
@@ -8,36 +8,80 @@
                     <p>Select the game to bet on</p>
                 </div>
             </div>
-            <div class="column is-12">
+                                
+            <div class="column is-6">     
+                <div class="field select">
+                    <label>League:</label>
+                    <%= select f, :game_league, Enum.map(@leagues, &{ &1.name, &1.id }) %>                           
+                </div>                                
+            </div>                                
+            <div class="column is-6">     
+                <div class="field small">
+                    <label>Game date:</label>
+                    <input class="button h-button" type="date">            
+                </div>
+            </div>                                
+
+            <datalist id="league_teams">
+             <%= for team <- @league_teams do %>
+                <option ><%= team.name %></option>
+             <% end %>
+            </datalist>
+
+            <div class="column is-6">
                 <div class="field">
                     <label>Home Team</label>
                     <div class="control has-icon">
-                        <%= text_input f, :details, class: "input" %>
-                            <%= error_tag f, :details %>
-                                <div class="form-icon">
-                                    <i class="fas fa-home"></i>
-                                </div>
+                        <%= text_input f, :home, class: "input", list: "league_teams" %>
+                        <%= error_tag f, :home %>
+                        <div class="form-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="column is-12">
+            <div class="column is-6">
                 <div class="field">
                     <label>Visit Team</label>
                     <div class="control has-icon">
-                        <%= text_input f, :event_headline, class: "input" %>
-                            <%= error_tag f, :event_headline %>
+                        <%= text_input f, :visit, class: "input", list: "league_teams"  %>
+                            <%= error_tag f, :visit %>
                                 <div class="form-icon">
-                                    <i class="fas fa-plane"></i>
+                                    <i class="fas fa-plane-arrival"></i>
                                 </div>
                     </div>
                 </div>
             </div>
-             <div class="form-fieldset column is-12">
+            <div class="form-fieldset column is-12">
+                <div class="fieldset-heading">
+                    <p>Select game to bet on:</p>
+                </div>
+                <div clas="is-flex-direction-column">
+                    <div class="fieldset-heading is-flex is-justify-content-space-between p-2">      
+                        <h4>Barcelona</h4>
+                        <div class="h-avatar is-small">
+                            <img class="avatar is-squared" src="https://media.api-sports.io/basketball/teams/145.png">
+                        </div>
+                        <p class="">
+                        VS
+                        </p>                    
+                        <div class="h-avatar is-small">
+                            <img class="avatar is-squared" src="https://media.api-sports.io/basketball/teams/145.png">
+                        </div>
+                        <h4>PSG</h4>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-fieldset column is-12">
                 <div class="fieldset-heading">
                     <h4>Bet details</h4>
                     <p>What are the details of your bet</p>
                 </div>
             </div>
+            
             <div class="column is-6">
                 <div class="field">
                     <label>Risk Units (bet amount)</label>
@@ -113,7 +157,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="column is-6">
                 <div class="field">
@@ -152,4 +195,4 @@
             </div>
         </div>
     </div>
-    <%= end %>
+</.form>

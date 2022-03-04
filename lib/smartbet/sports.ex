@@ -22,6 +22,16 @@ defmodule Smartbet.Sports do
     Repo.all(BasketballTeam)
   end
 
+  def basketball_teams_from_lague( league_id ) when is_binary(league_id) do
+    basketball_teams_from_lague( String.to_integer(league_id) )
+  end
+
+  def basketball_teams_from_lague( league_id ) do
+    query = from team in BasketballTeam,
+      where: team.league_id == ^league_id
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single basketball_team.
 
@@ -235,13 +245,36 @@ defmodule Smartbet.Sports do
   end
 
   @doc """
-  Will search that the headline contains the query
-  search_game(%{ query: "red so" })
-  Will search all the games where the given id is the home team
-  search_game(%{ query: "", league: legue_id })
-  Will search all the games for the specified home & visit teams
-  search_game(%{ home: id, league: legue_id, as: :visit })
+  Returns all games for a given league on a given date
   """
+  def get_league_games(%{ league: league_id }, :today),
+    do: get_league_games(%{league: league_id, date: DateTime.utc_now()})
+
+  def get_league_games(%{ league: league_id, date: date })do
+    tomorrow = DateTime.add(date, 1 * 24 *60*60, :second) # change 1 for other number is more days are required
+    query = from game in BasketballGame,
+      where: game.league == ^league_id,
+      where: game.plays_at > ^date,
+      where: game.plays_at < ^tomorrow
+
+    Repo.all(query)
+  end
+
+  @doc """
+  Usefull for searching games based on partial team names, this can be used in different ways such as:
+
+  Will search all the games that the headline contains the query
+  > search_game(%{ query: "red so" })
+
+  Will search all the games where the given id is the home team by default or visit
+  > search_game(%{ query: "", league: legue_id })
+  > search_game(%{ home: id, league: legue_id, as: :visit })
+
+  Will search all the games for the specified home & visit teams
+  > search_game(%{league: id, home: home_id, visit: visit_id  })
+
+  """
+  @spec search_game(map()) :: list(map())
   def search_game(%{ query: query, league: id , as: playing_as })do
     ilike_str = "%#{query}%"
     case playing_as do
@@ -260,7 +293,6 @@ defmodule Smartbet.Sports do
   end
 
   def search_game(%{ query: query, league: id  })do
-    # TODO implement to handle league_id
     ilike_str = "%#{query}%"
     query = from game in BasketballGame,
       where: game.league == ^ id,
@@ -277,8 +309,9 @@ defmodule Smartbet.Sports do
     Repo.all(query)
   end
 
-  def search_game(%{ home: home_id, visit: visit_id  })do
+  def search_game(%{league: league_id, home: home_id, visit: visit_id  })do
     query = from game in BasketballGame,
+      where: game.league == ^ league_id,
       where: game.home == ^home_id,
       where: game.visit == ^visit_id
 
@@ -432,4 +465,19 @@ defmodule Smartbet.Sports do
   def change_country(%Country{} = country, attrs \\ %{}) do
     Country.changeset(country, attrs)
   end
+
+  @doc """
+  Returns a list of names and id's to be used for autocomplete
+  """
+  def get_autocomplete_team_names(league, sport \\ :basketball )
+
+  def get_autocomplete_team_names(%{id: league_id}=_league, :basketball ) do
+    query = from team in BasketballTeam,
+      where: team.league_id == ^league_id,
+      select: {team.id, team.name, team.logo_imgurl}
+    Repo.all(query)
+
+  end
+
+
 end

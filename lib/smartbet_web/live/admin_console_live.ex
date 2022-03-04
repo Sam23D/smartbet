@@ -60,11 +60,10 @@ defmodule SmartbetWeb.AdminConsoleLive do
   end
 
   def handle_event("fetch_league_games", %{"league_id" => league_id}=params, socket) do
-    IO.inspect("Fetching games dat")
+    IO.inspect("Fetching games data for league #{league_id}")
     # season
-    #{:ok, games} = SportsAPIBasketballFetcher.fetch_games(:today, league_id)
-    # total_fetched_games = Enum.count(games)
-    total_fetched_games = 10
+    {:ok, games} = SportsAPIBasketballFetcher.fetch_games(:today, league_id)
+    total_fetched_games = Enum.count(games)
     IO.inspect("Fetched #{total_fetched_games} games")
 
     {:noreply, _put_dismissalbe_flash(socket, :success, "Fetched and updated #{total_fetched_games} games into the database")}

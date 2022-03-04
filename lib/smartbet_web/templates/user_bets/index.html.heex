@@ -1,237 +1,326 @@
+<%= render(SmartbetWeb.DashboardView, "side_panels.html", conn: @conn, changeset: @changeset) %>
 <div id="app-widgets" class="view-wrapper is-webapp" data-page-title="Picks" data-naver-offset="150" data-menu-item="#dashboards-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
    <div class="page-content-wrapper">
       <div class="page-content is-relative">
+         <div class="page-title has-text-centered is-webapp">
+            <div class="title-wrap">
+               <h1 class="title is-4">Picks</h1>
+            </div>
+         </div>
          <div class="page-content-inner">
-            <!--Personal Dashboard V2-->
-            <div class="personal-dashboard personal-dashboard-v2 finance-dashboard analytics-dashboard ecommerce-dashboard ecommerce-dashboard-v1 stock-dashboard apex-dashboard ecommerce-dashboard ecommerce-dashboard-v1">
-               <div class="columns is-multiline">
-                  <div class="column is-12">
-                     <div class="list-flex-toolbar">
-                        <div class="dropdown  is-spaced dropdown-trigger">
-                           <input class="button h-button is-primary" type="date">
-                           
-                        </div>
-                        <div class="buttons">
-                           <button class="button h-button is-primary is-elevated toolbar-link right-panel-trigger" data-panel="bet-panel">
-                           <span class="icon">
-                           <i class="fas fa-plus"></i>
-                           </span>
-                           <span>Add new bet</span>
-                           </button>
-                        </div>
-                     </div>
+            <!--Ecommerce Dashboard V1-->
+            <div class="ecommerce-dashboard ecommerce-dashboard-v1 personal-dashboard personal-dashboard-v3 banking-dashboard banking-dashboard-v3 business-dashboard flights-dashboard finance-dashboard stock-dashboard">
+               <!--Header-->
+               <div class="dashboard-header">
+                  <div class="start">
+                     <h3 class="dark-inverted">Track your picks</h3>
                   </div>
-                  <div class="column is-12">
-                     <div class="stats-wrapper">
-                        <div class="columns is-multiline is-flex-tablet-p">
-                           <!--Dashboard tile-->
-                           <div class="column is-3">
-                              <div class="dashboard-tile">
-                                 <div class="tile-head">
-                                    <h3>Pending</h3>
-                                    <div class="h-icon is-orange is-rounded">
-                                       <i data-feather="clock"></i>
-                                    </div>
-                                 </div>
-                                 <div class="dashboard-tile-inner">
-                                    <div class="left">
-                                       <span class="dark-inverted"> <%= @bet_count.pendings %> </span>
-                                    </div>
-                                    <div class="right">
-                                       <div id="spark4"></div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!--Dashboard tile-->
-                           <div class="column is-3">
-                              <div class="dashboard-tile">
-                                 <div class="tile-head">
-                                    <h3>Won</h3>
-                                    <div class="h-icon is-green is-rounded">
-                                       <i data-feather="check-circle"></i>
-                                    </div>
-                                 </div>
-                                 <div class="dashboard-tile-inner">
-                                    <div class="left">
-                                       <span class="dark-inverted"><%= @bet_count.wins %></span>
-                                    </div>
-                                    <div class="right">
-                                       <div id="spark3"></div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!--Dashboard tile-->
-                           <div class="column is-3">
-                              <div class="dashboard-tile">
-                                 <div class="tile-head">
-                                    <h3>Lost</h3>
-                                    <div class="h-icon is-red is-rounded">
-                                       <i data-feather="x-circle"></i>
-                                    </div>
-                                 </div>
-                                 <div class="dashboard-tile-inner">
-                                    <div class="left">
-                                       <span class="dark-inverted"> <%= @bet_count.loses %> </span>
-                                    </div>
-                                    <div class="right">
-                                       <div id="spark2"></div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!--Dashboard tile-->
-                           <div class="column is-3">
-                              <div class="dashboard-tile">
-                                 <div class="tile-head">
-                                    <h3>Total revenue</h3>
-                                    <div class={profit_color(@net_profit)}>
-                                       <i data-feather="dollar-sign"></i>
-                                    </div>
-                                 </div>
-                                 <div class="dashboard-tile-inner">
-                                    <div class="left">
-                                       <span class="dark-inverted">$ <%= Decimal.round(@net_profit,2) %></span>
-                                    </div>
-                                    <div class="right">
-                                       <div id="spark1"></div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                  <div class="end">
+                     <button class="button h-button is-info">
+                     <span class="icon">
+                     <i class="fas fa-calendar"></i>
+                     </span>
+                     <span>January 21st</span>
+                     </button>
+                     <button class="button h-button is-primary">
+                     <span class="icon">
+                     <i class="fas fa-plus"></i>
+                     </span>
+                     <span>Add Custom Bet</span>
+                     </button>
                   </div>
-                  <div class="column is-12">
-                     <div class="flex-list-wrapper">
-                        <!--List Empty Search Placeholder -->
-                        <div class="page-placeholder custom-text-filter-placeholder is-hidden">
-                           <div class="placeholder-content">
-                              <img class="light-image" src="assets/img/illustrations/placeholders/search-4.svg" alt="" />
-                              <img class="dark-image" src="assets/img/illustrations/placeholders/search-4-dark.svg" alt="" />
-                              <h3>We couldn't find any matching results.</h3>
-                              <p class="is-larger">Too bad. Looks like we couldn't find any matching results for the
-                                 search terms you've entered. Please try different search terms or criteria.
-                              </p>
+               </div>
+               <div class="columns">
+                  <div class="column is-8">
+                     <div class="columns is-multiline">
+                        <div class="column is-3">
+                           <div class="dashboard-card">
+                              <div class="media-flex-center">
+                                 <div class="h-icon is-yellow is-rounded">
+                                    <i class="fas fa-clock"></i>
+                                 </div>
+                                 <div class="flex-meta">
+                                    <span>3</span>
+                                    <span>Pending</span>
+                                 </div>
+                              </div>
                            </div>
                         </div>
-                        <div class="flex-table">
-                           <!--Table header-->
-                           <div class="flex-table-header" data-filter-hide>
-                              <span class="is-grow">Play</span>
-                              <span>League</span>
-                              <span>Date</span>
-                              <span class="is-grow">Event</span>
-                              <span>Spread / Total</span>
-                              <span>Odds</span>
-                              <span>Risk Units</span>
-                              <span>Net Units</span>
-                              <span>Status</span>
-                              <span class="cell-end">Actions</span>
+                        <div class="column is-3">
+                           <div class="dashboard-card">
+                              <div class="media-flex-center">
+                                 <div class="h-icon is-primary is-rounded">
+                                    <i class="fas fa-check-circle"></i>
+                                 </div>
+                                 <div class="flex-meta">
+                                    <span>10</span>
+                                    <span>Won</span>
+                                 </div>
+                              </div>
                            </div>
-                           <div class="flex-list-inner">
+                        </div>
+                        <div class="column is-3">
+                           <div class="dashboard-card">
+                              <div class="media-flex-center">
+                                 <div class="h-icon is-danger is-rounded">
+                                    <i class="fas fa-times-circle"></i>
+                                 </div>
+                                 <div class="flex-meta">
+                                    <span>2</span>
+                                    <span>Lost</span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="column is-3">
+                           <div class="dashboard-card">
+                              <div class="media-flex-center">
+                                 <div class="h-icon is-info is-rounded">
+                                   <i class="fas fa-dollar-sign"></i>
+                                 </div>
+                                 <div class="flex-meta">
+                                    <span>$1500</span>
+                                    <span>Revenue</span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!--Table-->
+                        <div class="column is-12">
+                           <div class="flex-table">
+                              <!--Table header-->
+                              <div class="flex-table-header">
+                                 <span class="is-grow">Play</span>
+                                 <span>Date</span>
+                                 <span>Odds</span>
+                                 <span>Units</span>
+                                 <span>Status</span>
+                                 <span class="cell-end">Actions</span>
+                              </div>
                               <!--Table item-->
-                              <%= for user_bets <- @user_bets do %>
                               <div class="flex-table-item">
-                                 <div class="flex-table-cell is-media is-grow">
-                                    <div class="h-avatar is-medium">
-                                       <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="" data-user-popover="3">
+                                 <div class="flex-table-cell is-media is-grow" data-th="">
+                                    <div class="h-avatar is-small">
+                                       <img class="avatar is-squared" src="assets/img/logos/nba/mavericks.png"
+                                          data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
                                     </div>
                                     <div>
-                                       <span class="item-name dark-inverted" data-filter-match><%= user_bets.details %></span>
+                                       <span class="item-name dark-inverted is-font-alt is-weight-600">Mavericks +5</span>
+                                       <span class="item-meta">
+                                       <span>Mavericks vs Lakers</span>
+                                       </span>
                                     </div>
                                  </div>
-                                 <div class="flex-table-cell" data-th="Location">
-                                    <span class="light-text" data-filter-match><%= user_bets.sport %></span>
+                                 <div class="flex-table-cell" data-th="Date">
+                                    <span class="light-text">01/14/22</span>
                                  </div>
-                                 <div class="flex-table-cell" data-th="Location">
-                                    <span class="light-text" data-filter-match><%= pretty_print_date(user_bets.inserted_at) %></span>
-                                 </div>
-                                 <div class="flex-table-cell is-grow" data-th="Location">
-                                    <span class="light-text" data-filter-match><%= user_bets.event_headline %></span>
-                                 </div>
-                                 
-                                 <div class="flex-table-cell" data-th="Industry">
-                                    <span class="light-text is-weight-600">-6.5</span>
-                                 </div>
-                                 <div class="flex-table-cell" data-th="Industry">
-                                    <span class="light-text is-weight-600"><%= user_bets.odds %></span>
-                                 </div>
-                                 <div class="flex-table-cell" data-th="Industry">
-                                    <span class="dark-inverted is-weight-600">$<%= user_bets.amount %></span>
-                                 </div>
-                                 <div class="flex-table-cell" data-th="Industry">
-                                    <span class="dark-inverted is-weight-600">$<%= Decimal.round(user_bets.profit, 2) %></span>
+                                 <div class="flex-table-cell" data-th="Amount">
+                                    <span class="dark-inverted is-weight-600">-110</span>
                                  </div>
                                  <div class="flex-table-cell" data-th="Status">
-                                    <span class= {result_class(user_bets.bet_result)} data-filter-match><%= user_bets.bet_result %></span>
+                                    <span class="dark-inverted is-weight-600">$863.42</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Status">
+                                    <span class="tag is-warning is-rounded">Pending</span>
                                  </div>
                                  <div class="flex-table-cell cell-end" data-th="Actions">
-                                    <div class="dropdown is-spaced is-dots is-right dropdown-trigger is-pushed-mobile">
-                                       <div class="is-trigger" aria-haspopup="true">
-                                          <i data-feather="more-vertical"></i>
-                                       </div>
-                                       <div class="dropdown-menu" role="menu">
-                                          <div class="dropdown-content">
-                                             <a href={ Routes.user_bets_path(@conn, :show, user_bets) } class="dropdown-item is-media">
-                                             <div class="icon">
-                                                <i class="lnil lnil-eye"></i>
-                                             </div>
-                                             <div class="meta">
-                                                <span>View</span>
-                                                <span>View Bet details</span>
-                                             </div>
-                                             </a>
-                                             <a href={ Routes.user_bets_path(@conn, :edit, user_bets) } class="dropdown-item is-media toolbar-link" >
-                                             <div class="icon">
-                                                <i class="lnil lnil-pencil"></i>
-                                             </div>
-                                             <div class="meta">
-                                                <span>Edit</span>
-                                                <span>Schedule a meeting</span>
-                                             </div>
-                                             </a>
-                                             <hr class="dropdown-divider">
-                                             <a href={ Routes.user_bets_path(@conn, :close_bet, user_bets,  "Win") } class="dropdown-item is-media toolbar-link" >
-                                             <div class="icon">
-                                                <i class="fas fa-trophy has-text-grey"></i>
-                                             </div>
-                                             <div class="meta">
-                                                <span>Close as a win</span>
-                                                <span>Schedule a meeting</span>
-                                             </div>
-                                             </a>
-                                             <a href={ Routes.user_bets_path(@conn, :close_bet, user_bets, "Lost") } class="dropdown-item is-media toolbar-link" >
-                                             <div class="icon">
-                                                <i class="fas fa-flag has-text-grey"></i>
-                                             </div>
-                                             <div class="meta">
-                                                <span>Close as a loss</span>
-                                                <span>Schedule a meeting</span>
-                                             </div>
-                                             </a>
-                                             <hr class="dropdown-divider">
-                                             <a href={ Routes.user_bets_path(@conn, :delete, user_bets) } class="dropdown-item is-media">
-                                             <div class="icon">
-                                                <i class="lnil lnil-trash-can-alt"></i>
-                                             </div>
-                                             <div class="meta">
-                                                <span>Remove</span>
-                                                <span>Remove from list</span>
-                                             </div>
-                                             </a>
-                                          </div>
-                                       </div>
-                                    </div>
+                                    <button class="button">
+                                    <span class="icon is-small">
+                                    <i class="fas fa-pen"></i>
+                                    </span>
+                                    </button>
                                  </div>
                               </div>
-                              <% end %>
+                              <div class="flex-table-item">
+                                 <div class="flex-table-cell is-media is-grow" data-th="">
+                                    <div class="h-avatar is-small">
+                                       <img class="avatar is-squared" src="assets/img/logos/nba/lakers.png"
+                                          data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
+                                    </div>
+                                    <div>
+                                       <span class="item-name dark-inverted is-font-alt is-weight-600">Lakers</span>
+                                       <span class="item-meta">
+                                       <span>Mavericks vs Lakers</span>
+                                       </span>
+                                    </div>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Date">
+                                    <span class="light-text">01/14/22</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Amount">
+                                    <span class="dark-inverted is-weight-600">-110</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Status">
+                                    <span class="dark-inverted is-weight-600">$863.42</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Status">
+                                    <span class="tag is-primary is-rounded">Won</span>
+                                 </div>
+                                 <div class="flex-table-cell cell-end" data-th="Actions">
+                                    <button class="button">
+                                    <span class="icon is-small">
+                                    <i class="fas fa-pen"></i>
+                                    </span>
+                                    </button>
+                                 </div>
+                              </div>
+                              <div class="flex-table-item">
+                                 <div class="flex-table-cell is-media is-grow" data-th="">
+                                    <div class="h-avatar is-small">
+                                       <img class="avatar is-squared" src="assets/img/logos/nba/suns.png"
+                                          data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
+                                    </div>
+                                    <div>
+                                       <span class="item-name dark-inverted is-font-alt is-weight-600">Mavericks +5</span>
+                                       <span class="item-meta">
+                                       <span>Mavericks vs Lakers</span>
+                                       </span>
+                                    </div>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Date">
+                                    <span class="light-text">01/14/22</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Amount">
+                                    <span class="dark-inverted is-weight-600">-110</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Status">
+                                    <span class="dark-inverted is-weight-600">$863.42</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Status">
+                                    <span class="tag is-danger is-rounded">Lost</span>
+                                 </div>
+                                 <div class="flex-table-cell cell-end" data-th="Actions">
+                                    <button class="button">
+                                    <span class="icon is-small">
+                                    <i class="fas fa-pen"></i>
+                                    </span>
+                                    </button>
+                                 </div>
+                              </div>
+                              <div class="flex-table-item">
+                                 <div class="flex-table-cell is-media is-grow" data-th="">
+                                    <div class="h-avatar is-small">
+                                       <img class="avatar is-squared" src="assets/img/logos/nba/clippers.png"
+                                          data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
+                                    </div>
+                                    <div>
+                                       <span class="item-name dark-inverted is-font-alt is-weight-600">Mavericks +5</span>
+                                       <span class="item-meta">
+                                       <span>Mavericks vs Lakers</span>
+                                       </span>
+                                    </div>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Date">
+                                    <span class="light-text">01/14/22</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Amount">
+                                    <span class="dark-inverted is-weight-600">-110</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Status">
+                                    <span class="dark-inverted is-weight-600">$863.42</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Status">
+                                    <span class="tag is-warning is-rounded">Pending</span>
+                                 </div>
+                                 <div class="flex-table-cell cell-end" data-th="Actions">
+                                    <button class="button">
+                                    <span class="icon is-small">
+                                    <i class="fas fa-pen"></i>
+                                    </span>
+                                    </button>
+                                 </div>
+                              </div>
+                              <div class="flex-table-item">
+                                 <div class="flex-table-cell is-media is-grow" data-th="">
+                                    <div class="h-avatar is-small">
+                                       <img class="avatar is-squared" src="assets/img/logos/nba/spurs.png"
+                                          data-demo-src="assets/img/avatars/photos/8.jpg" alt="">
+                                    </div>
+                                    <div>
+                                       <span class="item-name dark-inverted is-font-alt is-weight-600">Mavericks +5</span>
+                                       <span class="item-meta">
+                                       <span>Mavericks vs Lakers</span>
+                                       </span>
+                                    </div>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Date">
+                                    <span class="light-text">01/14/22</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Amount">
+                                    <span class="dark-inverted is-weight-600">-110</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Status">
+                                    <span class="dark-inverted is-weight-600">$863.42</span>
+                                 </div>
+                                 <div class="flex-table-cell" data-th="Status">
+                                    <span class="tag is-warning is-rounded">Pending</span>
+                                 </div>
+                                 <div class="flex-table-cell cell-end" data-th="Actions">
+                                    <button class="button">
+                                    <span class="icon is-small">
+                                    <i class="fas fa-pen"></i>
+                                    </span>
+                                    </button>
+                                 </div>
+                              </div>
                            </div>
                         </div>
-                        <Huro.pagination user_bets= {@user_bets} />
-                        <!--Table Pagination-->
-                        
+                     </div>
+                  </div>
+                  <div class="column is-4">
+                     <div class="dashboard-card is-side stock-card">
+                        <div class="action-bar is-justify-content-space-between">
+                            <h3>Track New Bets</h3>
+                            <div class="select">
+                                <select>
+                                    <option>NBA</option>
+                                    <option>NFL</option>
+                                    <option>NHL</option>
+                                    <option>MLB</option>
+                                </select>
+                            </div>
+                            
+                            
+                                <button class="button is-info">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-calendar"></i>
+                                    </span>
+                                </button>
+                            
+                         </div>
+                        <div class="stock">
+                            <div class="h-avatar is-small">
+                                <img class="avatar is-squared" src="assets/img/logos/nba/lakers.png" alt="">
+                            </div>
+                           <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
+                           <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
+                           <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
+                        </div>
+                        <div class="stock">
+                            <div class="h-avatar is-small">
+                                <img class="avatar is-squared" src="assets/img/logos/nba/suns.png" alt="">
+                            </div>
+                            <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
+                            <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
+                            <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
+                         </div>
+                         <div class="p-2"></div>
+                         <div class="stock">
+                            <div class="h-avatar is-small">
+                                <img class="avatar is-squared" src="assets/img/logos/nba/mavericks.png" alt="">
+                            </div>
+                            <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
+                            <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
+                            <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
+                         </div>
+                         <div class="stock">
+                            <div class="h-avatar is-small">
+                                <img class="avatar is-squared" src="assets/img/logos/nba/spurs.png" alt="">
+                            </div>
+                            <div class="stock-value"><a class="button h-button is-success is-light">+10</a></div>
+                            <div class="stock-value"><a class="button h-button is-info is-light">o220</a></div>
+                            <div class="stock-value"><a class="button h-button is-warning is-light">-110</a></div>
+                         </div>
                      </div>
                   </div>
                </div>
@@ -240,4 +329,3 @@
       </div>
    </div>
 </div>
-<script src={ Routes.static_path(@conn, "/js/ecommerce-1.js") } async></script>

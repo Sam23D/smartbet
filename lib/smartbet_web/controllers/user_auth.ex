@@ -138,6 +138,7 @@ defmodule SmartbetWeb.UserAuth do
     end
   end
 
+  def has_role?(nil, _), do: false
   def has_role?(user, role), do: role in (user.roles || [])
 
   defp maybe_store_return_to(%{method: "GET"} = conn) do
