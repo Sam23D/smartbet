@@ -127,8 +127,17 @@ defmodule SmartbetWeb.Components.Huro do
     """
   end
 
+
+  @doc """
+  A component on to wich you can pass today's date and will return you a calendar to select dates and emit a custom action onto your LiveView
+
+  <Huro.dropdown_calendar user_bets= {@user_bets} />
+  # dropdown_calendar(%{  }) do TBD pass displayed_date, emit_event
+  """
   def dropdown_calendar(assigns) do
-    # TBD how to emit messages to update a selected date on a changeset?
+
+    # TODO add a default day // today
+    # TODO add a default emit_event
     ~H"""
     <div class="dropdown  is-spaced dropdown-trigger">
                <div class="is-trigger" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -144,7 +153,7 @@ defmodule SmartbetWeb.Components.Huro do
                      <div class="widget-toolbar">
                         <div class="left">
                            <a class="action-icon">
-                           <i data-feather="chevron-left"></i>
+                           <i class="fas fa-chevron-left"></i>
                            </a>
                         </div>
                         <div class="center">
@@ -152,7 +161,7 @@ defmodule SmartbetWeb.Components.Huro do
                         </div>
                         <div class="right">
                            <a class="action-icon">
-                           <i data-feather="chevron-right"></i>
+                           <i class="fas fa-chevron-right"></i>
                            </a>
                         </div>
                      </div>
@@ -173,7 +182,7 @@ defmodule SmartbetWeb.Components.Huro do
                               <td class="prev-month">29</td>
                               <td class="prev-month">30</td>
                               <td class="prev-month">31</td>
-                              <td>1</td>
+                              <td phx-click="hello" phx-val="world" >1</td>
                               <td>2</td>
                               <td>3</td>
                               <td>4</td>

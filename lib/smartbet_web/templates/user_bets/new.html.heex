@@ -37,7 +37,6 @@
                                         <h4>New UserBet</h4>
                                         <p>This will create a new userbet for the currently loged user</p>
                                     </div>
-
                                     <div class="columns is-multiline">
                                         <div class="column is-6">
                                             <div class="field">
@@ -140,20 +139,18 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <%= if @changeset.action do %>
                                         <div>
-                                            <p class="has-text-danger">Oops, something went wrong! Please check the
-                                                errors below.</p>
+                                            <p class="has-text-danger">Oops, something went wrong! Please check the errors below.</p>
                                         </div>
-                                        <% end %>
+                                        <% else %>
                                         <div>
                                             <%= submit "Track Bet" , id: "save-button" ,
                                                 class: "button h-button is-primary is-raised" %>
                                         </div>
                                     <% end %>
                                 </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>
@@ -162,3 +159,4 @@
 
         </div>
     </div>
+</div>

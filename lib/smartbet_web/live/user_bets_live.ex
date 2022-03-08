@@ -50,18 +50,14 @@ defmodule SmartbetWeb.UserBetsLive do
   end
 
   def handle_params(params, _uri, socket) do
-    IO.inspect("USER BETS LIVE handle_params")
     # TODO preload today games
     # TODO preload tracked_leagues
     # TODO preload uset_bets
     # TODO preload user_portfolio_profit
     today_games = Sports.get_league_games( %{league: 12} , :today)
 
-    IO.inspect(socket, label: "PARAMS SOCKET")
-
     {:noreply, assign(socket, :today_games, today_games)}
   end
-
 
   # handle_event "update league"
   # handle_event "update_team_name"
